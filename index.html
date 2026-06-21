@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>소그룹 나눔지 배포 서비스</title>
+    
+    <!-- Google Fonts: Noto Serif KR (for sermon titles) & Noto Sans KR (for UI text) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@500;700&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons for clean UI symbols -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            /* Palette: Paper & Ink theme */
+            --bg-page: #f8f7f4;
+            --bg-card: #ffffff;
+            --text-main: #2b2a27;
+            --text-muted: #76736d;
+            --border-color: #e5e2db;
+            
+            --accent-adult: #b07d42;      /* Warm bronze/gold */
+            --accent-adult-bg: #f9f2e7;
+            --accent-youth: #2e7d58;      /* Deep forest green */
+            --accent-youth-bg: #edf6f0;
+            
+            --font-sans: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --font-serif: 'Noto Serif KR', Georgia, serif;
+            --font-title: 'Outfit', sans-serif;
+            
+            --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.03);
+            --shadow-hover: 0 10px 30px rgba(176, 125, 66, 0.08);
+            --shadow-hover-youth: 0 10px 30px rgba(46, 125, 88, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 40px 20px 80px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Container */
+        .container {
+            width: 100%;
+            max-width: 960px;
+        }
+
+        /* Header Styles */
+        header {
+            text-align: center;
+            margin-bottom: 48px;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .logo-area {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 56px;
+            height: 56px;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .logo-area i {
+            color: var(--accent-adult);
+        }
+
+        h1 {
+            font-family: var(--font-serif);
+            font-weight: 700;
+            font-size: 2.2rem;
+            letter-spacing: -0.03em;
+            margin-bottom: 8px;
+            color: #1a1a18;
+        }
+
+        .subtitle {
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: 300;
+            letter-spacing: 0.02em;
+        }
+
+        /* Search & Filter Controls */
+        .controls {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 40px;
+            animation: fadeIn 0.9s ease-out;
+        }
+
+        @media (min-width: 600px) {
+            .controls {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+
+        .search-box {
+            position: relative;
+            flex-grow: 1;
+            max-width: 480px;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            width: 18px;
+            height: 18px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 14px 16px 14px 46px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-card);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            outline: none;
+            box-shadow: var(--shadow-subtle);
+            transition: var(--transition-smooth);
+        }
+
+        .search-input:focus {
+            border-color: var(--accent-adult);
+            box-shadow: 0 0 0 3px rgba(176, 125, 66, 0.1);
+        }
+
+        .filter-tabs {
+            display: flex;
+            gap: 8px;
+            background-color: #efece5;
+            padding: 4px;
+            border-radius: 10px;
+            align-self: flex-start;
+        }
+
+        @media (min-width: 600px) {
+            .filter-tabs {
+                align-self: auto;
+            }
+        }
+
+        .tab-btn {
+            padding: 8px 18px;
+            border: none;
+            background: transparent;
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .tab-btn.active {
+            background-color: var(--bg-card);
+            color: var(--text-main);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Sermons Section & Grid */
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .sermon-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-bottom: 48px;
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .sermon-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Sermon Cards */
+        .sermon-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            text-decoration: none;
+            color: inherit;
+            box-shadow: var(--shadow-subtle);
+            transition: var(--transition-smooth);
+            animation: fadeInCard 0.5s ease-out both;
+        }
+
+        .sermon-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            border-radius: 16px 16px 0 0;
+            transition: var(--transition-smooth);
+        }
+
+        /* Adult card style modification */
+        .sermon-card.category-adult::after {
+            background-color: var(--accent-adult);
+        }
+        .sermon-card.category-adult:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: #d6cfc4;
+        }
+
+        /* Youth card style modification */
+        .sermon-card.category-youth::after {
+            background-color: var(--accent-youth);
+        }
+        .sermon-card.category-youth:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover-youth);
+            border-color: #c4d6cb;
+        }
+
+        .card-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+
+        .card-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .badge {
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+            letter-spacing: 0.03em;
+        }
+
+        .badge.badge-adult {
+            color: var(--accent-adult);
+            background-color: var(--accent-adult-bg);
+        }
+
+        .badge.badge-youth {
+            color: var(--accent-youth);
+            background-color: var(--accent-youth-bg);
+        }
+
+        .card-title {
+            font-family: var(--font-serif);
+            font-weight: 700;
+            font-size: 1.25rem;
+            line-height: 1.45;
+            color: #1a1a18;
+            margin-bottom: 24px;
+            flex-grow: 1;
+            transition: var(--transition-smooth);
+        }
+
+        .sermon-card.category-adult:hover .card-title {
+            color: var(--accent-adult);
+        }
+
+        .sermon-card.category-youth:hover .card-title {
+            color: var(--accent-youth);
+        }
+
+        .card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            gap: 4px;
+            transition: var(--transition-smooth);
+        }
+
+        .sermon-card:hover .card-footer {
+            color: var(--text-main);
+        }
+
+        .card-footer i {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .sermon-card:hover .card-footer i {
+            transform: translateX(4px);
+        }
+
+        /* Loading Skeletons */
+        .skeleton-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px;
+            height: 160px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .skeleton-card::before {
+            content: "";
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            border-radius: 16px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+            transform: translateX(-100%);
+            animation: loading-shimmer 1.5s infinite;
+        }
+
+        .skeleton-line {
+            height: 12px;
+            background-color: #efece5;
+            border-radius: 4px;
+        }
+
+        .skeleton-title {
+            height: 20px;
+            width: 80%;
+            background-color: #efece5;
+            border-radius: 4px;
+            margin-top: 16px;
+            margin-bottom: auto;
+        }
+
+        .skeleton-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .skeleton-date {
+            width: 30%;
+        }
+
+        .skeleton-badge {
+            width: 15%;
+            height: 22px;
+            border-radius: 6px;
+        }
+
+        .skeleton-footer {
+            width: 25%;
+            align-self: flex-end;
+        }
+
+        /* Empty / Error States */
+        .error-container {
+            grid-column: 1 / -1;
+            background-color: var(--bg-card);
+            border: 1px dashed #d0c9bd;
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-subtle);
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .error-container i {
+            color: #d97706;
+            margin-bottom: 16px;
+            width: 48px;
+            height: 48px;
+        }
+
+        .error-title {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .error-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            max-width: 500px;
+            line-height: 1.5;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-primary {
+            background-color: var(--accent-adult);
+            color: white;
+            border-color: var(--accent-adult);
+        }
+
+        .btn-primary:hover {
+            background-color: #9c6c35;
+            border-color: #9c6c35;
+        }
+
+        .btn-secondary {
+            background-color: var(--accent-youth);
+            color: white;
+            border-color: var(--accent-youth);
+        }
+
+        .btn-secondary:hover {
+            background-color: #246245;
+            border-color: #246245;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-main);
+        }
+
+        .btn-outline:hover {
+            background-color: #efece5;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: auto;
+            text-align: center;
+            padding-top: 40px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            width: 100%;
+            max-width: 960px;
+        }
+
+        footer p {
+            margin-bottom: 6px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInCard {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes loading-shimmer {
+            100% { transform: translateX(100%); }
+        }
+
+        /* Utility classes */
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo-area">
+                <i data-lucide="book-open-check"></i>
+            </div>
+            <h1>소그룹 나눔지 배포 서비스</h1>
+            <p class="subtitle">말씀을 나누며 함께 성장하는 라온 소그룹</p>
+        </header>
+
+        <!-- Search & Filter Tab Controls -->
+        <div class="controls">
+            <div class="search-box">
+                <i data-lucide="search"></i>
+                <input type="text" id="searchInput" class="search-input" placeholder="날짜나 제목으로 검색해 보세요...">
+            </div>
+            
+            <div class="filter-tabs">
+                <button class="tab-btn active" data-filter="all">전체</button>
+                <button class="tab-btn" data-filter="adult">장년 (Adult)</button>
+                <button class="tab-btn" data-filter="youth">청소년 (Youth)</button>
+            </div>
+        </div>
+
+        <!-- Sermons Grid -->
+        <main>
+            <div class="sermon-grid" id="sermonGrid">
+                <!-- Skeleton cards while loading -->
+                <div class="skeleton-card">
+                    <div class="skeleton-meta">
+                        <div class="skeleton-line skeleton-date"></div>
+                        <div class="skeleton-line skeleton-badge"></div>
+                    </div>
+                    <div class="skeleton-title"></div>
+                    <div class="skeleton-line skeleton-footer"></div>
+                </div>
+                <div class="skeleton-card">
+                    <div class="skeleton-meta">
+                        <div class="skeleton-line skeleton-date"></div>
+                        <div class="skeleton-line skeleton-badge"></div>
+                    </div>
+                    <div class="skeleton-title"></div>
+                    <div class="skeleton-line skeleton-footer"></div>
+                </div>
+                <div class="skeleton-card">
+                    <div class="skeleton-meta">
+                        <div class="skeleton-line skeleton-date"></div>
+                        <div class="skeleton-line skeleton-badge"></div>
+                    </div>
+                    <div class="skeleton-title"></div>
+                    <div class="skeleton-line skeleton-footer"></div>
+                </div>
+                <div class="skeleton-card">
+                    <div class="skeleton-meta">
+                        <div class="skeleton-line skeleton-date"></div>
+                        <div class="skeleton-line skeleton-badge"></div>
+                    </div>
+                    <div class="skeleton-title"></div>
+                    <div class="skeleton-line skeleton-footer"></div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p>© 2026 라온교회 소그룹. All rights reserved.</p>
+            <p>소그룹 나눔지는 매주 예배 후 업로드됩니다. 인쇄를 원하시면 각 페이지에서 [인쇄/PDF 저장]을 이용해 주세요.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Default Configuration (fallback if not loaded on GitHub Pages)
+        let owner = 'raon-easypaster';
+        let repo = 'share';
+        const defaultBranch = 'main';
+
+        // Auto-detect owner and repository name from URL if hosted on github.io
+        const host = window.location.hostname;
+        if (host.includes('.github.io')) {
+            owner = host.split('.')[0];
+            const pathParts = window.location.pathname.split('/').filter(Boolean);
+            if (pathParts.length > 0) {
+                repo = pathParts[0];
+            }
+        }
+
+        // Global list to store items fetched from API
+        let allSermons = [];
+        let activeFilter = 'all';
+
+        // Initialize icons
+        lucide.createIcons();
+
+        // DOM Elements
+        const sermonGrid = document.getElementById('sermonGrid');
+        const searchInput = document.getElementById('searchInput');
+        const filterButtons = document.querySelectorAll('.tab-btn');
+
+        // Parse date from filename or folder name
+        function parseDate(name) {
+            // Remove file extension
+            const baseName = name.replace(/\.[^/.]+$/, "");
+            
+            // Pattern 1: YYYY-MM-DD or YYYY.MM.DD or YYYY/MM/DD
+            const yyyymmddSepMatch = baseName.match(/^(\d{4})[-./](\d{2})[-./](\d{2})/);
+            if (yyyymmddSepMatch) {
+                const year = yyyymmddSepMatch[1];
+                const month = parseInt(yyyymmddSepMatch[2], 10);
+                const day = parseInt(yyyymmddSepMatch[3], 10);
+                return {
+                    formatted: `${year}년 ${month}월 ${day}일`,
+                    raw: `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`
+                };
+            }
+
+            // Pattern 2: YYYYMMDD format (8 digits, e.g. 20260621)
+            const yyyymmddMatch = baseName.match(/^(\d{4})(\d{2})(\d{2})/);
+            if (yyyymmddMatch) {
+                const year = yyyymmddMatch[1];
+                const month = parseInt(yyyymmddMatch[2], 10);
+                const day = parseInt(yyyymmddMatch[3], 10);
+                if (month >= 1 && month <= 12 && day >= 1 && day <= 31) {
+                    return {
+                        formatted: `${year}년 ${month}월 ${day}일`,
+                        raw: `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`
+                    };
+                }
+            }
+
+            // Pattern 3: YYMMDD format (6 digits, e.g. 260621, 260621y)
+            const yymmddMatch = baseName.match(/^(\d{2})(\d{2})(\d{2})/);
+            if (yymmddMatch) {
+                const year = '20' + yymmddMatch[1];
+                const month = parseInt(yymmddMatch[2], 10);
+                const day = parseInt(yymmddMatch[3], 10);
+                if (month >= 1 && month <= 12 && day >= 1 && day <= 31) {
+                    return {
+                        formatted: `${year}년 ${month}월 ${day}일`,
+                        raw: `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`
+                    };
+                }
+            }
+
+            return {
+                formatted: '',
+                raw: '0000-00-00' // Default fallback for sorting
+            };
+        }
+
+        // Fetch HTML contents asynchronously to extract sermon title
+        async function fetchSermonTitle(downloadUrl, sha, defaultTitle) {
+            const cacheKey = `sermon_title_${sha}`;
+            
+            // Check localStorage cache first
+            const cached = localStorage.getItem(cacheKey);
+            if (cached) {
+                return cached;
+            }
+
+            try {
+                // Fetch the HTML content
+                const response = await fetch(downloadUrl);
+                if (!response.ok) throw new Error('Fetch failed');
+                
+                const text = await response.text();
+                
+                // Parse HTML
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(text, 'text/html');
+                let parsedTitle = doc.querySelector('title')?.textContent || '';
+                
+                // Clean up title (remove categories prefixes)
+                if (parsedTitle) {
+                    parsedTitle = parsedTitle
+                        .replace(/^소그룹 나눔지\s*\(장년\)\s*-\s*/, '')
+                        .replace(/^청소년 소그룹\s*\(청소년\)\s*-\s*/, '')
+                        .trim();
+                } else {
+                    // Try parsing h1 inside .title-block
+                    parsedTitle = doc.querySelector('.title-block h1')?.textContent || '';
+                    if (parsedTitle) {
+                        parsedTitle = parsedTitle
+                            .replace(/^소그룹 나눔지\s*\(장년\)/, '')
+                            .replace(/^청소년 소그룹\s*\(청소년\)/, '')
+                            .trim();
+                    }
+                }
+
+                const finalTitle = parsedTitle || defaultTitle;
+                
+                // Save to cache
+                localStorage.setItem(cacheKey, finalTitle);
+                return finalTitle;
+            } catch (err) {
+                console.warn('Failed to parse title for', downloadUrl, err);
+                return defaultTitle;
+            }
+        }
+
+        // Load repository folders and construct listing data
+        async function loadSermonData() {
+            try {
+                const apiBase = `https://api.github.com/repos/${owner}/${repo}/contents`;
+                
+                // We will fetch from: /adult, /youth, and /adult/youth (as fallback/addition)
+                const paths = [
+                    { path: 'adult', category: 'adult' },
+                    { path: 'youth', category: 'youth' },
+                    { path: 'adult/youth', category: 'youth' }
+                ];
+                
+                const results = await Promise.allSettled(
+                    paths.map(async ({ path, category }) => {
+                        const res = await fetch(`${apiBase}/${path}`);
+                        if (!res.ok) {
+                            throw new Error(`Path ${path} returned status ${res.status}`);
+                        }
+                        const data = await res.json();
+                        return { data, category, path };
+                    })
+                );
+
+                const sermons = [];
+                const seenPaths = new Set(); // Avoid duplicating if folders overlap (e.g. youth is child of adult)
+
+                for (const result of results) {
+                    if (result.status === 'fulfilled') {
+                        const { data, category, path } = result.value;
+                        
+                        if (Array.isArray(data)) {
+                            for (const item of data) {
+                                // Skip files that are not html or folders that are youth inside adult directory
+                                if (item.name === 'youth' && category === 'adult') continue;
+                                if (item.name === 'index.html' && path === '') continue; // Skip root index.html if encountered
+
+                                const isHtmlFile = item.type === 'file' && (item.name.endsWith('.html') || item.name.endsWith('.htm'));
+                                const isDir = item.type === 'dir';
+
+                                if ((isHtmlFile || isDir) && !seenPaths.has(item.path)) {
+                                    seenPaths.add(item.path);
+
+                                    // Build dynamic links relative to the website root
+                                    // GitHub Pages serves folders directly, or files via relative path
+                                    let href = '';
+                                    if (isDir) {
+                                        href = `./${item.path}/`;
+                                    } else {
+                                        href = `./${item.path}`;
+                                    }
+
+                                    // Parse date
+                                    const dateInfo = parseDate(item.name);
+                                    
+                                    // Make user-friendly title fallback
+                                    let titleFallback = item.name.replace(/\.[^/.]+$/, "");
+                                    if (dateInfo.formatted) {
+                                        titleFallback = `${dateInfo.formatted} 나눔지`;
+                                    }
+
+                                    // Determine raw download URL for parsing title
+                                    let downloadUrl = item.download_url;
+                                    if (isDir) {
+                                        // For directory, assume we can load its index.html
+                                        downloadUrl = `https://raw.githubusercontent.com/${owner}/${repo}/main/${item.path}/index.html`;
+                                    }
+
+                                    sermons.push({
+                                        name: item.name,
+                                        path: item.path,
+                                        sha: item.sha,
+                                        type: item.type,
+                                        category: category,
+                                        href: href,
+                                        date: dateInfo.formatted,
+                                        dateRaw: dateInfo.raw,
+                                        title: titleFallback, // Will be updated asynchronously
+                                        downloadUrl: downloadUrl
+                                    });
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if (sermons.length === 0) {
+                    throw new Error('No files found');
+                }
+
+                // Sort sermons by date descending (newest first)
+                sermons.sort((a, b) => b.dateRaw.localeCompare(a.dateRaw));
+                
+                allSermons = sermons;
+                renderSermons();
+
+                // Trigger asynchronous title loading
+                allSermons.forEach(async (sermon) => {
+                    if (sermon.downloadUrl) {
+                        const fetchedTitle = await fetchSermonTitle(sermon.downloadUrl, sermon.sha, sermon.title);
+                        if (fetchedTitle !== sermon.title) {
+                            sermon.title = fetchedTitle;
+                            updateCardTitle(sermon.sha, fetchedTitle);
+                        }
+                    }
+                });
+
+            } catch (err) {
+                console.error('Error loading repository structure:', err);
+                renderError();
+            }
+        }
+
+        // Render sermons to the grid
+        function renderSermons() {
+            const searchQuery = searchInput.value.toLowerCase().trim();
+            
+            // Filter by category and search query
+            const filtered = allSermons.filter(sermon => {
+                const matchesFilter = activeFilter === 'all' || sermon.category === activeFilter;
+                const matchesSearch = sermon.title.toLowerCase().includes(searchQuery) || 
+                                      sermon.date.toLowerCase().includes(searchQuery) ||
+                                      sermon.name.toLowerCase().includes(searchQuery);
+                return matchesFilter && matchesSearch;
+            });
+
+            if (filtered.length === 0) {
+                sermonGrid.innerHTML = `
+                    <div class="error-container">
+                        <i data-lucide="folder-search"></i>
+                        <h3 class="error-title">일치하는 나눔지가 없습니다</h3>
+                        <p class="error-desc">검색어나 선택한 구분을 확인해 보세요.</p>
+                    </div>
+                `;
+                lucide.createIcons();
+                return;
+            }
+
+            sermonGrid.innerHTML = filtered.map((sermon, index) => {
+                const categoryLabel = sermon.category === 'adult' ? '장년' : '청소년';
+                const animDelay = `${index * 0.05}s`;
+                return `
+                    <a href="${sermon.href}" class="sermon-card category-${sermon.category}" data-sha="${sermon.sha}" style="animation-delay: ${animDelay}">
+                        <div class="card-meta">
+                            <span class="card-date">${sermon.date || '날짜 미상'}</span>
+                            <span class="badge badge-${sermon.category}">${categoryLabel}</span>
+                        </div>
+                        <h2 class="card-title" id="title-${sermon.sha}">${sermon.title}</h2>
+                        <div class="card-footer">
+                            <span>나눔지 보기</span>
+                            <i data-lucide="chevron-right"></i>
+                        </div>
+                    </a>
+                `;
+            }).join('');
+
+            lucide.createIcons();
+        }
+
+        // Dynamically update card title in the UI once fetched
+        function updateCardTitle(sha, title) {
+            const titleEl = document.getElementById(`title-${sha}`);
+            if (titleEl) {
+                titleEl.textContent = title;
+            }
+        }
+
+        // Render rate limit error page with direct folders link
+        function renderError() {
+            sermonGrid.innerHTML = `
+                <div class="error-container">
+                    <i data-lucide="alert-triangle"></i>
+                    <h3 class="error-title">나눔지를 불러오지 못했습니다</h3>
+                    <p class="error-desc">GitHub API 요청 한도를 초과했거나 네트워크 오류가 발생했습니다. 아래 버튼을 클릭하여 깃허브 저장소 폴더에서 직접 나눔지 파일을 확인하실 수 있습니다.</p>
+                    <div class="btn-group">
+                        <a href="https://github.com/${owner}/${repo}/tree/main/adult" target="_blank" class="btn btn-primary">
+                            <i data-lucide="external-link"></i> 장년 나눔지 폴더
+                        </a>
+                        <a href="https://github.com/${owner}/${repo}/tree/main/adult/youth" target="_blank" class="btn btn-secondary">
+                            <i data-lucide="external-link"></i> 청소년 나눔지 폴더
+                        </a>
+                        <button onclick="window.location.reload()" class="btn btn-outline">
+                            <i data-lucide="refresh-cw"></i> 새로고침
+                        </button>
+                    </div>
+                </div>
+            `;
+            lucide.createIcons();
+        }
+
+        // Search Input Listener
+        searchInput.addEventListener('input', renderSermons);
+
+        // Filter Buttons Listeners
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                // Toggle active class
+                filterButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                activeFilter = btn.getAttribute('data-filter');
+                renderSermons();
+            });
+        });
+
+        // Initial Load
+        loadSermonData();
+    </script>
+</body>
+</html>
