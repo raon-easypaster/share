@@ -2,6 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>청소년 소그룹 (청소년) - 대화 좀 하고 살자</title>
 <style>
 @page {
@@ -11,50 +12,59 @@
 
 * { box-sizing: border-box; }
 
+html { background: #EAEAEA; }
+
 body {
     font-family: "Noto Sans CJK KR", "맑은 고딕", sans-serif;
-    font-size: 16px;
-    line-height: 1.85;
+    font-size: 17px;
+    line-height: 1.8;
     color: #222222;
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 28px 20px 60px;
-    background: #ffffff;
+    margin: 0;
+    padding: 0;
+    background: #EAEAEA;
 }
 
-.title-block { text-align: center; margin-bottom: 16px; }
+.page {
+    width: 720px;
+    max-width: 100%;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 44px 50px 36px;
+}
+
+.title-block { text-align: center; margin-bottom: 1em; }
 
 .title-block h1 {
-    font-size: 27px;
+    font-size: 1.55em;
     font-weight: 700;
     color: #E8590C;
-    margin: 0 0 8px 0;
+    margin: 0 0 0.4em 0;
 }
 
 .title-block .meta {
-    font-size: 16px;
+    font-size: 0.92em;
     font-weight: 700;
     color: #333333;
     margin: 0;
 }
 
 .title-block .ref {
-    font-size: 13px;
+    font-size: 0.78em;
     color: #777777;
     font-style: italic;
-    margin: 4px 0 0 0;
+    margin: 0.3em 0 0 0;
 }
 
 blockquote {
     background-color: #FFF1E6;
-    border-left: 4px solid #E8590C;
-    margin: 18px 0 20px 0;
-    padding: 14px 20px;
+    border-left: 0.25em solid #E8590C;
+    margin: 1.1em 0 1.2em 0;
+    padding: 0.85em 1.2em;
     color: #663300;
-    font-size: 15px;
+    font-size: 0.9em;
     font-style: italic;
     line-height: 1.8;
-    border-radius: 0 4px 4px 0;
+    border-radius: 0 0.25em 0.25em 0;
 }
 blockquote p { margin: 0; }
 
@@ -62,65 +72,68 @@ blockquote p { margin: 0; }
     background-color: #E8590C;
     color: #ffffff;
     font-weight: 700;
-    font-size: 17px;
-    padding: 10px 16px;
-    border-radius: 3px;
-    margin: 26px 0 14px 0;
+    font-size: 1em;
+    padding: 0.6em 1em;
+    border-radius: 0.2em;
+    margin: 1.6em 0 0.9em 0;
 }
 
-p { margin: 0 0 14px 0; }
+p { margin: 0 0 0.9em 0; }
 p.bold { font-weight: 700; color: #333333; }
-p.question-intro { font-weight: 700; color: #5B4FCF; margin-top: 18px; }
+p.question-intro { font-weight: 700; color: #5B4FCF; margin-top: 1.1em; }
 
-ol.questions {
-    margin: 0 0 14px 0;
-    padding-left: 22px;
+.q-list { margin: 0 0 0.9em 0; }
+.q-item {
+    margin: 0 0 1.1em 0;
+    padding-left: 1.6em;
+    text-indent: -1.6em;
 }
-ol.questions li {
-    margin-bottom: 18px;
-    padding-left: 4px;
+.q-num {
+    font-weight: 700;
+    margin-right: 0.25em;
 }
 
 .dare-box {
     background-color: #EFEDFB;
-    border-left: 4px solid #5B4FCF;
-    border-radius: 0 4px 4px 0;
-    padding: 16px 20px;
-    margin: 10px 0 20px 0;
+    border-left: 0.25em solid #5B4FCF;
+    border-radius: 0 0.25em 0.25em 0;
+    padding: 1em 1.2em;
+    margin: 0.6em 0 1.3em 0;
     font-weight: 700;
     color: #3D348F;
-    font-size: 16px;
+    font-size: 0.95em;
 }
 
 .write-label {
     font-weight: 700;
     color: #E8590C;
-    margin-top: 16px;
-    margin-bottom: 6px;
+    margin-top: 1em;
+    margin-bottom: 0.4em;
 }
 
 .write-line {
     border-bottom: 1px solid #CCCCCC;
-    height: 30px;
-    margin-bottom: 4px;
+    height: 1.8em;
+    margin-bottom: 0.2em;
 }
 
 footer {
     text-align: center;
-    font-size: 12px;
+    font-size: 0.75em;
     color: #777777;
     border-top: 1px solid #DDDDDD;
-    margin-top: 30px;
-    padding-top: 12px;
+    margin-top: 1.2em;
+    padding-top: 0.7em;
 }
 
 @media print {
-    body { padding: 0; }
+    html, body { background: #ffffff; }
+    .page { width: auto; padding: 0; }
 }
 </style>
 </head>
 <body>
-
+<div class="page">
 <div class="title-block">
     <h1>청소년 소그룹 (청소년)</h1>
     <p class="meta">2026.06.21 · &ldquo;대화 좀 하고 살자&rdquo; (모세 시리즈 11)</p>
@@ -144,11 +157,11 @@ footer {
 <p>손들기: 살면서 &lsquo;나 이거 진짜 하기 싫은데...&rsquo; 하면서도 결국 한 적 있는 사람?</p>
 
 <div class="section-header">토크타임 (25~30분)</div>
-<ol class="questions">
-    <li>처음엔 다섯 번이나 도망가려던 모세가 나중엔 하나님이랑 친구처럼 얘기하는 사이가 됐대. 너도 처음엔 어색했는데 지금은 완전 편한 사람/관계가 있어? 어떻게 그렇게 됐어?</li>
-    <li>&ldquo;말은 많은데 마음은 닫혀있고, 연결은 많은데 친밀함은 줄었다&rdquo;는 말, 너네 단톡방/SNS 생각하면 좀 공감돼? 왜 그런 것 같아?</li>
-    <li>만약 하나님이 지금 너한테 카톡을 보낸다면 뭐라고 보내실 것 같아? (장난 아니고 진짜로 생각해보기)</li>
-</ol>
+<div class="q-list">
+    <p class="q-item"><span class="q-num">1.</span> 처음엔 다섯 번이나 도망가려던 모세가 나중엔 하나님이랑 친구처럼 얘기하는 사이가 됐대. 너도 처음엔 어색했는데 지금은 완전 편한 사람/관계가 있어? 어떻게 그렇게 됐어?</p>
+    <p class="q-item"><span class="q-num">2.</span> &ldquo;말은 많은데 마음은 닫혀있고, 연결은 많은데 친밀함은 줄었다&rdquo;는 말, 너네 단톡방/SNS 생각하면 좀 공감돼? 왜 그런 것 같아?</p>
+    <p class="q-item"><span class="q-num">3.</span> 만약 하나님이 지금 너한테 카톡을 보낸다면 뭐라고 보내실 것 같아? (장난 아니고 진짜로 생각해보기)</p>
+</div>
 
 <p class="question-intro">솔직히 말하면&hellip;</p>
 <p>나는 하나님이랑 &lsquo;진짜 대화&rsquo;한다고 느낄 때가 (있다 / 거의 없다) 둘 중에 뭐에 더 가까운 것 같아? 왜 그런 것 같아?</p>
@@ -171,5 +184,6 @@ footer {
 
 <footer>라온동행교회 청소년부 &nbsp;|&nbsp; 담임목사 이광복</footer>
 
+</div>
 </body>
 </html>
