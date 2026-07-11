@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>소그룹 나눔지 · 장년 | 라온동행교회</title>
+    
+    <!-- Tailwind CSS 연동 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 아이콘 폰트 (Phosphor Icons) -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- Pretendard 폰트 (한국어에 가장 최적화되고 수려한 웹폰트) -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    
+    <!-- 사용자 정의 스타일 및 Tailwind 설정 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Pretendard', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#4F46E5', // 평안과 신뢰를 주는 인디고 색상
+                        secondary: '#818CF8',
+                        surface: '#F8FAFC',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #F1F5F9;
+            color: #1E293B;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 인쇄 시 스타일 최적화 */
+        @media print {
+            body { background-color: white; }
+            .no-print { display: none !important; }
+            .print-break-inside-avoid { page-break-inside: avoid; }
+            .shadow-sm, .shadow-md, .shadow-lg { box-shadow: none !important; }
+            .card-container { border: 1px solid #E2E8F0; margin-bottom: 1rem; }
+            input, textarea { 
+                border: none !important; 
+                background: transparent !important;
+                border-bottom: 1px solid #CBD5E1 !important;
+                border-radius: 0 !important;
+            }
+        }
+
+        /* 입력 필드 기본 스타일 조정 */
+        input[type="text"] {
+            transition: all 0.2s ease-in-out;
+        }
+        input[type="text"]:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+            border-color: #4F46E5;
+        }
+
+        /* 아코디언 애니메이션 */
+        details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        details[open] summary ~ * {
+            animation: slideDown 0.3s ease-in-out;
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="py-6 md:py-12 px-4">
+
+    <!-- 토스트 알림 (저장 완료) -->
+    <div id="toast" class="fixed top-4 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white px-4 py-2 rounded-full shadow-lg text-sm opacity-0 transition-opacity duration-300 pointer-events-none z-50">
+        자동으로 저장되었습니다
+    </div>
+
+    <!-- 플로팅 인쇄 버튼 -->
+    <button onclick="window.print()" class="no-print fixed bottom-6 right-6 bg-primary text-white p-4 rounded-full shadow-lg hover:bg-indigo-700 transition-colors z-40 focus:outline-none focus:ring-4 focus:ring-indigo-300" aria-label="인쇄하기">
+        <i class="ph ph-printer text-2xl"></i>
+    </button>
+
+    <!-- 메인 컨테이너 -->
+    <main class="max-w-2xl mx-auto space-y-6">
+
+        <!-- 헤더 섹션 -->
+        <header class="bg-white rounded-3xl shadow-sm overflow-hidden card-container">
+            <!-- 상단 그라데이션 장식 -->
+            <div class="h-3 w-full bg-gradient-to-r from-indigo-400 via-primary to-indigo-500"></div>
+            
+            <div class="p-6 md:p-8">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="inline-block px-3 py-1 bg-indigo-50 text-primary text-xs font-bold rounded-full tracking-wider">
+                        소그룹 나눔지 · 장년
+                    </span>
+                    <span class="text-gray-400 text-sm font-medium">2026. 07. 12 (주일)</span>
+                </div>
+                
+                <p class="text-sm text-indigo-600 font-semibold mb-1">모세 시리즈 14</p>
+                <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight mb-6">
+                    평안히 가도록
+                </h1>
+                
+                <blockquote class="border-l-4 border-indigo-400 pl-4 py-1 mb-6 bg-indigo-50/50 rounded-r-lg">
+                    <p class="text-lg text-gray-700 font-medium leading-relaxed">
+                        “네가 이 일을 감당하고 이 모든 백성도 자기 곳으로 평안히 가리라”
+                    </p>
+                    <footer class="mt-2 text-sm text-gray-500 font-semibold">— 출애굽기 18:23</footer>
+                </blockquote>
+                
+                <div class="flex flex-wrap gap-4 text-sm text-gray-600 border-t border-gray-100 pt-4">
+                    <div class="flex items-center gap-1.5">
+                        <i class="ph-fill ph-book-open text-indigo-500"></i>
+                        <span>본문: 출애굽기 18:13–23</span>
+                    </div>
+                    <div class="flex items-center gap-1.5">
+                        <i class="ph-fill ph-clock text-indigo-500"></i>
+                        <span>소요 시간: 90분</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- 🗣 함께 시작해요 -->
+        <section class="bg-white rounded-3xl p-6 md:p-8 shadow-sm card-container print-break-inside-avoid">
+            <h2 class="text-xl font-bold flex items-center gap-2 mb-4 text-gray-900">
+                <span class="text-2xl">🗣</span> 함께 시작해요 
+                <span class="text-sm font-normal text-gray-400 ml-auto no-print">(10~15분)</span>
+            </h2>
+            <div class="bg-gray-50 p-5 rounded-2xl border border-gray-100">
+                <p class="text-gray-800 font-medium leading-relaxed">
+                    <span class="text-primary font-bold mr-1">Q.</span> 
+                    요즘 내 삶에서 <span class="bg-indigo-100 px-1 rounded">'나 혼자 다 짊어지고 있다'</span>고 느끼는 짐이 있다면, 한 단어로 표현해 볼까요?
+                </p>
+                <div class="mt-4 no-print">
+                    <input type="text" id="icebreaker-input" class="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary focus:border-transparent transition" placeholder="예: 육아, 직장 업무, 재정, 관계 등 한 단어로 적어보세요.">
+                </div>
+            </div>
+        </section>
+
+        <!-- 📖 말씀 함께 읽기 -->
+        <section class="bg-white rounded-3xl p-6 md:p-8 shadow-sm card-container">
+            <h2 class="text-xl font-bold flex items-center gap-2 mb-2 text-gray-900">
+                <span class="text-2xl">📖</span> 말씀 함께 읽기
+                <span class="text-sm font-normal text-gray-400 ml-auto no-print">(35~40분)</span>
+            </h2>
+            <p class="text-gray-600 text-sm mb-6 pb-4 border-b border-gray-100">출애굽기 18:13–23을 함께 소리 내어 읽습니다.</p>
+
+            <!-- 말씀 속으로 -->
+            <div class="mb-8">
+                <h3 class="text-lg font-bold text-indigo-900 mb-4 flex items-center gap-2">
+                    <i class="ph-fill ph-magnifying-glass text-indigo-500"></i> 말씀 속으로
+                </h3>
+                <ul class="space-y-5">
+                    <li class="flex items-start gap-3">
+                        <span class="flex-shrink-0 w-7 h-7 bg-indigo-100 text-indigo-700 rounded-full flex items-center justify-center font-bold text-sm">1</span>
+                        <p class="text-gray-800 leading-relaxed mt-0.5">
+                            이드로가 본 모세의 모습은 어떠했나요? 모세가 '멈추지 못했던' 이유는 무엇이었을까요? <br>
+                            <span class="text-sm text-gray-500">(아내 십보라를 돌려보낸 장면과 연결해 생각해 봅시다)</span>
+                        </p>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="flex-shrink-0 w-7 h-7 bg-indigo-100 text-indigo-700 rounded-full flex items-center justify-center font-bold text-sm">2</span>
+                        <p class="text-gray-800 leading-relaxed mt-0.5">
+                            이드로가 말한 '능력 있는 사람(하일, חַיִל)'은 세상이 말하는 능력과 어떻게 다른가요? 세 가지 성품(하나님 경외, 참됨/에메트, 부정직한 소득을 싫어함)이 왜 '능력'이라 불릴까요?
+                        </p>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 내 삶에 가져오기 -->
+            <div>
+                <h3 class="text-lg font-bold text-green-700 mb-4 flex items-center gap-2">
+                    <i class="ph-fill ph-leaf text-green-500"></i> 내 삶에 가져오기
+                </h3>
+                <ul class="space-y-5">
+                    <li class="flex items-start gap-3">
+                        <span class="flex-shrink-0 w-7 h-7 bg-green-100 text-green-700 rounded-full flex items-center justify-center font-bold text-sm">3</span>
+                        <p class="text-gray-800 leading-relaxed mt-0.5">
+                            '그 헌신이 나를 죽이는 헌신이라면 그건 욕심일 수 있습니다'라는 말씀이 있었습니다. 좋은 뜻으로 시작했지만 나를 소진시키고 있는 헌신이 있나요?
+                        </p>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="flex-shrink-0 w-7 h-7 bg-green-100 text-green-700 rounded-full flex items-center justify-center font-bold text-sm">4</span>
+                        <p class="text-gray-800 leading-relaxed mt-0.5">
+                            나는 다른 사람의 조언에 귀를 기울이는 편인가요, 내 생각을 고집하는 편인가요? 최근 누군가의 권면이 나를 돌이키게 한 경험이 있다면 나눠 주세요.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 💡 이번 주 적용 -->
+        <section class="bg-white rounded-3xl p-6 md:p-8 shadow-sm card-container print-break-inside-avoid">
+            <h2 class="text-xl font-bold flex items-center gap-2 mb-4 text-gray-900">
+                <span class="text-2xl">💡</span> 이번 주 적용
+                <span class="text-sm font-normal text-gray-400 ml-auto no-print">(20~30분)</span>
+            </h2>
+            
+            <div class="flex items-start gap-3 mb-6">
+                <span class="flex-shrink-0 w-7 h-7 bg-amber-100 text-amber-700 rounded-full flex items-center justify-center font-bold text-sm">5</span>
+                <p class="text-gray-800 leading-relaxed mt-0.5">
+                    우리 셀(공동체)이 '모세 한 사람의 어깨'가 아니라 '함께 짐을 나누는 공동체'가 되려면, 내가 나눠 질 수 있는 짐 하나는 무엇일까요?
+                </p>
+            </div>
+
+            <div class="bg-amber-50/50 border border-amber-100 p-5 rounded-2xl text-center">
+                <p class="text-sm font-bold text-amber-800 mb-2">나의 이번 주 한 가지</p>
+                <div class="flex flex-col md:flex-row items-center justify-center gap-2 text-gray-800 font-medium">
+                    <span>“나는 이번 주</span>
+                    <input type="text" id="application-input" class="w-full md:w-64 bg-transparent border-b-2 border-amber-300 focus:border-amber-500 px-2 py-1 text-center font-semibold text-indigo-700 placeholder-amber-200/70" placeholder="구체적인 실천 한 가지">
+                    <span>을/를 실천하겠습니다.”</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 🙏 중보기도 -->
+        <section class="bg-white rounded-3xl p-6 md:p-8 shadow-sm card-container print-break-inside-avoid">
+            <h2 class="text-xl font-bold flex items-center gap-2 mb-3 text-gray-900">
+                <span class="text-2xl">🙏</span> 중보기도
+                <span class="text-sm font-normal text-gray-400 ml-auto no-print">(15~20분)</span>
+            </h2>
+            <p class="text-gray-600 text-sm mb-6 leading-relaxed">
+                기도 제목을 나누고, 한 사람씩 돌아가며 옆 사람을 위해 기도합니다. '샬롬'은 혼자가 아니라 함께 이르는 평안임을 기억하며 서로의 짐을 들어 주는 기도가 되게 합니다.
+            </p>
+
+            <!-- 기도제목 테이블 -->
+            <div class="overflow-x-auto rounded-xl border border-gray-200">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-gray-50 text-gray-700 border-b border-gray-200">
+                            <th class="px-4 py-3 font-semibold text-center w-1/4">이름</th>
+                            <th class="px-4 py-3 font-semibold">기도 제목</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-100">
+                        <!-- 행 1 -->
+                        <tr class="hover:bg-gray-50/50 transition-colors">
+                            <td class="p-0 border-r border-gray-100">
+                                <input type="text" id="prayer-name-1" class="w-full h-full px-4 py-3 bg-transparent text-center focus:bg-white focus:ring-inset focus:ring-2 focus:ring-primary outline-none" placeholder="이름">
+                            </td>
+                            <td class="p-0">
+                                <input type="text" id="prayer-req-1" class="w-full h-full px-4 py-3 bg-transparent focus:bg-white focus:ring-inset focus:ring-2 focus:ring-primary outline-none" placeholder="기도제목을 입력하세요">
+                            </td>
+                        </tr>
+                        <!-- 행 2 -->
+                        <tr class="hover:bg-gray-50/50 transition-colors">
+                            <td class="p-0 border-r border-gray-100">
+                                <input type="text" id="prayer-name-2" class="w-full h-full px-4 py-3 bg-transparent text-center focus:bg-white focus:ring-inset focus:ring-2 focus:ring-primary outline-none" placeholder="이름">
+                            </td>
+                            <td class="p-0">
+                                <input type="text" id="prayer-req-2" class="w-full h-full px-4 py-3 bg-transparent focus:bg-white focus:ring-inset focus:ring-2 focus:ring-primary outline-none" placeholder="기도제목을 입력하세요">
+                            </td>
+                        </tr>
+                        <!-- 행 3 -->
+                        <tr class="hover:bg-gray-50/50 transition-colors">
+                            <td class="p-0 border-r border-gray-100">
+                                <input type="text" id="prayer-name-3" class="w-full h-full px-4 py-3 bg-transparent text-center focus:bg-white focus:ring-inset focus:ring-2 focus:ring-primary outline-none" placeholder="이름">
+                            </td>
+                            <td class="p-0">
+                                <input type="text" id="prayer-req-3" class="w-full h-full px-4 py-3 bg-transparent focus:bg-white focus:ring-inset focus:ring-2 focus:ring-primary outline-none" placeholder="기도제목을 입력하세요">
+                            </td>
+                        </tr>
+                        <!-- 행 4 -->
+                        <tr class="hover:bg-gray-50/50 transition-colors">
+                            <td class="p-0 border-r border-gray-100">
+                                <input type="text" id="prayer-name-4" class="w-full h-full px-4 py-3 bg-transparent text-center focus:bg-white focus:ring-inset focus:ring-2 focus:ring-primary outline-none" placeholder="이름">
+                            </td>
+                            <td class="p-0">
+                                <input type="text" id="prayer-req-4" class="w-full h-full px-4 py-3 bg-transparent focus:bg-white focus:ring-inset focus:ring-2 focus:ring-primary outline-none" placeholder="기도제목을 입력하세요">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-xs text-gray-400 mt-2 text-right no-print">* 입력한 내용은 현재 기기에 자동 저장됩니다.</p>
+        </section>
+
+        <!-- 🧭 인도자 가이드 -->
+        <section class="print-break-inside-avoid">
+            <details class="group bg-slate-800 text-slate-100 rounded-2xl shadow-md overflow-hidden no-print">
+                <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-5 md:p-6 hover:bg-slate-700 transition-colors">
+                    <div class="flex items-center gap-2 text-lg font-bold text-white">
+                        <span class="text-2xl">🧭</span> 인도자 가이드 (별지)
+                    </div>
+                    <span class="transition group-open:rotate-180">
+                        <i class="ph-bold ph-caret-down text-slate-400 text-xl"></i>
+                    </span>
+                </summary>
+                <div class="p-5 md:p-6 bg-slate-900 border-t border-slate-700 text-slate-300 text-sm space-y-4">
+                    <p>
+                        <strong class="text-indigo-300 block mb-1">오프닝 질문 의도:</strong> 
+                        무겁지 않게, 그러나 '혼자 짊어짐'이라는 오늘의 주제로 자연스럽게 들어가기 위함입니다. 한 단어로만 답하게 해 부담을 낮춥니다.
+                    </p>
+                    <p>
+                        <strong class="text-indigo-300 block mb-1">Q1 방향:</strong> 
+                        모세의 헌신 자체는 선했으나 '멈추지 못함'이 문제였음을 짚습니다. 심판만 하지 않고, 우리 안의 같은 모습을 발견하도록 유도하세요.
+                    </p>
+                    <p>
+                        <strong class="text-indigo-300 block mb-1">Q2 방향:</strong> 
+                        핵심 원어입니다. 능력=속력/스펙이 아니라 방향/성품임을 함께 확인합니다. 대형교회·유명세 비판으로 흐르지 않도록, '나의 성품'으로 방향을 돌려 주세요.
+                    </p>
+                    <p>
+                        <strong class="text-indigo-300 block mb-1">Q3 주의:</strong> 
+                        가장 깊은 질문입니다. 번아웃·소진을 솔직히 꺼낼 수 있는 안전한 공간을 만드세요. 판단·조언보다 공감이 먼저입니다. 목양이 필요한 지체가 드러날 수 있습니다.
+                    </p>
+                    <p>
+                        <strong class="text-indigo-300 block mb-1">Q5 방향:</strong> 
+                        웨슬리안 사회적 성결 — 서로를 세우는 공동체로 귀결시킵니다. 추상적 다짐이 아니라 '내가 나눠 질 구체적 짐 하나'로 좁혀 주세요.
+                    </p>
+                    <div class="mt-4 p-4 bg-slate-800 rounded-lg border border-slate-700">
+                        <p class="font-bold text-white"><span class="text-amber-400">💡 전체 톤:</span> 정죄가 아니라 회복(샬롬)이 목적입니다. 리더도 백성도 함께 평안해야 함을 놓치지 마세요.</p>
+                    </div>
+                </div>
+            </details>
+
+            <!-- 인쇄용 인도자 가이드 (화면엔 숨김, 인쇄시에만 보임) -->
+            <div class="hidden print:block mt-8 border-t-2 border-gray-800 pt-4">
+                <h2 class="text-lg font-bold flex items-center gap-2 mb-2 text-gray-900">🧭 인도자 가이드</h2>
+                <ul class="text-sm space-y-2 text-gray-800">
+                    <li><strong>오프닝 의도:</strong> 무겁지 않게 '혼자 짊어짐' 주제로 유도. 한 단어로 답하여 부담 낮춤.</li>
+                    <li><strong>Q1:</strong> 헌신 자체는 선했으나 '멈추지 못함'이 문제임을 짚음. 우리 안의 같은 모습 발견 유도.</li>
+                    <li><strong>Q2:</strong> 능력=속력/스펙이 아니라 방향/성품(하나님 경외, 참됨, 정직)임을 확인.</li>
+                    <li><strong>Q3:</strong> 가장 깊은 질문. 번아웃을 솔직히 꺼낼 안전한 공간 확보. 공감 우선.</li>
+                    <li><strong>Q5:</strong> 서로 세우는 공동체로 귀결. 구체적 짐 하나로 좁히기.</li>
+                    <li><strong>전체 톤:</strong> 정죄가 아닌 회복(샬롬). 리더도 백성도 함께 평안해야 함.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 푸터 -->
+        <footer class="text-center py-8 text-gray-400 text-sm font-medium">
+            <p>라온동행교회 &nbsp;|&nbsp; 담임목사 이광복</p>
+        </footer>
+
+    </main>
+
+    <!-- 자바스크립트: 데이터 임시 저장 로직 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 저장할 input 요소들 선택
+            const inputs = [
+                document.getElementById('icebreaker-input'),
+                document.getElementById('application-input'),
+                ...Array.from({length: 4}, (_, i) => document.getElementById(`prayer-name-${i+1}`)),
+                ...Array.from({length: 4}, (_, i) => document.getElementById(`prayer-req-${i+1}`))
+            ];
+
+            const toast = document.getElementById('toast');
+            let saveTimeout;
+
+            // 저장 알림 표시 함수
+            const showToast = () => {
+                toast.classList.remove('opacity-0');
+                clearTimeout(saveTimeout);
+                saveTimeout = setTimeout(() => {
+                    toast.classList.add('opacity-0');
+                }, 2000);
+            };
+
+            // 초기 로드 시 저장된 데이터 불러오기
+            inputs.forEach(input => {
+                if(!input) return;
+                const savedValue = localStorage.getItem(`raon_sg_${input.id}`);
+                if (savedValue) {
+                    input.value = savedValue;
+                }
+
+                // 입력 이벤트 발생 시 로컬스토리지에 저장
+                input.addEventListener('input', (e) => {
+                    localStorage.setItem(`raon_sg_${e.target.id}`, e.target.value);
+                });
+
+                // 포커스 아웃 시 (입력 완료 시) 토스트 띄우기
+                input.addEventListener('blur', () => {
+                    // 값이 변경되었을 때만 띄우거나, 그냥 안전하게 blur시 띄움
+                    if(e => e.target.value.trim() !== '') {
+                       showToast();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
