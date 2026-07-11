@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔥 청소년 소그룹 나눔지 | 라온동행교회</title>
+    
+    <!-- Tailwind CSS 연동 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 아이콘 폰트 (Phosphor Icons) -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- Pretendard 폰트 -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    
+    <!-- 사용자 정의 스타일 및 Tailwind 설정 (청소년부 테마) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Pretendard', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#F97316', // 주황색 (활기찬 에너지)
+                        secondary: '#FACC15', // 노란색
+                        accent: '#3B82F6', // 파란색 (포인트)
+                        surface: '#F8FAFC',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #FFF7ED; /* 연한 주황빛 배경 */
+            color: #1E293B;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 인쇄 시 스타일 최적화 */
+        @media print {
+            body { background-color: white; }
+            .no-print { display: none !important; }
+            .print-break-inside-avoid { page-break-inside: avoid; }
+            .shadow-sm, .shadow-md, .shadow-lg { box-shadow: none !important; }
+            .card-container { border: 1px solid #E2E8F0; margin-bottom: 1rem; }
+            input[type="text"] { 
+                border: none !important; 
+                background: transparent !important;
+                border-bottom: 1px solid #CBD5E1 !important;
+                border-radius: 0 !important;
+            }
+        }
+
+        /* 입력 필드 기본 스타일 조정 */
+        input[type="text"] {
+            transition: all 0.2s ease-in-out;
+        }
+        input[type="text"]:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.2);
+            border-color: #F97316;
+        }
+        
+        /* 톡 튀는 그라데이션 텍스트 */
+        .text-gradient {
+            background: linear-gradient(135deg, #F97316, #E11D48);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="py-6 md:py-12 px-4 relative">
+
+    <!-- 토스트 알림 (저장 완료) -->
+    <div id="toast" class="fixed top-4 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white px-4 py-2 rounded-full shadow-lg text-sm font-bold opacity-0 transition-opacity duration-300 pointer-events-none z-50">
+        ✨ 자동 저장 완료!
+    </div>
+
+    <!-- 플로팅 인쇄 버튼 -->
+    <button onclick="window.print()" class="no-print fixed bottom-6 right-6 bg-primary text-white p-4 rounded-full shadow-xl hover:bg-orange-600 transition-colors z-40 focus:outline-none focus:ring-4 focus:ring-orange-300" aria-label="인쇄하기">
+        <i class="ph ph-printer text-2xl"></i>
+    </button>
+
+    <!-- 메인 컨테이너 -->
+    <main class="max-w-2xl mx-auto space-y-6">
+
+        <!-- 헤더 섹션 -->
+        <header class="bg-white rounded-[2rem] shadow-sm overflow-hidden card-container border-4 border-white outline outline-1 outline-orange-100">
+            <!-- 상단 그라데이션 장식 -->
+            <div class="h-4 w-full bg-gradient-to-r from-orange-400 via-primary to-rose-500"></div>
+            
+            <div class="p-6 md:p-8">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="inline-block px-4 py-1.5 bg-orange-100 text-primary text-sm font-extrabold rounded-full tracking-wide flex items-center gap-1">
+                        🔥 청소년 소그룹
+                    </span>
+                    <span class="text-gray-400 text-sm font-bold">2026. 7. 12 (주일)</span>
+                </div>
+                
+                <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight mb-4 leading-snug">
+                    "혼자 다 하려다 터진다<br>
+                    <span class="text-gradient">— 같이 하면 산다"</span>
+                </h1>
+                
+                <div class="bg-gray-50 rounded-2xl p-4 border border-gray-100">
+                    <div class="flex items-center gap-2 text-gray-700 font-bold mb-2">
+                        <i class="ph-fill ph-book-open text-orange-500 text-lg"></i>
+                        <span>출애굽기 18:13–23</span>
+                    </div>
+                    <p class="text-gray-500 text-sm font-medium">· 모세도 번아웃 직전이었다?!</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- ⚡ 웜업 -->
+        <section class="bg-white rounded-3xl p-6 md:p-8 shadow-sm card-container print-break-inside-avoid relative overflow-hidden">
+            <!-- 장식용 데코 -->
+            <div class="absolute -right-4 -top-4 w-24 h-24 bg-yellow-100 rounded-full mix-blend-multiply opacity-50"></div>
+            
+            <h2 class="text-xl font-extrabold flex items-center gap-2 mb-5 text-gray-900 relative z-10">
+                <span class="text-2xl">⚡</span> 웜업 
+                <span class="text-sm font-bold text-gray-400 ml-auto no-print">(10분)</span>
+            </h2>
+            
+            <div class="space-y-4 relative z-10">
+                <div class="bg-orange-50/50 p-4 rounded-2xl border border-orange-100">
+                    <p class="text-gray-800 font-bold leading-relaxed mb-3">
+                        <span class="text-xl mr-1">💬</span> 
+                        요즘 제일 스트레스 받는 거 하나만 말해보자!
+                        <span class="block text-sm text-gray-500 font-normal mt-1">(학교 / 친구 / 가족 / 성적 / 기타)</span>
+                    </p>
+                    <input type="text" id="warmup-1" class="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm font-medium focus:ring-2 focus:ring-orange-400 focus:border-transparent transition" placeholder="여기에 적어봐요!">
+                </div>
+
+                <div class="bg-rose-50/50 p-4 rounded-2xl border border-rose-100">
+                    <p class="text-gray-800 font-bold leading-relaxed mb-3">
+                        <span class="text-xl mr-1">🎯</span> 
+                        '번아웃(다 타버림)' 느껴본 적 있어? 언제였어?
+                    </p>
+                    <input type="text" id="warmup-2" class="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm font-medium focus:ring-2 focus:ring-rose-400 focus:border-transparent transition" placeholder="내 생각은...">
+                </div>
+            </div>
+        </section>
+
+        <!-- 📖 오늘의 말씀 체크 -->
+        <section class="bg-white rounded-3xl p-6 md:p-8 shadow-sm card-container relative">
+            <div class="absolute -left-4 top-1/2 w-16 h-16 bg-blue-100 rounded-full mix-blend-multiply opacity-50"></div>
+            
+            <h2 class="text-xl font-extrabold flex items-center gap-2 mb-2 text-gray-900 relative z-10">
+                <span class="text-2xl">📖</span> 오늘의 말씀 체크
+                <span class="text-sm font-bold text-gray-400 ml-auto no-print">(15분)</span>
+            </h2>
+            <p class="text-gray-600 font-bold text-sm mb-6 pb-4 border-b border-gray-100 relative z-10">출애굽기 18:13–23 같이 읽고!</p>
+
+            <div class="space-y-6 relative z-10">
+                <!-- 퀴즈 타임 -->
+                <div class="bg-blue-50/50 p-5 rounded-2xl border border-blue-100">
+                    <h3 class="font-extrabold text-blue-800 mb-4 flex items-center gap-1.5">
+                        <i class="ph-fill ph-check-circle text-blue-500"></i> 퀴즈 타임
+                    </h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-2">
+                            <span class="font-bold text-blue-500 mt-0.5">O/X</span>
+                            <div>
+                                <p class="text-gray-800 font-bold leading-snug">모세는 원래 완벽한 슈퍼히어로라서 지치지 않았다?</p>
+                                <p class="text-sm text-gray-500 font-medium mt-1"><span class="text-rose-500 font-bold">정답: X</span> — 모세도 지쳤음!</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-2 pt-2 border-t border-blue-100">
+                            <span class="font-bold text-blue-500 mt-0.5">Q</span>
+                            <div class="w-full">
+                                <p class="text-gray-800 font-bold leading-snug mb-2">이드로가 모세한테 준 조언 핵심은?</p>
+                                <div class="flex items-center gap-2 text-gray-700 font-medium bg-white px-3 py-2 rounded-lg border border-blue-200">
+                                    혼자 하지 말고 
+                                    <input type="text" id="quiz-blank" class="w-24 border-b-2 border-blue-300 bg-transparent text-center focus:border-blue-500 px-1 font-bold text-blue-700" placeholder="빈칸">
+                                    를 세워라!
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="flex items-center gap-3 p-4 bg-gray-50 rounded-2xl font-bold text-gray-800">
+                    <span class="text-2xl">🙋</span> 
+                    “나도 요즘 좀 지쳤다” 싶은 사람? 손!
+                </div>
+            </div>
+        </section>
+
+        <!-- 💬 토크타임 -->
+        <section class="bg-white rounded-3xl p-6 md:p-8 shadow-sm card-container relative z-10">
+            <h2 class="text-xl font-extrabold flex items-center gap-2 mb-6 text-gray-900">
+                <span class="text-2xl">💬</span> 토크타임
+                <span class="text-sm font-bold text-gray-400 ml-auto no-print">(25~30분)</span>
+            </h2>
+            
+            <ul class="space-y-6">
+                <li class="flex gap-3">
+                    <span class="flex-shrink-0 w-8 h-8 bg-gray-100 text-gray-800 rounded-full flex items-center justify-center font-extrabold shadow-sm">1</span>
+                    <p class="text-gray-800 font-bold leading-relaxed pt-1">
+                        모세는 '멈추면 안 될 것 같아서' 계속 달렸어. 너도 '이건 내가 안 하면 안 돼' 하면서 붙잡고 있는 거 있어?
+                    </p>
+                </li>
+                <li class="flex gap-3">
+                    <span class="flex-shrink-0 w-8 h-8 bg-gray-100 text-gray-800 rounded-full flex items-center justify-center font-extrabold shadow-sm">2</span>
+                    <div class="pt-1">
+                        <p class="text-gray-800 font-bold leading-relaxed mb-2">
+                            하나님이 찾으시는 '능력자(하일)'는 공부 잘하고 스펙 좋은 사람이 아니라,<br>
+                            ① 하나님을 어려워할 줄 알고<br>
+                            ② 거짓말 안 하고<br>
+                            ③ 정직한 사람이래. 
+                        </p>
+                        <p class="text-orange-600 font-extrabold">이 셋 중에 나한테 제일 어려운 건?</p>
+                    </div>
+                </li>
+                <li class="flex gap-3">
+                    <span class="flex-shrink-0 w-8 h-8 bg-orange-100 text-orange-700 rounded-full flex items-center justify-center font-extrabold shadow-sm">3</span>
+                    <p class="text-gray-800 font-bold leading-relaxed pt-1">
+                        <span class="text-orange-500 font-extrabold">(도전)</span> '빨리 가는 것'보다 '바른 방향으로 같이 가는 것'이 중요하다면, 내 삶(공부·SNS·친구관계)에서 방향부터 바꿔야 할 게 있을까?
+                    </p>
+                </li>
+                
+                <!-- 솔직히 말하면 -->
+                <li class="mt-8 pt-6 border-t-2 border-dashed border-gray-200">
+                    <div class="bg-gray-800 text-white p-5 rounded-2xl relative">
+                        <span class="absolute -top-3 left-4 bg-yellow-400 text-yellow-900 px-3 py-1 text-xs font-extrabold rounded-full transform -rotate-2">
+                            😶 솔직히 말하면...
+                        </span>
+                        <p class="font-bold leading-relaxed mt-2 text-gray-100">
+                            친구가 힘들어할 때 나는 진짜 도움을 주는 편이야, 아니면 그냥 '헐 힘들겠다'만 하는 편이야?
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 🎯 이번 주 챌린지 -->
+        <section class="bg-white rounded-3xl p-6 md:p-8 shadow-sm card-container print-break-inside-avoid bg-gradient-to-br from-white to-orange-50">
+            <h2 class="text-xl font-extrabold flex items-center gap-2 mb-4 text-gray-900">
+                <span class="text-2xl">🎯</span> 이번 주 챌린지
+                <span class="text-sm font-bold text-gray-400 ml-auto no-print">(10분)</span>
+            </h2>
+            
+            <div class="mb-6 bg-white/60 p-4 rounded-xl border border-orange-100 backdrop-blur-sm">
+                <p class="font-bold text-gray-800 flex items-start gap-2">
+                    <i class="ph-fill ph-push-pin text-orange-500 mt-1"></i>
+                    <span><strong class="text-orange-600">이번 주 미션:</strong> 지친 친구 한 명에게 먼저 연락해서 '괜찮아? 내가 뭐 도와줄까?' 물어보기</span>
+                </p>
+            </div>
+
+            <div class="bg-white border-2 border-orange-200 p-5 rounded-2xl text-center shadow-sm">
+                <p class="text-sm font-extrabold text-orange-500 mb-3 uppercase tracking-wider">나의 다짐 쓰기</p>
+                <div class="flex flex-col md:flex-row items-center justify-center gap-2 text-gray-800 font-bold">
+                    <span class="whitespace-nowrap">“나는 이번 주</span>
+                    <input type="text" id="youth-challenge" class="w-full md:w-64 bg-gray-50 border-b-2 border-gray-300 focus:border-orange-500 focus:bg-white px-3 py-2 text-center font-extrabold text-orange-600 rounded-t-md" placeholder="다짐을 적어주세요!">
+                    <span class="whitespace-nowrap">.”</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 🙏 함께 기도 -->
+        <section class="bg-white rounded-3xl p-6 md:p-8 shadow-sm card-container print-break-inside-avoid">
+            <h2 class="text-xl font-extrabold flex items-center gap-2 mb-4 text-gray-900">
+                <span class="text-2xl">🙏</span> 함께 기도
+                <span class="text-sm font-bold text-gray-400 ml-auto no-print">(10분)</span>
+            </h2>
+            <div class="bg-gray-100 p-5 rounded-2xl">
+                <p class="text-gray-800 font-bold leading-relaxed text-center break-keep">
+                    기도 제목 단톡방에 올리고, 리더가 대표로 기도할게!<br>
+                    <span class="text-gray-600 font-medium mt-2 block">오늘 지친 마음, 혼자 짊어진 짐, 하나님 앞에 다 내려놓자. 🙏</span>
+                </p>
+                
+                <div class="mt-4 no-print">
+                    <textarea id="prayer-note" rows="3" class="w-full bg-white border border-gray-200 rounded-xl p-3 text-sm font-medium focus:ring-2 focus:ring-gray-400 focus:border-transparent transition resize-none" placeholder="내 개인 기도제목이나 메모를 적어둘 수 있어요 (자동저장됨)"></textarea>
+                </div>
+            </div>
+        </section>
+
+        <!-- 푸터 -->
+        <footer class="text-center py-8 text-gray-400 text-sm font-bold flex flex-col items-center gap-1">
+            <p>라온동행교회 청소년부</p>
+            <p class="text-gray-300">쉬운목사 이광복</p>
+        </footer>
+
+    </main>
+
+    <!-- 자바스크립트: 데이터 임시 저장 로직 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 저장할 input 요소들 선택 (청소년부 양식에 맞게 수정)
+            const inputs = [
+                document.getElementById('warmup-1'),
+                document.getElementById('warmup-2'),
+                document.getElementById('quiz-blank'),
+                document.getElementById('youth-challenge'),
+                document.getElementById('prayer-note')
+            ];
+
+            const toast = document.getElementById('toast');
+            let saveTimeout;
+
+            // 저장 알림 표시 함수
+            const showToast = () => {
+                toast.classList.remove('opacity-0');
+                clearTimeout(saveTimeout);
+                saveTimeout = setTimeout(() => {
+                    toast.classList.add('opacity-0');
+                }, 2000);
+            };
+
+            // 초기 로드 시 저장된 데이터 불러오기
+            inputs.forEach(input => {
+                if(!input) return;
+                
+                // 청소년부용 별도 key 사용을 위해 접두사 변경
+                const storageKey = `raon_youth_${input.id}`;
+                const savedValue = localStorage.getItem(storageKey);
+                
+                if (savedValue) {
+                    input.value = savedValue;
+                }
+
+                // 입력 이벤트 발생 시 로컬스토리지에 저장
+                input.addEventListener('input', (e) => {
+                    localStorage.setItem(storageKey, e.target.value);
+                });
+
+                // 포커스 아웃 시 (입력 완료 시) 토스트 띄우기
+                input.addEventListener('blur', (e) => {
+                    if(e.target.value.trim() !== '') {
+                       showToast();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
