@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>소그룹 나눔지 — 법궤 (라온동행교회)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --main:#3D1A6E;
+    --main-dark:#2A1150;
+    --accent:#C9A84C;
+    --bg:#F5F3FF;
+    --card:#FFFFFF;
+    --ink:#26203A;
+    --ink-soft:#6A6280;
+    --line:#E3DAF7;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:'Noto Sans KR',sans-serif; line-height:1.7; font-size:16px;
+  }
+  .wrap{max-width:720px;margin:0 auto;padding:0 0 60px;}
+  .serif{font-family:'Gowun Batang',serif;}
+
+  .hero{
+    background:linear-gradient(160deg, var(--main) 0%, var(--main-dark) 100%);
+    color:#fff; padding:44px 28px 34px; text-align:center;
+  }
+  .hero .tag{
+    display:inline-block; font-size:13px; letter-spacing:2px; font-weight:700;
+    color:var(--accent); border:1px solid rgba(201,168,76,0.5);
+    border-radius:20px; padding:5px 14px; margin-bottom:16px;
+  }
+  .hero h1{ font-size:32px; margin:0 0 10px; font-family:'Gowun Batang',serif; }
+  .hero .meta{ font-size:14px; color:#D8CFF2; }
+
+  .scripture-box{
+    margin:-22px 20px 30px; background:var(--card);
+    border-radius:14px; box-shadow:0 10px 26px rgba(61,26,110,0.15);
+    padding:24px 22px; border-top:4px solid var(--accent);
+    text-align:center;
+  }
+  .scripture-box p{ font-family:'Gowun Batang',serif; font-size:17px; margin:0 0 6px; }
+  .scripture-box .ref{ font-size:13px; color:var(--ink-soft); }
+
+  section{ padding:4px 20px; }
+  .section-title{
+    display:flex; align-items:center; gap:10px;
+    font-size:21px; font-weight:700; color:var(--main);
+    margin:30px 0 14px;
+  }
+  .time-tag{
+    font-size:12px; font-weight:500; color:var(--ink-soft);
+    background:var(--bg); border-radius:12px; padding:3px 10px; margin-left:auto;
+  }
+
+  .card{
+    background:var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:20px 20px 18px; margin-bottom:16px; box-shadow:0 3px 10px rgba(61,26,110,0.05);
+  }
+  .card p{ margin:0 0 8px; font-size:15.5px; }
+  .subhead{
+    font-size:13px; font-weight:700; letter-spacing:1px; color:var(--accent);
+    text-transform:uppercase; margin:14px 0 8px;
+  }
+  .subhead:first-child{ margin-top:0; }
+
+  ol.qlist{ list-style:none; counter-reset:q; margin:0; padding:0; }
+  ol.qlist li{
+    counter-increment:q; position:relative; padding-left:34px; margin-bottom:14px;
+    font-size:15.5px;
+  }
+  ol.qlist li::before{
+    content:counter(q); position:absolute; left:0; top:0;
+    width:24px; height:24px; border-radius:50%;
+    background:var(--main); color:#fff; font-size:13px; font-weight:700;
+    display:flex; align-items:center; justify-content:center;
+  }
+
+  .fillin{
+    background:#FAF8F0; border:1px dashed var(--accent); border-radius:10px;
+    padding:14px 16px; margin-top:14px; font-size:15px; font-weight:700; color:var(--main);
+  }
+  .fillin .blank{ display:inline-block; min-width:220px; border-bottom:1.5px solid var(--main); }
+
+  table.pray{ width:100%; border-collapse:collapse; margin-top:6px; }
+  table.pray th{ background:var(--main); color:#fff; font-size:13.5px; padding:9px 10px; text-align:left; }
+  table.pray td{ border:1px solid var(--line); padding:14px 10px; font-size:14px; }
+
+  .leader-box{
+    background:#FAF8F0; border-radius:14px; padding:20px 22px; margin:8px 20px 30px;
+  }
+  .leader-box .title{ font-weight:700; color:var(--accent); margin-bottom:10px; font-size:16px; }
+  .leader-box ul{ margin:0; padding-left:20px; }
+  .leader-box li{ font-size:14px; margin-bottom:8px; color:var(--ink); }
+
+  footer{ text-align:center; padding:26px 20px 10px; color:var(--ink-soft); font-size:13px; }
+  footer .church{ font-weight:700; color:var(--main); font-size:15px; margin-bottom:4px; }
+
+  @media (max-width:480px){
+    .hero h1{ font-size:26px; }
+    .fillin .blank{ min-width:140px; }
+  }
+
+  @media print{
+    body{ background:#fff; font-size:13px; }
+    .wrap{ max-width:100%; }
+    .hero{ background:var(--main) !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; padding:26px 20px; }
+    .card, .scripture-box, .leader-box{ box-shadow:none; break-inside:avoid; }
+    table.pray th{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    section{ padding:2px 14px; }
+    .leader-box{ page-break-before:always; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="tag">소그룹 나눔지</span>
+    <h1>법궤 <span style="font-size:18px; opacity:.8;">(모세 시리즈 16)</span></h1>
+    <div class="meta">2026. 8. 2. (주일) · 소요시간 90분</div>
+  </div>
+
+  <div class="scripture-box">
+    <p>“거기서 내가 너와 만나고 속죄소 위 곧 증거궤 위에 있는 두 그룹 사이에서 내가 이스라엘 자손을 위하여 네게 명령할 모든 일을 네게 이르리라”</p>
+    <div class="ref">— 출애굽기 25:22</div>
+  </div>
+
+  <section>
+    <div class="section-title">🗣 함께 시작해요<span class="time-tag">10분</span></div>
+    <div class="card">
+      <p>올 한 주, 나에게 '길을 찾아주는 네비게이션' 같은 존재는 무엇(혹은 누구)이었나요? 부담 없이 한 사람씩 나눠봅시다.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title">📖 말씀 함께 읽기</div>
+    <div class="card">
+      <p style="color:var(--ink-soft); font-style:italic;">출애굽기 25:10~22, 민수기 10:33~36을 함께 소리 내어 읽습니다.</p>
+
+      <div class="subhead">말씀 속으로</div>
+      <ol class="qlist">
+        <li>하나님은 왜 이스라엘에게 법궤의 재질, 크기, 형태까지 이렇게 세세하게 정하여 만들라고 하셨을까요?</li>
+        <li>법궤 위의 케루빔은 창세기 3장에서 에덴 동산을 막아섰던 존재와 같습니다. 그런데 법궤 위에서는 정반대의 자세 — 날개를 펴 속죄소를 덮고 고개 숙여 바라보는 자세 — 를 취합니다. 이 변화가 우리에게 말해주는 하나님의 성품은 무엇일까요?</li>
+      </ol>
+
+      <div class="subhead">내 삶에 가져오기</div>
+      <ol class="qlist" start="3">
+        <li>나는 신앙생활에서 '법궤(형식과 외형)'만 붙들고 있지는 않았나요, 아니면 그 안에 담긴 '하나님의 뜻'을 붙들고 있나요? 최근의 예를 나눠봅시다.</li>
+        <li>'나의 노력이나 자격이 아니라, 전적인 은혜로 여기까지 왔다'고 느꼈던 순간이 있다면 나눠주세요.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title">💡 이번 주 적용</div>
+    <div class="card">
+      <ol class="qlist" start="5">
+        <li>설교자는 '성경을 들고 다니기만 하는 것'과 '말씀을 삶으로 살아내는 것'을 아기의 걸음마에 비유했습니다. 나는 지금 신앙의 어느 단계에 머물러 있다고 생각하나요? 이번 주 한 걸음 더 나아가기 위해 무엇을 실천하겠습니까?</li>
+      </ol>
+      <div class="fillin">나의 이번 주 한 가지 : "나는 이번 주 <span class="blank">&nbsp;</span> 을/를 실천하겠습니다."</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title">🙏 중보기도</div>
+    <div class="card">
+      <p>기도 제목을 나누고, 돌아가며 대표기도 또는 소그룹 합심기도로 함께 기도합니다.</p>
+      <table class="pray">
+        <tr><th style="width:30%">이름</th><th>기도 제목</th></tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <div class="leader-box">
+    <div class="title">📋 인도자 가이드</div>
+    <ul>
+      <li><b>Q1 의도</b> — 형식(법궤 규례)의 이면에 있는 하나님의 마음을 짚기 위함. 예상 답변: '거룩함을 배우게 하려고', '구별된 예배를 위해' 등.</li>
+      <li><b>Q2 의도</b> — 케루빔의 자세 변화를 통해 심판에서 은혜로 나아가는 복음의 핵심을 짚기 위함. '화목제물(힐라스테리온)' 개념과 연결 가능.</li>
+      <li><b>Q3 의도</b> — 형식주의를 스스로 점검하게 하는 질문. 조원들이 방어적으로 반응하지 않도록 리더가 먼저 자기 개방을 하면 좋습니다.</li>
+      <li><b>Q4 의도</b> — 값없이 받은 은혜를 기억하며 겸손을 회복하는 간증 나눔.</li>
+      <li><b>Q5 의도</b> — 막연한 다짐이 아니라 구체적 실천(용서, 섬김, 나눔 등)으로 이어지도록 이끌어 주세요.</li>
+      <li><b>주의사항</b> — Q2는 다소 깊은 신학적 질문입니다. 리더가 먼저 쉽게 풀어 설명한 뒤 질문하면 좋습니다.</li>
+    </ul>
+  </div>
+
+  <footer>
+    <div class="church">라온동행교회</div>
+    <div>담임목사 이광복</div>
+  </footer>
+
+</div>
+</body>
+</html>
