@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>청소년 소그룹 | 그 이름 지우지 마세요</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --primary:#FF6B4A;
+    --primary-dark:#E24E2D;
+    --accent:#2B2D42;
+    --sunny:#FFD166;
+    --bg:#FFF8F3;
+    --card:#FFFFFF;
+    --text:#2B2320;
+    --sub:#8A7B72;
+    --line:#FBE3D6;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Noto Sans KR',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.7;
+    padding:20px 14px 60px;
+  }
+  .wrap{max-width:800px;margin:0 auto;}
+  header{
+    background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+    color:#fff;
+    border-radius:20px;
+    padding:28px 24px;
+    margin-bottom:18px;
+    box-shadow:0 8px 20px rgba(226,78,45,.25);
+    position:relative;
+    overflow:hidden;
+  }
+  header::after{
+    content:"";position:absolute;right:-30px;top:-30px;width:120px;height:120px;
+    background:rgba(255,209,102,.35);border-radius:50%;
+  }
+  header .tag{font-size:13px;font-weight:900;letter-spacing:.05em;margin-bottom:6px;}
+  header h1{font-size:24px;font-weight:900;margin-bottom:8px;}
+  header .meta{font-size:13px;opacity:.9;margin-bottom:12px;}
+  header .verse{
+    font-size:14px;font-weight:500;
+    background:rgba(255,255,255,.15);
+    border-left:4px solid var(--sunny);
+    padding:10px 14px;border-radius:8px;
+  }
+  .card{
+    background:var(--card);
+    border-radius:18px;
+    padding:22px 20px;
+    margin-bottom:14px;
+    border:2px solid var(--line);
+    box-shadow:0 3px 12px rgba(226,78,45,.06);
+  }
+  .card h2{
+    font-size:18px;font-weight:900;color:var(--primary-dark);
+    margin-bottom:12px;
+  }
+  .scripture-box{
+    font-size:14.5px;
+    background:#FFF1EA;
+    border-radius:10px;
+    padding:14px 16px;
+    margin-bottom:14px;
+    line-height:1.85;
+  }
+  .scripture-box sup{color:var(--primary-dark);font-weight:900;margin-right:3px;}
+  .quiz{
+    background:#FFF8ED;
+    border:2px dashed var(--sunny);
+    border-radius:12px;
+    padding:14px 16px;
+    margin-top:10px;
+  }
+  .quiz p{font-weight:700;margin-bottom:8px;font-size:14.5px;}
+  .quiz .ans{
+    font-size:13px;color:var(--sub);margin-top:2px;
+  }
+  .talk-item{
+    margin-bottom:16px;padding-bottom:16px;border-bottom:1px dashed var(--line);
+  }
+  .talk-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+  .talk-item .num{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:26px;height:26px;background:var(--primary);color:#fff;
+    border-radius:50%;font-weight:900;font-size:13px;margin-right:8px;
+  }
+  .talk-item.deep{background:#FFF1EA;border-radius:12px;padding:14px 16px;border:none;}
+  .talk-item p{font-size:15px;display:inline;}
+  .challenge-box{
+    background:linear-gradient(135deg,#FFF1EA,#FFF8ED);
+    border-radius:12px;padding:16px 18px;text-align:center;
+  }
+  .challenge-box .mission{
+    font-weight:900;font-size:16px;color:var(--primary-dark);margin:8px 0 14px;
+  }
+  .challenge-box .blank{
+    display:inline-block;border-bottom:2px solid var(--primary-dark);min-width:150px;height:1.4em;
+  }
+  footer{
+    text-align:center;font-size:13px;color:var(--sub);margin-top:20px;
+  }
+  @media print{
+    body{background:#fff;}
+    .card{box-shadow:none;break-inside:avoid;}
+    header{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  }
+  @media (max-width:480px){
+    header h1{font-size:20px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="tag">🔥 청소년 소그룹 · 모세 시리즈 17</div>
+    <h1>"내 이름, 지워도 괜찮아?"</h1>
+    <div class="meta">2026. 8. 9 · 출애굽기 32:30-32</div>
+    <div class="verse">"내 이름을 지워 버려 주옵소서" — 자기 이름을 걸고 남을 위해 기도한 모세 이야기</div>
+  </header>
+
+  <div class="card">
+    <h2>⚡ 웜업 (10분)</h2>
+    <p>친구가 실수했을 때, 나는 보통 어떻게 반응해?<br>
+    ① "괜찮아 괜찮아" 하고 그냥 넘어간다<br>
+    ② "그건 좀 아니지 않아?" 하고 솔직히 말한다<br>
+    ③ 못 본 척 조용히 지나간다</p>
+  </div>
+
+  <div class="card">
+    <h2>📖 오늘의 말씀 (15분)</h2>
+    <div class="scripture-box">
+      <sup>30</sup>이튿날 모세가 백성에게 이르되 너희가 큰 죄를 범하였도다 내가 이제 여호와께로 올라가노니 혹 너희를 위하여 속죄가 될까 하노라 하고
+      <sup>31</sup>모세가 여호와께로 다시 나아가 여짜오되 슬프도소이다 이 백성이 자기들을 위하여 금 신을 만들었사오니 큰 죄를 범하였나이다
+      <sup>32</sup>그러나 이제 그들의 죄를 사하시옵소서 그렇지 아니하시오면 원하건대 주께서 기록하신 책에서 내 이름을 지워 버려 주옵소서
+    </div>
+    <div class="quiz">
+      <p>✅ 퀴즈! O/X</p>
+      <p>Q1. 모세는 백성의 잘못을 못 본 척 넘어갔다. ( )</p>
+      <p>Q2. 모세는 백성 대신 자기 이름을 하나님 책에서 지워달라고 했다. ( )</p>
+      <p class="ans">(정답: X / O — 정답은 소그룹 시간에 함께 확인해요!)</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>💬 토크타임 (30분)</h2>
+    <div class="talk-item">
+      <span class="num">1</span><p>친구가 잘못했을 때, "잘못했다"고 솔직히 말해주는 거랑 그냥 편들어주는 거 중에 뭐가 진짜 친구인 것 같아?</p>
+    </div>
+    <div class="talk-item">
+      <span class="num">2</span><p>나도 모르게 다른 애들이랑 비교하면서 "이 정도면 괜찮지" 하고 나를 합리화한 적 있어?</p>
+    </div>
+    <div class="talk-item">
+      <span class="num">3</span><p>아무리 말해도 안 바뀌는 것 같은 친구나 가족, 포기하고 싶었던 적 있어?</p>
+    </div>
+    <div class="talk-item deep">
+      <p><b>솔직히 말하면...</b> 나는 누군가를 위해 진심으로 기도해본 적이 얼마나 있을까?</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🎯 이번 주 챌린지</h2>
+    <div class="challenge-box">
+      <p>이번 주 미션</p>
+      <p class="mission">마음에 걸리는 사람 한 명을 정해서<br>매일 짧게라도 그 사람을 위해 기도하기</p>
+      <p>나의 다짐:<br>"나는 이번 주 <span class="blank"></span>."</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🙏 함께 기도 (10분)</h2>
+    <p>기도 제목을 카톡방에 올리고, 리더가 대표로 짧게 기도할게요.</p>
+  </div>
+
+  <footer>라온동행교회 | 담임목사 이광복</footer>
+
+</div>
+</body>
+</html>
