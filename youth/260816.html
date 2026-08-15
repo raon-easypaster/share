@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>청소년 소그룹 | 뿔이 아니라 빛</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --coral:#FF6B5B;
+    --sunset:#FFA53E;
+    --sunset-soft:#FFE8D6;
+    --bg:#FFF9F5;
+    --card:#FFFFFF;
+    --text:#3B2A2A;
+    --muted:#9A7E72;
+    --purple:#7C5CBF;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Noto Sans KR', sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.7;
+  }
+  .wrap{
+    max-width:800px;
+    margin:0 auto;
+    padding:28px 18px 60px;
+  }
+  header.hero{
+    background:linear-gradient(135deg, var(--coral) 0%, var(--sunset) 100%);
+    color:#fff;
+    border-radius:20px;
+    padding:32px 26px;
+    margin-bottom:22px;
+    text-align:center;
+  }
+  header.hero .label{
+    font-size:14px;
+    font-weight:700;
+    margin-bottom:6px;
+  }
+  header.hero h1{
+    font-size:28px;
+    margin:4px 0 10px;
+    font-weight:900;
+  }
+  header.hero .meta{
+    font-size:13px;
+    opacity:0.95;
+    display:flex;
+    gap:14px;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+  section.card{
+    background:var(--card);
+    border-radius:18px;
+    padding:22px 22px;
+    margin-bottom:18px;
+    box-shadow:0 3px 12px rgba(255,107,91,0.10);
+  }
+  section.card h2{
+    font-size:19px;
+    color:var(--coral);
+    margin:0 0 14px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-weight:900;
+  }
+  section.card h2 .time{
+    margin-left:auto;
+    font-size:12px;
+    font-weight:700;
+    color:var(--muted);
+    background:var(--sunset-soft);
+    padding:4px 10px;
+    border-radius:20px;
+  }
+  .bignote{
+    background:var(--sunset-soft);
+    border-radius:12px;
+    padding:16px 18px;
+    font-size:15.5px;
+    font-weight:500;
+  }
+  .scripture-box{
+    background:#F5F1FB;
+    border-left:4px solid var(--purple);
+    border-radius:10px;
+    padding:16px 18px;
+    font-size:15px;
+    color:#3A2E52;
+    margin-bottom:14px;
+  }
+  .quiz{
+    background:#FFF3EC;
+    border-radius:12px;
+    padding:16px 18px;
+  }
+  .quiz .q{
+    font-weight:700;
+    margin-bottom:6px;
+  }
+  .quiz .q:not(:first-child){margin-top:14px;}
+  .oxbox{
+    display:inline-flex;
+    gap:8px;
+    margin-top:6px;
+  }
+  .oxbox span{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    border:2px solid var(--purple);
+    color:var(--purple);
+    font-weight:900;
+  }
+  ol.questions{
+    list-style:none;
+    padding:0;
+    margin:0;
+    counter-reset:q;
+  }
+  ol.questions li{
+    counter-increment:q;
+    margin-bottom:14px;
+    padding:14px 16px 14px 46px;
+    background:var(--bg);
+    border-radius:12px;
+    position:relative;
+    font-size:15.5px;
+  }
+  ol.questions li::before{
+    content:counter(q);
+    position:absolute;
+    left:12px;
+    top:12px;
+    width:26px;
+    height:26px;
+    background:var(--coral);
+    color:#fff;
+    border-radius:50%;
+    font-size:13px;
+    font-weight:900;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .deep{
+    background:linear-gradient(135deg, #7C5CBF 0%, #5B3FA0 100%);
+    color:#fff;
+    border-radius:14px;
+    padding:16px 18px;
+    margin-top:6px;
+  }
+  .deep b{display:block; margin-bottom:6px; font-size:14px; opacity:0.9;}
+  .challenge-box{
+    background:linear-gradient(135deg, var(--sunset) 0%, var(--coral) 100%);
+    color:#fff;
+    border-radius:14px;
+    padding:18px 20px;
+    text-align:center;
+  }
+  .challenge-box .mission{
+    font-size:18px;
+    font-weight:900;
+    margin:8px 0 14px;
+  }
+  .fillin{
+    background:#fff;
+    color:var(--text);
+    border-radius:10px;
+    padding:12px 16px;
+    font-weight:500;
+  }
+  .fillin .blank{
+    display:inline-block;
+    min-width:180px;
+    border-bottom:2px solid var(--coral);
+    margin:0 4px;
+  }
+  footer{
+    text-align:center;
+    color:var(--muted);
+    font-size:13px;
+    margin-top:20px;
+    padding-top:18px;
+    border-top:1px dashed #E8D5C8;
+  }
+  @media (max-width:480px){
+    .wrap{padding:16px 12px 40px;}
+    header.hero{padding:24px 18px;}
+    header.hero h1{font-size:23px;}
+    section.card{padding:18px 16px;}
+  }
+  @media print{
+    body{background:#fff;}
+    .wrap{max-width:100%;padding:0;}
+    section.card{box-shadow:none;border:1px solid #ddd;break-inside:avoid;}
+    header.hero, .deep, .challenge-box{
+      -webkit-print-color-adjust:exact;
+      print-color-adjust:exact;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="label">🔥 청소년 소그룹</div>
+    <h1>뿔이 아니라 빛</h1>
+    <div class="meta">
+      <span>📅 2026.8.17</span>
+      <span>📖 출 34:29-35</span>
+    </div>
+  </header>
+
+  <section class="card">
+    <h2>⚡ 웜업 <span class="time">10분</span></h2>
+    <div class="bignote">
+      너를 보면 딱 떠오르는 이미지나 별명 있어? 그거 듣고 기분 좋았어, 별로였어? 😄
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>📖 오늘의 말씀 <span class="time">15분</span></h2>
+    <div class="scripture-box">
+      모세가 시내산에서 내려올 때, 얼굴에서 빛이 났어. 근데 정작 본인은 그걸 몰랐고, 사람들이 무서워서 다가오지 못했대. 그래서 모세는 사람들 앞에서는 수건으로 얼굴을 가렸지만, 하나님 앞에 갈 때는 수건을 벗었어. (출 34:29-35)
+    </div>
+    <div class="quiz">
+      <div class="q">✅ 퀴즈!</div>
+      <div>Q1. 모세는 자기 얼굴에서 빛이 나는 걸 알고 있었다.
+        <div class="oxbox"><span>O</span><span>X</span></div>
+        <div style="font-size:13px;color:#9A7E72;margin-top:4px;">정답: X — 몰랐음 (29절)</div>
+      </div>
+      <div class="q">Q2. 모세는 하나님 앞에서는 수건을 벗었다.
+        <div class="oxbox"><span>O</span><span>X</span></div>
+        <div style="font-size:13px;color:#9A7E72;margin-top:4px;">정답: O (34절)</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>💬 토크타임 <span class="time">30분</span></h2>
+    <ol class="questions">
+      <li>인스타나 SNS에 올리는 나랑 진짜 나랑 얼마나 같아?</li>
+      <li>솔직히, 신앙 좋아 보이려고 애써본 적 있어?</li>
+      <li>모세는 빛이 났는데, 우리는 가끔 "빛" 말고 "뿔"(특별해 보이고 싶은 마음, 남들과 달라 보이고 싶은 마음)을 키우려고 할 때가 있어. 너는 언제 그래?</li>
+    </ol>
+    <div class="deep">
+      <b>4. 솔직히 말하면...</b>
+      하나님이랑 단둘이 있는 시간, 진짜 있어? 얼마나 자주야?
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>🎯 이번 주 챌린지</h2>
+    <div class="challenge-box">
+      이번 주 미션
+      <div class="mission">하루 5분, 아무도 모르게 기도하고<br>그 순간 느낀 걸 짧게 메모하기 📝</div>
+      <div class="fillin">
+        나의 다짐: "나는 이번 주 <span class="blank">&nbsp;</span>."
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>🙏 함께 기도 <span class="time">10분</span></h2>
+    <p>기도 제목 우리 단톡방에 올리고, 리더가 대표로 짧게 기도할게!</p>
+  </section>
+
+  <footer>
+    라온동행교회 청소년부 · 담임목사 이광복
+  </footer>
+
+</div>
+</body>
+</html>
