@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>소그룹 나눔지 | 얼굴의 광채</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1B2A4A;
+    --navy-deep:#0F1B33;
+    --gold:#C9A84C;
+    --gold-soft:#F1E6C8;
+    --bg:#F7F6F2;
+    --card:#FFFFFF;
+    --text:#26314A;
+    --muted:#6C7690;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Noto Sans KR', sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.7;
+  }
+  .wrap{
+    max-width:800px;
+    margin:0 auto;
+    padding:32px 20px 60px;
+  }
+  header.hero{
+    background:linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%);
+    color:#fff;
+    border-radius:16px;
+    padding:36px 30px;
+    margin-bottom:28px;
+  }
+  header.hero .label{
+    font-size:13px;
+    letter-spacing:2px;
+    color:var(--gold);
+    font-weight:700;
+    margin-bottom:8px;
+  }
+  header.hero h1{
+    font-family:'Noto Serif KR', serif;
+    font-size:30px;
+    margin:0 0 14px;
+    font-weight:700;
+  }
+  header.hero .verse{
+    font-family:'Noto Serif KR', serif;
+    font-style:italic;
+    font-size:16px;
+    color:var(--gold-soft);
+    border-left:3px solid var(--gold);
+    padding-left:14px;
+    margin:0 0 14px;
+  }
+  header.hero .meta{
+    font-size:13px;
+    color:#B9C2DC;
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  section.card{
+    background:var(--card);
+    border-radius:14px;
+    padding:26px 28px;
+    margin-bottom:20px;
+    box-shadow:0 2px 10px rgba(27,42,74,0.06);
+    border:1px solid #ECE9E1;
+  }
+  section.card h2{
+    font-family:'Noto Serif KR', serif;
+    font-size:20px;
+    color:var(--navy);
+    margin:0 0 16px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  section.card h2 .time{
+    margin-left:auto;
+    font-size:12px;
+    font-weight:400;
+    color:var(--muted);
+    background:var(--bg);
+    padding:4px 10px;
+    border-radius:20px;
+  }
+  .scripture-box{
+    background:#F3F1EA;
+    border-left:4px solid var(--gold);
+    border-radius:8px;
+    padding:18px 20px;
+    font-family:'Noto Serif KR', serif;
+    font-size:15px;
+    color:#3A3226;
+    margin-bottom:6px;
+  }
+  .scripture-box .verse-num{
+    color:var(--gold);
+    font-weight:700;
+    font-size:12px;
+    margin-right:4px;
+  }
+  ol.questions{
+    padding-left:0;
+    list-style:none;
+    margin:0;
+  }
+  ol.questions li{
+    counter-increment:q;
+    margin-bottom:16px;
+    padding:14px 16px 14px 44px;
+    background:var(--bg);
+    border-radius:8px;
+    position:relative;
+    font-size:15.5px;
+  }
+  ol.questions li::before{
+    content:counter(q);
+    position:absolute;
+    left:12px;
+    top:12px;
+    width:24px;
+    height:24px;
+    background:var(--navy);
+    color:var(--gold-soft);
+    border-radius:50%;
+    font-size:13px;
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  ol.questions{counter-reset:q;}
+  .subhead{
+    font-size:13px;
+    font-weight:700;
+    color:var(--muted);
+    letter-spacing:1px;
+    margin:18px 0 8px;
+  }
+  .subhead:first-child{margin-top:0;}
+  .fillin{
+    margin-top:14px;
+    background:var(--gold-soft);
+    border:1px dashed var(--gold);
+    border-radius:8px;
+    padding:16px;
+    font-family:'Noto Serif KR', serif;
+    font-size:15px;
+  }
+  .fillin .blank{
+    display:inline-block;
+    min-width:220px;
+    border-bottom:1.5px solid var(--navy);
+    margin:0 4px;
+  }
+  table.pray{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:8px;
+  }
+  table.pray th, table.pray td{
+    border:1px solid #DCD8CC;
+    padding:10px 12px;
+    text-align:left;
+    font-size:14px;
+  }
+  table.pray th{
+    background:var(--bg);
+    color:var(--navy);
+    font-weight:700;
+    width:35%;
+  }
+  table.pray td{height:36px;}
+  .pray-note{
+    font-size:13.5px;
+    color:var(--muted);
+    margin-bottom:10px;
+  }
+  details.leader{
+    background:#EEF1F7;
+    border-radius:10px;
+    border:1px solid #D9DFEC;
+    padding:14px 18px;
+  }
+  details.leader summary{
+    cursor:pointer;
+    font-weight:700;
+    color:var(--navy);
+    font-size:15px;
+    list-style:none;
+  }
+  details.leader summary::-webkit-details-marker{display:none;}
+  details.leader summary::before{
+    content:"▸ ";
+    color:var(--gold);
+  }
+  details.leader[open] summary::before{content:"▾ ";}
+  .leader-item{
+    margin-top:12px;
+    padding-top:12px;
+    border-top:1px dashed #C7CEDF;
+    font-size:14px;
+  }
+  .leader-item:first-of-type{border-top:none;padding-top:8px;}
+  .leader-item b{color:var(--navy);}
+  footer{
+    text-align:center;
+    color:var(--muted);
+    font-size:13px;
+    margin-top:24px;
+    padding-top:20px;
+    border-top:1px solid #E2DFD6;
+  }
+  @media (max-width:480px){
+    .wrap{padding:18px 14px 40px;}
+    header.hero{padding:26px 20px;}
+    header.hero h1{font-size:24px;}
+    section.card{padding:20px 18px;}
+  }
+  @media print{
+    body{background:#fff;}
+    .wrap{max-width:100%;padding:0;}
+    section.card{box-shadow:none;border:1px solid #ccc;break-inside:avoid;}
+    header.hero{break-inside:avoid;}
+    details.leader{border:1px solid #999;}
+    details.leader summary::before{content:"▸ ";}
+    a{color:inherit;text-decoration:none;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="label">소그룹 나눔지 · 모세시리즈 18</div>
+    <h1>얼굴의 광채</h1>
+    <p class="verse">"우리가 다 수건을 벗은 얼굴로 거울을 보는 것 같이 주의 영광을 보매 그와 같은 형상으로 변화하여 영광에서 영광에 이르니 곧 주의 영으로 말미암음이니라" — 고린도후서 3:18</p>
+    <div class="meta">
+      <span>📅 2026. 8. 17.</span>
+      <span>📖 출애굽기 34:29-35</span>
+      <span>⏱ 소요시간 90분</span>
+    </div>
+  </header>
+
+  <section class="card">
+    <h2>🗣 함께 시작해요 <span class="time">10분</span></h2>
+    <p>이번 주, 나도 모르게 달라진 나의 모습을 누군가 알아챈 적이 있나요? (좋은 쪽이든, 부끄러운 쪽이든 편하게 나눠주세요.)</p>
+  </section>
+
+  <section class="card">
+    <h2>📖 말씀 함께 읽기</h2>
+    <div class="scripture-box">
+      <p><span class="verse-num">29</span>모세가 그 증거의 두 판을 모세의 손에 들고 시내 산에서 내려오니 그 산에서 내려올 때에 모세는 자기가 여호와와 말하였음으로 말미암아 얼굴 피부에 광채가 나나 깨닫지 못하였더라</p>
+      <p><span class="verse-num">30</span>아론과 온 이스라엘 자손이 모세를 볼 때에 모세의 얼굴 피부에 광채가 남을 보고 그에게 가까이 하기를 두려워하더니</p>
+      <p><span class="verse-num">33</span>모세가 그들에게 말하기를 마치고 수건으로 자기 얼굴을 가렸더라</p>
+      <p><span class="verse-num">34</span>그러나 모세가 여호와 앞에 들어가서 함께 말할 때에는 나오기까지 수건을 벗고 있다가 나와서는 그 명령하신 일을 이스라엘 자손에게 전하며 <span class="verse-num">35</span>이스라엘 자손이 모세의 얼굴의 광채를 보므로 모세가 여호와께 말하러 들어가기까지 다시 수건으로 자기 얼굴을 가렸더라</p>
+    </div>
+
+    <div class="subhead">말씀 속으로</div>
+    <ol class="questions">
+      <li>모세는 자기 얼굴에 광채가 난 것을 정작 몰랐지만, 아론과 온 이스라엘은 똑똑히 보았습니다(29-30절). 오늘 본문에서 가장 인상 깊었던 부분은 무엇인가요?</li>
+      <li>모세의 광채는 40일 금식이라는 그의 공로가 아니라 "여호와와 말하였음"에서 나왔습니다(29절). 이것이 우리의 신앙생활에 무엇을 말해준다고 생각하나요?</li>
+    </ol>
+
+    <div class="subhead">내 삶에 가져오기</div>
+    <ol class="questions" start="3">
+      <li>"내가 괜찮으면 괜찮은 것이다"라는 착각에 빠져본 적이 있나요? 그때 누가, 어떻게 그것을 깨닫게 해주었나요?</li>
+      <li>하나님 앞에서는 솔직하지만 사람들 앞에서는 감추고 싶은 모습, 혹은 반대로 사람들 앞에서만 신앙이 좋아 보이려 애쓰는 나의 모습이 있다면 나눠봅시다.</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>💡 이번 주 적용 <span class="time">15분</span></h2>
+    <ol class="questions" start="5">
+      <li>설교자는 "하루 십 분, 아무도 모르게 하나님과 단둘이 머무는 시간"을 제안했습니다. 나는 이것을 언제, 어떻게 실천할 수 있을까요?</li>
+    </ol>
+    <div class="fillin">
+      나의 한 가지: "나는 이번 주 <span class="blank">&nbsp;</span> 을/를 실천하겠습니다."
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>🙏 중보기도 <span class="time">15분</span></h2>
+    <p class="pray-note">기도 제목을 나누고, 돌아가며 한 사람씩 서로를 위해 짧게 기도해요.</p>
+    <table class="pray">
+      <tr><th>이름</th><th>기도 제목</th></tr>
+      <tr><td></td><td></td></tr>
+      <tr><td></td><td></td></tr>
+      <tr><td></td><td></td></tr>
+      <tr><td></td><td></td></tr>
+    </table>
+  </section>
+
+  <section class="card">
+    <details class="leader">
+      <summary>인도자 가이드 (펼쳐보기)</summary>
+      <div class="leader-item">
+        <b>Q1 의도</b> — 본문의 핵심 아이러니(변화를 정작 본인이 모른다)에 주목하게 합니다. 자기 인식과 실제 모습 사이의 간극을 조심스럽게 열어주는 질문입니다. 판단조로 흐르지 않게 유의하세요.
+      </div>
+      <div class="leader-item">
+        <b>Q2 의도</b> — 신앙의 공로주의를 점검하는 질문입니다. "내가 노력해서"가 아니라 "하나님과 함께 있어서"라는 은혜의 방향을 확인해주세요.
+      </div>
+      <div class="leader-item">
+        <b>Q3-4 의도</b> — 취약함을 나누는 질문이라 조원들이 편안하게 느끼도록 인도자가 먼저 짧게 자기 이야기를 나누면 좋습니다.
+      </div>
+      <div class="leader-item">
+        <b>Q5 의도</b> — 추상적 다짐이 아니라 "언제, 어떻게"라는 구체적 시간과 방법을 정하도록 도와주세요.
+      </div>
+    </details>
+  </section>
+
+  <footer>
+    라온동행교회 · 담임목사 이광복
+  </footer>
+
+</div>
+</body>
+</html>
