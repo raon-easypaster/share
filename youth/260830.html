@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>소그룹 나눔지(청소년용) | 위기 가운데 임마누엘</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --main:#241E4E;
+    --sub:#4A3F7A;
+    --accent:#E8B44C;
+    --bg:#F7F5FB;
+    --card:#FFFFFF;
+    --text:#2B2740;
+    --muted:#736C8E;
+    --line:#E4DFF0;
+    --youth-main:#E8590C;
+    --youth-sub:#1971C2;
+    --youth-bg:#FFF8F1;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Noto Sans KR', sans-serif;
+    line-height:1.75;
+    font-size:16px;
+  }
+  .wrap{max-width:720px;margin:0 auto;padding:0 0 60px;}
+
+  /* Hero */
+  .hero{
+    position:relative;
+    background:linear-gradient(160deg, var(--main) 0%, var(--sub) 55%, #2E2760 100%);
+    color:#fff;
+    padding:56px 28px 68px;
+    overflow:hidden;
+    text-align:center;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      radial-gradient(circle at 85% 15%, rgba(232,180,76,0.35) 0%, rgba(232,180,76,0) 45%),
+      radial-gradient(circle at 10% 90%, rgba(232,180,76,0.18) 0%, rgba(232,180,76,0) 40%);
+    pointer-events:none;
+  }
+  .hero-eyebrow{
+    position:relative;
+    font-size:13px;
+    letter-spacing:0.18em;
+    color:var(--accent);
+    font-weight:700;
+    margin-bottom:14px;
+  }
+  .hero h1{
+    position:relative;
+    font-family:'Gowun Batang', serif;
+    font-size:34px;
+    margin:0 0 10px;
+    font-weight:700;
+  }
+  .hero .date{
+    position:relative;
+    font-size:14px;
+    color:#C9C3E8;
+    margin-bottom:26px;
+  }
+  .hero .verse-box{
+    position:relative;
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(232,180,76,0.4);
+    border-radius:14px;
+    padding:20px 22px;
+    text-align:left;
+  }
+  .hero .verse-box p{
+    font-family:'Gowun Batang', serif;
+    font-size:17px;
+    margin:0 0 8px;
+    color:#F4EFFF;
+  }
+  .hero .verse-box span{
+    font-size:13px;
+    color:var(--accent);
+    font-weight:700;
+  }
+
+  .panel{padding:0 22px;}
+
+  .section{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:22px 22px 24px;
+    margin-top:22px;
+    box-shadow:0 4px 18px rgba(36,30,78,0.05);
+  }
+  .section-title{
+    display:flex; align-items:center; gap:8px;
+    font-family:'Gowun Batang', serif;
+    font-size:20px;
+    font-weight:700;
+    margin:0 0 6px;
+    color:var(--youth-main);
+  }
+  .section-time{
+    font-size:12.5px; color:var(--muted); margin-bottom:14px; display:block;
+  }
+  .q{margin:0 0 16px;}
+  .q .num{font-weight:700; color:var(--youth-main);}
+
+  .note{
+    margin:6px 0 0 0;
+    padding:10px 14px;
+    background:#FFF3E0;
+    border-left:3px solid var(--youth-sub);
+    border-radius:6px;
+    font-size:13.5px;
+    color:#4A5A6B;
+  }
+
+  .fillbox{
+    margin-top:14px;
+    padding:14px 16px;
+    background:var(--youth-bg);
+    border:1px dashed var(--youth-main);
+    border-radius:10px;
+  }
+  .fillbox label{
+    display:block; font-size:13px; color:var(--muted); margin-bottom:8px; font-weight:700;
+  }
+  .fillbox input{
+    width:100%;
+    border:none; border-bottom:2px solid var(--youth-main);
+    background:transparent;
+    font-family:'Noto Sans KR', sans-serif;
+    font-size:15px; padding:6px 2px; color:var(--text);
+  }
+  .fillbox input:focus{outline:none;}
+
+  /* quiz */
+  .quiz-card{
+    background:var(--youth-bg);
+    border:1px solid #FFE1BF;
+    border-radius:12px;
+    padding:14px 16px;
+    margin:0 0 14px;
+  }
+  .quiz-card .qtext{font-weight:700; margin-bottom:8px;}
+  .reveal-btn{
+    border:1px solid var(--youth-sub);
+    background:#fff;
+    color:var(--youth-sub);
+    font-size:12.5px; font-weight:700;
+    padding:6px 12px; border-radius:20px;
+    cursor:pointer;
+  }
+  .reveal-btn:active{transform:scale(0.97);}
+  .answer{
+    display:none;
+    margin-top:10px; padding:10px 12px;
+    background:#E7F5FF; border-radius:8px;
+    font-size:13.5px; color:#155A8A;
+  }
+  .answer.show{display:block;}
+
+  /* prayer list */
+  .prayer-list{margin-top:10px;}
+  .prayer-row{
+    display:flex; gap:8px; margin-bottom:8px;
+  }
+  .prayer-row input{
+    border:1px solid var(--line); border-radius:8px;
+    padding:9px 10px; font-size:14px; font-family:'Noto Sans KR',sans-serif;
+  }
+  .prayer-row input.name{flex:0 0 76px;}
+  .prayer-row input.topic{flex:1;}
+
+  footer{
+    text-align:center; padding:36px 20px 10px;
+    color:var(--muted); font-size:13px;
+  }
+  footer .brand{font-family:'Gowun Batang', serif; font-size:15px; color:var(--sub); margin-bottom:4px; display:block;}
+
+  @media (max-width:480px){
+    .hero{padding:44px 20px 56px;}
+    .hero h1{font-size:27px;}
+    .panel{padding:0 14px;}
+    .section{padding:18px 16px 20px;}
+  }
+</style>
+</head>
+<body data-scripture="이사야 7:14">
+
+<div class="hero">
+  <div class="hero-eyebrow">SMALL GROUP STUDY GUIDE · 청소년용</div>
+  <h1>흔들려도, 하나님은 함께 계셔</h1>
+  <div class="date">2026년 8월 30일 · 라온동행교회 청소년부 소그룹 | 설교:정미경</div>
+  <div class="verse-box">
+    <p>“처녀가 잉태하여 아들을 낳을 것이요, 그 이름은 임마누엘 — ‘하나님이 우리와 함께 계신다’라는 뜻이야.”</p>
+    <span>이사야 7장 14절</span>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="panel">
+
+    <div class="section">
+      <p class="section-title">⚡ 웜업</p>
+      <span class="section-time">10분</span>
+      <p class="q"><span class="num">Q.</span> 요즘 너를 제일 불안하게 하거나 초조하게 만드는 건 뭐야? (시험 / 친구 관계 / 진로 / 가족 / SNS 중 골라서 얘기해봐)</p>
+      <div class="note">👉 리더 TIP: 정답을 찾으려 하지 말고, 그냥 편하게 서로 상황을 듣는 시간으로!</div>
+    </div>
+
+    <div class="section">
+      <p class="section-title">📖 오늘의 말씀 체크</p>
+      <span class="section-time">15분 · 이사야 7:1~9, 7:14, 9:2, 9:6~7 — 다 같이 소리 내어 읽어보자!</span>
+
+      <div class="quiz-card">
+        <div class="qtext">Q1. (O/X) 하나님이 아하스 왕에게 “징조를 구해보라”고 하셨을 때, 아하스는 흔쾌히 그 제안을 받아들였다.</div>
+        <button class="reveal-btn" onclick="toggleAnswer('a1', this)">정답 보기</button>
+        <div class="answer" id="a1">정답: X — 아하스는 “나는 구하지 아니하겠나이다”라며 거절했어. 얼핏 겸손해 보이지만, 사실은 하나님보다 앗수르(강대국)를 더 믿었던 거야.</div>
+      </div>
+      <div class="quiz-card">
+        <div class="qtext">Q2. 이사야가 예언한 ‘임마누엘’은 결국 누구를 통해 완성됐을까?</div>
+        <button class="reveal-btn" onclick="toggleAnswer('a2', this)">정답 보기</button>
+        <div class="answer" id="a2">정답: 예수 그리스도! (마태복음 1:23에서 확인할 수 있어)</div>
+      </div>
+      <p class="q">👋 이 중에 “나도 아하스처럼 눈에 보이는 걸 하나님보다 더 믿은 적 있다” 싶은 사람, 솔직하게 손 들어볼까?</p>
+    </div>
+
+    <div class="section">
+      <p class="section-title">💬 토크타임</p>
+      <span class="section-time">25~30분</span>
+      <p class="q"><span class="num">1.</span> 본문에서 유다 백성의 마음이 “숲이 바람에 흔들리듯” 흔들렸다고 해. 너도 시험 결과나 친구 문제로 그렇게 마음이 확 흔들렸던 적 있어? 솔직히 말해봐.</p>
+      <p class="q"><span class="num">2.</span> 불안하고 초조할 때, 너는 보통 뭘 먼저 해? SNS 보면서 남들이랑 비교하기, 친구한테 하소연하기, 아니면 하나님께 먼저 기도하기 — 솔직히 뭐가 제일 먼저야?</p>
+      <p class="q"><span class="num">3.</span> 하나님이 주신 구원의 표적은 강한 군대나 왕이 아니라 그냥 ‘한 아기’였어. 세상은 스펙, 힘, 인기 있는 사람을 대단하다고 하는데, 하나님은 제일 약해 보이는 걸 통해 일하셨다는 게 나한테 어떤 의미로 다가와?</p>
+      <p style="font-weight:700;color:var(--youth-main);margin:16px 0 6px;">4. 솔직히 말하면...</p>
+      <p class="q">요즘 내가 하나님보다 더 의지하고 있는 게 있다면 뭘까? (핸드폰, 성적, 친구들 인정, 게임, 유튜브... 뭐든 솔직하게)</p>
+    </div>
+
+    <div class="section">
+      <p class="section-title">🎯 이번 주 챌린지</p>
+      <p style="font-weight:700;">불안하거나 초조해질 때, 딱 5초만이라도 “하나님, 저와 함께해 주세요” 짧게 기도하기!</p>
+      <div class="fillbox">
+        <label>나의 다짐</label>
+        <input type="text" placeholder="나는 이번 주 ________________.">
+      </div>
+    </div>
+
+    <div class="section">
+      <p class="section-title">🙏 함께 기도</p>
+      <span class="section-time">10분</span>
+      <p>각자 기도 제목을 조 카톡방(또는 메모)에 올리고, 리더가 대표로 짧게 기도해줄게. 마지막엔 다 같이 손잡고 짧은 합심 기도로 마무리!</p>
+      <div class="prayer-list" id="youth-prayer-list"></div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <span class="brand">라온동행교회</span>
+  청소년부 · 소그룹 나눔지
+</footer>
+
+<script>
+  function toggleAnswer(id, btn){
+    const el = document.getElementById(id);
+    el.classList.toggle('show');
+    btn.textContent = el.classList.contains('show') ? '정답 숨기기' : '정답 보기';
+  }
+  function buildPrayerRows(containerId, count){
+    const c = document.getElementById(containerId);
+    for(let i=0;i<count;i++){
+      const row = document.createElement('div');
+      row.className='prayer-row';
+      row.innerHTML = '<input class="name" type="text" placeholder="이름">'+
+                      '<input class="topic" type="text" placeholder="기도 제목">';
+      c.appendChild(row);
+    }
+  }
+  buildPrayerRows('youth-prayer-list', 6);
+</script>
+
+</body>
+</html>
