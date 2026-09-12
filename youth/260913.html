@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>설계자 vs 현장감독 — 청소년 소그룹 나눔지</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --orange:#F97316;
+    --orange-dark:#EA580C;
+    --purple:#7C3AED;
+    --bg:#FFF8F1;
+    --card:#FFFFFF;
+    --text:#2B2B2B;
+    --muted:#7A7A7A;
+    --border:#FBD9B8;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    padding:20px 14px 60px;
+    background:var(--bg);
+    font-family:'Noto Sans KR', sans-serif;
+    color:var(--text);
+    line-height:1.65;
+  }
+  .wrap{max-width:760px;margin:0 auto;}
+  header{
+    background:linear-gradient(135deg, var(--orange) 0%, var(--purple) 100%);
+    color:#fff;
+    border-radius:20px;
+    padding:28px 24px;
+    margin-bottom:20px;
+    text-align:center;
+  }
+  header .tag{
+    font-size:13px;
+    font-weight:700;
+    background:rgba(255,255,255,0.22);
+    display:inline-block;
+    padding:4px 14px;
+    border-radius:20px;
+    margin-bottom:10px;
+  }
+  header h1{
+    font-size:24px;
+    font-weight:900;
+    margin:0 0 8px;
+    line-height:1.3;
+  }
+  header .sub{
+    font-size:13.5px;
+    opacity:.95;
+  }
+  section.card{
+    background:var(--card);
+    border:2px solid var(--border);
+    border-radius:18px;
+    padding:20px 20px;
+    margin-bottom:16px;
+  }
+  section.card h2{
+    font-size:18px;
+    font-weight:900;
+    margin:0 0 12px;
+    color:var(--orange-dark);
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  section.card h2 .time{
+    font-size:12px;
+    font-weight:700;
+    color:#fff;
+    background:var(--purple);
+    padding:3px 10px;
+    border-radius:20px;
+  }
+  .scripture-box{
+    background:#FFF1E3;
+    border:2px dashed var(--orange);
+    border-radius:12px;
+    padding:14px 16px;
+    font-size:15px;
+    margin-bottom:8px;
+  }
+  .scripture-box .ref{
+    display:block;
+    font-size:12px;
+    color:var(--purple);
+    font-weight:700;
+    margin-top:8px;
+  }
+  .quiz{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-top:10px;
+  }
+  .quiz .q{
+    background:#F5F1FF;
+    border-radius:10px;
+    padding:10px 14px;
+    font-size:14.5px;
+  }
+  .quiz .q b{color:var(--purple);}
+  ol.qlist{margin:0;padding-left:20px;}
+  ol.qlist li{margin-bottom:14px;font-size:15px;}
+  ol.qlist li:last-child{margin-bottom:0;}
+  ol.qlist li.deep{
+    background:#FFF1E3;
+    border-radius:10px;
+    padding:10px 12px;
+    list-style:none;
+    margin-left:-20px;
+    font-weight:700;
+  }
+  .mission{
+    background:var(--orange);
+    color:#fff;
+    border-radius:14px;
+    padding:16px 18px;
+    margin-top:14px;
+  }
+  .mission .label{
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.04em;
+    display:block;
+    margin-bottom:6px;
+    opacity:.9;
+  }
+  .pledge{
+    margin-top:10px;
+    font-size:14.5px;
+  }
+  .pledge .fill{
+    border-bottom:1px solid #fff;
+    display:inline-block;
+    min-width:180px;
+  }
+  footer{
+    text-align:center;
+    font-size:12px;
+    color:var(--muted);
+    margin-top:18px;
+  }
+  @media (max-width:480px){
+    header{padding:22px 18px;}
+    header h1{font-size:20px;}
+    section.card{padding:16px 14px;}
+  }
+  @media print{
+    body{background:#fff;padding:0;}
+    header{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    section.card{border:1px solid #ddd;break-inside:avoid;}
+    .mission{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="tag">🔥 청소년 소그룹</div>
+    <h1>나는 설계자? 아니면 현장감독?</h1>
+    <div class="sub">모세 시리즈 20 · 출애굽기 40:16, 29:46, 40:33-34</div>
+  </header>
+
+  <section class="card">
+    <h2>⚡ 웜업 <span class="time">10분</span></h2>
+    <p style="margin:0;font-size:15px;">계획대로 안 돼서 그 자리에서 바로 다른 방법을 찾아야 했던 적 있어? (예: 시험 공부 계획, 여행 계획, 게임 전략 등) 그때 무슨 기준으로 다시 결정했어?</p>
+  </section>
+
+  <section class="card">
+    <h2>📖 오늘의 말씀 <span class="time">15분</span></h2>
+    <div class="scripture-box">
+      "모세가 그같이 행하되 곧 여호와께서 자기에게 명령하신 대로 다 행하였더라."
+      <span class="ref">출애굽기 40:16</span>
+    </div>
+    <div class="scripture-box">
+      "내가 그들 중에 거하려고 그들을 애굽 땅에서 인도하여 낸 여호와인 줄을 그들이 알리라."
+      <span class="ref">출애굽기 29:46</span>
+    </div>
+    <div class="quiz">
+      <div class="q"><b>Q1 (O/X)</b> 성막을 만들 아이디어를 낸 사람은 모세였다.</div>
+      <div class="q"><b>Q2 (O/X)</b> 성막이 완성된 것 자체가 성막 건축의 최종 목표였다.</div>
+    </div>
+    <p style="font-size:12.5px;color:var(--muted);margin:10px 0 0;">정답: Q1 X (하나님이 설계자셨다) / Q2 X (완성이 아니라 하나님의 임재가 목표였다)</p>
+  </section>
+
+  <section class="card">
+    <h2>💬 토크타임 <span class="time">30분</span></h2>
+    <ol class="qlist">
+      <li>설교에서 "성막은 사람의 아이디어가 아니라 하나님의 설계였다"고 했어. 지금 네 삶에서 "내 생각대로" 하나님을 맞추려고 했던 순간이 있었다면?</li>
+      <li>설교자는 삶을 "순종해야 하는 것(명령)", "고민하고 지혜롭게 선택해야 하는 것(지혜)", "자유롭게 선택하되 사랑으로 결정하는 것(자유)"으로 나눴어. 요즘 네가 고민하는 선택 하나를 이 셋 중 어디에 넣어볼 수 있을까?</li>
+      <li>SNS, 게임, 진로처럼 성경에 직접 답이 안 나온 문제들, 너는 보통 뭘 기준으로 결정해?</li>
+      <li class="deep">솔직히 말하면... 요즘 "내가 편한 게 먼저"였는지, "하나님이 기뻐하시는 게 먼저"였는지 돌아보면?</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>🎯 이번 주 챌린지</h2>
+    <div class="mission">
+      <span class="label">미션</span>
+      이번 주, 애매한 선택 하나 앞에서 "이게 하나님을 더 사랑하는 선택일까? 이웃을 더 사랑하는 선택일까?"를 한 번 물어보고 결정하기.
+      <div class="pledge">나의 다짐: "나는 이번 주 <span class="fill">&nbsp;</span>."</div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>🙏 함께 기도 <span class="time">10분</span></h2>
+    <p style="margin:0;font-size:15px;">각자 이번 주 내려야 할 선택 하나씩 나누고, 서로를 위해 짧게 기도해 주기.</p>
+  </section>
+
+  <footer>라온동행교회 · 쉬운목사 이광복 · 모세 시리즈 20</footer>
+</div>
+</body>
+</html>
