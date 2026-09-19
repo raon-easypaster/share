@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>소그룹 나눔지 | 분노의 대가 | 모세 시리즈 21편</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #1a3a5c;
+    --primary-light: #254d78;
+    --accent: #c9a84c;
+    --accent-light: #f5e9c8;
+    --bg: #f7f5f0;
+    --card: #ffffff;
+    --text: #1e1e1e;
+    --text-muted: #5a5a5a;
+    --border: #ddd6c8;
+    --section-bg: #eef2f7;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.8;
+  }
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 24px 20px 60px;
+  }
+
+  /* 헤더 */
+  .header {
+    background: var(--primary);
+    color: #fff;
+    border-radius: 12px;
+    padding: 28px 28px 22px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 120px; height: 120px;
+    background: var(--accent);
+    opacity: 0.12;
+    border-radius: 50%;
+  }
+  .header-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .header h1 {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 10px;
+  }
+  .header-meta {
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .header-meta span::before { content: '• '; }
+  .header-meta span:first-child::before { content: ''; }
+
+  .key-verse {
+    background: var(--accent-light);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin-bottom: 24px;
+    font-family: 'Noto Serif KR', serif;
+    font-size: 14px;
+    color: #4a3a10;
+    line-height: 1.7;
+  }
+  .key-verse strong { display: block; font-size: 11px; color: #7a6030; margin-top: 6px; letter-spacing: 1px; }
+
+  /* 섹션 카드 */
+  .section-card {
+    background: var(--card);
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    margin-bottom: 18px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+  .section-header {
+    background: var(--primary);
+    color: #fff;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-header .icon { font-size: 18px; }
+  .section-header .title { font-weight: 600; font-size: 14px; }
+  .section-header .time { margin-left: auto; font-size: 11px; color: rgba(255,255,255,0.6); }
+  .section-body { padding: 20px; }
+
+  /* 아이스브레이킹 */
+  .ice-q {
+    background: var(--section-bg);
+    border-radius: 8px;
+    padding: 16px 18px;
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.7;
+  }
+  .ice-q strong { color: var(--primary); display: block; margin-bottom: 4px; }
+
+  /* 말씀 박스 */
+  .scripture-box {
+    background: #f0eef8;
+    border-left: 3px solid var(--primary);
+    border-radius: 0 8px 8px 0;
+    padding: 14px 16px;
+    margin-bottom: 16px;
+    font-family: 'Noto Serif KR', serif;
+    font-size: 13px;
+    color: #2a2a4a;
+    line-height: 1.9;
+  }
+  .scripture-ref { font-size: 11px; color: var(--primary); font-weight: 600; margin-bottom: 6px; display: block; }
+
+  /* 질문 */
+  .question-group { margin-bottom: 16px; }
+  .question-group-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--primary);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--border);
+  }
+  .question-item {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 14px;
+    align-items: flex-start;
+  }
+  .q-num {
+    min-width: 26px; height: 26px;
+    background: var(--primary);
+    color: #fff;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700;
+    flex-shrink: 0;
+  }
+  .q-text { font-size: 14px; line-height: 1.7; padding-top: 2px; }
+
+  /* 적용 */
+  .apply-box {
+    background: var(--accent-light);
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin-top: 12px;
+  }
+  .apply-label { font-size: 11px; color: #7a6030; font-weight: 700; margin-bottom: 8px; }
+  .apply-blank {
+    border-bottom: 1px dashed var(--accent);
+    display: inline-block;
+    width: 200px;
+    color: transparent;
+  }
+
+  /* 기도 테이블 */
+  .prayer-table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+  .prayer-table th {
+    background: var(--primary);
+    color: #fff;
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: left;
+  }
+  .prayer-table td {
+    border: 1px solid var(--border);
+    padding: 10px 12px;
+    font-size: 13px;
+    height: 36px;
+  }
+  .prayer-table tr:nth-child(even) td { background: var(--section-bg); }
+  .prayer-note { font-size: 12px; color: var(--text-muted); margin-top: 8px; }
+
+  /* 인도자 가이드 */
+  details { margin-top: 18px; }
+  summary {
+    cursor: pointer;
+    background: var(--section-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--primary);
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  summary::after { content: '▼'; margin-left: auto; font-size: 10px; }
+  details[open] summary::after { content: '▲'; }
+  .guide-body {
+    background: #f9f8f6;
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    padding: 16px 18px;
+  }
+  .guide-item { margin-bottom: 14px; }
+  .guide-item strong { color: var(--primary); font-size: 13px; }
+  .guide-item p { font-size: 13px; color: var(--text-muted); line-height: 1.7; margin-top: 4px; }
+
+  /* 푸터 */
+  .footer {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 12px;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+    padding-top: 16px;
+  }
+
+  @media (max-width: 600px) {
+    .header h1 { font-size: 18px; }
+    .container { padding: 16px 14px 40px; }
+    .section-body { padding: 14px; }
+  }
+
+  @media print {
+    body { background: #fff; font-size: 13px; }
+    .container { padding: 0; }
+    .section-card { box-shadow: none; break-inside: avoid; }
+    .header { border-radius: 0; }
+    details[open] .guide-body { display: block; }
+    summary::after { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- 헤더 -->
+  <div class="header">
+    <div class="header-label">라온동행교회 · 소그룹 나눔지</div>
+    <h1>분노의 대가<br><small style="font-size:14px;font-weight:400;opacity:.8">— 모세 시리즈 21편</small></h1>
+    <div class="header-meta">
+      <span>2026년 9월 19일</span>
+      <span>민수기 20:1–13</span>
+      <span>소요 시간: 90분</span>
+    </div>
+  </div>
+
+  <!-- 핵심 구절 -->
+  <div class="key-verse">
+    "너희가 나를 믿지 아니하고 이스라엘 자손의 목전에서 내 거룩함을 나타내지 아니한 고로
+    너희는 이 회중을 내가 그들에게 준 땅으로 인도하여 들이지 못하리라"
+    <strong>— 민수기 20:12 (개역개정)</strong>
+  </div>
+
+  <!-- 1. 아이스브레이킹 -->
+  <div class="section-card">
+    <div class="section-header">
+      <span class="icon">🗣</span>
+      <span class="title">함께 시작해요</span>
+      <span class="time">10분</span>
+    </div>
+    <div class="section-body">
+      <div class="ice-q">
+        <strong>오프닝 질문</strong>
+        최근에 정말 화가 났던 순간이 있었나요? 그 상황을 한두 문장으로 나눠봐요.
+        (결과가 어땠는지보다, 그때 내 마음이 어땠는지를 중심으로)
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. 말씀 읽기 -->
+  <div class="section-card">
+    <div class="section-header">
+      <span class="icon">📖</span>
+      <span class="title">말씀 함께 읽기</span>
+      <span class="time">35분</span>
+    </div>
+    <div class="section-body">
+      <div class="scripture-box">
+        <span class="scripture-ref">민수기 20:1–13 (개역개정) — 함께 소리 내어 읽어요</span>
+        1 첫째 달에 이스라엘 자손 곧 온 회중이 신 광야에 이르러 백성이 가데스에 머물더니 미리암이 거기서 죽으매 거기에 장사되니라 2 회중이 물이 없으므로 모세와 아론에게로 모여드니라 3 백성이 모세와 다투어 말하여 이르되 우리 형제들이 여호와 앞에서 죽을 때에 우리도 죽었더라면 좋을 뻔하였도다 4 너희가 어찌하여 여호와의 회중을 이 광야로 인도하여 우리와 우리 짐승이 다 여기서 죽게 하느냐 … 12 여호와께서 모세와 아론에게 이르시되 너희가 나를 믿지 아니하고 이스라엘 자손의 목전에서 내 거룩함을 나타내지 아니한 고로 너희는 이 회중을 내가 그들에게 준 땅으로 인도하여 들이지 못하리라 하시니라
+      </div>
+
+      <div class="question-group">
+        <div class="question-group-title">말씀 속으로</div>
+        <div class="question-item">
+          <div class="q-num">1</div>
+          <div class="q-text">하나님은 모세에게 "반석에게 <em>명령하라</em>"고 하셨는데, 모세는 반석을 <em>두 번 쳤습니다</em>. 이 차이가 왜 중요할까요? 설교에서 말한 신학적 의미를 함께 나눠봐요.</div>
+        </div>
+        <div class="question-item">
+          <div class="q-num">2</div>
+          <div class="q-text">하나님은 모세의 죄를 "분노"가 아니라 "불신앙"이라고 말씀하셨습니다(12절). 분노가 표면이고 불신앙이 뿌리라는 말이 어떻게 들리나요? 이 관점에서 내 분노를 다시 본다면?</div>
+        </div>
+      </div>
+
+      <div class="question-group">
+        <div class="question-group-title">내 삶에 가져오기</div>
+        <div class="question-item">
+          <div class="q-num">3</div>
+          <div class="q-text">모세는 먼저 하나님 앞에 엎드렸지만, 사람들 앞에서는 감정이 앞섰습니다. 나도 "예배 때의 나"와 "일상에서의 나"가 다를 때가 있나요? 그 간격이 가장 크게 벌어지는 장면은 언제인가요?</div>
+        </div>
+        <div class="question-item">
+          <div class="q-num">4</div>
+          <div class="q-text">우리는 부모로, 리더로, 직장 상사로, 이웃으로 누군가 앞에서 하나님을 대표합니다. 나를 가장 가까이서 보는 사람은 내 분노에서 하나님을 어떤 분으로 보고 있을까요?</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. 적용 -->
+  <div class="section-card">
+    <div class="section-header">
+      <span class="icon">💡</span>
+      <span class="title">이번 주 적용</span>
+      <span class="time">20분</span>
+    </div>
+    <div class="section-body">
+      <div class="question-item">
+        <div class="q-num">5</div>
+        <div class="q-text">설교는 "지금 이 자리에서 하나님은 어떤 분으로 보이시기를 원하실까?"라는 질문을 우리에게 던집니다. 이번 주 가장 분노가 올라올 것 같은 상황을 한 가지 떠올려보세요. 그 순간에 이 질문을 어떻게 적용할 수 있을까요?</div>
+      </div>
+      <div class="apply-box">
+        <div class="apply-label">📝 나의 이번 주 한 가지 실천 선언</div>
+        <p style="font-size:14px; color:#4a3a10; line-height:2;">
+          "나는 이번 주 <span style="display:inline-block; min-width:180px; border-bottom:1px dashed #c9a84c;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          할 때,<br>
+          먼저 '하나님은 지금 어떤 분으로 보이기 원하실까?'를 생각하겠습니다."
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. 중보기도 -->
+  <div class="section-card">
+    <div class="section-header">
+      <span class="icon">🙏</span>
+      <span class="title">중보기도</span>
+      <span class="time">15–20분</span>
+    </div>
+    <div class="section-body">
+      <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px;">기도 제목을 나누고, 서로 이름을 불러 짧게 돌아가며 기도해요.</p>
+      <table class="prayer-table">
+        <tr><th>이름</th><th>기도 제목</th></tr>
+        <tr><td></td><td></td></tr>
+        <tr><td></td><td></td></tr>
+        <tr><td></td><td></td></tr>
+        <tr><td></td><td></td></tr>
+        <tr><td></td><td></td></tr>
+        <tr><td></td><td></td></tr>
+      </table>
+      <p class="prayer-note">💬 기도 후 한 사람씩 "이번 주 가장 필요한 것"을 한 단어로 표현해봐요.</p>
+    </div>
+  </div>
+
+  <!-- 인도자 가이드 -->
+  <details>
+    <summary>📋 인도자 가이드 (클릭해서 열기)</summary>
+    <div class="guide-body">
+      <div class="guide-item">
+        <strong>Q1 — 명령 vs 타격의 신학적 의미</strong>
+        <p>복음주의 신학자들의 해석(40년 전 르비딤의 반석 타격 = 십자가 예표, 이번은 말씀으로 나아가는 은혜의 문법)을 소개하며 대화를 이끌어가세요. 지식 확인보다 "왜 하나님이 명령 방식을 바꾸셨을까?"를 함께 상상하는 것이 목표입니다.</p>
+      </div>
+      <div class="guide-item">
+        <strong>Q2 — 분노의 뿌리 = 불신앙</strong>
+        <p>이 개념이 처음엔 어렵게 느껴질 수 있어요. "내가 통제하려 할 때, 하나님을 신뢰하지 못하고 있다는 뜻 아닐까요?"로 풀어주시면 좋습니다. 판단보다는 자기 성찰로 연결되도록 분위기를 만들어주세요.</p>
+      </div>
+      <div class="guide-item">
+        <strong>Q3 — 예배 vs 일상의 간격</strong>
+        <p>인도자가 먼저 솔직하게 자신의 경험을 나누면 분위기가 열립니다. "주일에 은혜 받고 월요일 아침 출근길에 화가 났던 경험"처럼 구체적 예시로 시작하세요.</p>
+      </div>
+      <div class="guide-item">
+        <strong>Q4 — 나를 보는 사람</strong>
+        <p>가족(특히 자녀), 직장 동료, 같은 셀원 등이 보는 내 모습에 집중하게 합니다. 죄책감보다 "새롭게 보여드릴 기회"로 마무리하세요.</p>
+      </div>
+      <div class="guide-item">
+        <strong>Q5 — 실천 적용</strong>
+        <p>너무 거창한 목표보다 "한 가지 구체적 상황"에 집중하게 도와주세요. 작성 후 옆 사람에게 소리 내어 읽어주는 것이 효과적입니다.</p>
+      </div>
+      <div class="guide-item">
+        <strong>⚠ 주의사항</strong>
+        <p>이 본문은 "한 번 실수로 벌받는다"는 오해를 불러올 수 있습니다. 설교 결론처럼 "판결 이후에도 하나님이 모세와 함께하셨다, 변화산에서 가나안에 들어오게 하셨다"는 회복의 메시지로 꼭 닫아주세요.</p>
+      </div>
+    </div>
+  </details>
+
+  <div class="footer">
+    라온동행교회 · 담임목사 이광복 · 모세 시리즈 21편 · 2026년 9월 19일
+  </div>
+
+</div>
+</body>
+</html>
