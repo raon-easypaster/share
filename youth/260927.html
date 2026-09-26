@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>청소년 소그룹 — 계승 (모세 22)</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #c05621;
+    --primary-dark: #7b341e;
+    --accent: #f6ad55;
+    --accent2: #fc8181;
+    --bg: #fffaf5;
+    --card: #ffffff;
+    --text: #2d2d2d;
+    --text-sub: #718096;
+    --border: #fde8c8;
+    --warm-bg: #fff3e0;
+    --warm-dark: #ffecd2;
+    --green: #38a169;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.75;
+    font-size: 15px;
+  }
+  .page-wrap {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 28px 16px 60px;
+  }
+
+  /* HEADER */
+  .header {
+    background: linear-gradient(135deg, #c05621 0%, #e53e3e 50%, #c05621 100%);
+    color: #fff;
+    border-radius: 20px;
+    padding: 32px 28px 26px;
+    margin-bottom: 14px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 160px; height: 160px;
+    background: rgba(255,255,255,0.07);
+    border-radius: 50%;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -30px; left: -20px;
+    width: 120px; height: 120px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 50%;
+  }
+  .header .fire { font-size: 32px; margin-bottom: 8px; }
+  .header .tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.22);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    padding: 3px 12px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 26px;
+    font-weight: 900;
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+  .header .sub-title {
+    font-size: 14px;
+    color: rgba(255,255,255,0.82);
+    margin-bottom: 14px;
+  }
+  .header .verse-box {
+    background: rgba(255,255,255,0.15);
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-size: 13.5px;
+    line-height: 1.7;
+    font-style: italic;
+    color: rgba(255,255,255,0.95);
+  }
+
+  /* SECTION CARD */
+  .card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 24px 24px;
+    margin-bottom: 14px;
+    border: 1.5px solid var(--border);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .card-emoji { font-size: 24px; }
+  .card-title {
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--primary-dark);
+  }
+  .card-time {
+    margin-left: auto;
+    font-size: 11px;
+    background: var(--warm-bg);
+    color: var(--primary);
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-weight: 700;
+  }
+
+  /* WARMUP */
+  .warmup-q {
+    background: var(--warm-bg);
+    border-radius: 12px;
+    padding: 16px 20px;
+    font-size: 15.5px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.8;
+    border-left: 4px solid var(--accent);
+  }
+  .warmup-tip {
+    margin-top: 10px;
+    font-size: 12.5px;
+    color: var(--text-sub);
+    font-style: italic;
+  }
+
+  /* SCRIPTURE */
+  .scripture-card {
+    background: #fff8f0;
+    border-radius: 12px;
+    padding: 16px 20px;
+    font-size: 13.5px;
+    line-height: 2;
+    color: #4a3728;
+    margin-bottom: 18px;
+    border: 1px solid #fde8c8;
+  }
+
+  /* QUIZ */
+  .quiz-box {
+    margin-top: 16px;
+  }
+  .quiz-title {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--primary);
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .quiz-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+    background: var(--warm-dark);
+    border-radius: 10px;
+    padding: 12px 16px;
+  }
+  .quiz-badge {
+    min-width: 36px;
+    height: 22px;
+    background: var(--primary);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .quiz-q { font-size: 14px; line-height: 1.7; }
+  .quiz-answer {
+    font-size: 12px;
+    color: var(--green);
+    font-weight: 700;
+    margin-top: 4px;
+  }
+
+  /* TALK TIME */
+  .talk-item {
+    margin-bottom: 18px;
+    padding: 16px 18px;
+    border-radius: 12px;
+    border-left: 4px solid var(--accent);
+    background: var(--warm-bg);
+  }
+  .talk-item.highlight {
+    border-left-color: var(--accent2);
+    background: #fff5f5;
+  }
+  .talk-num {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--primary);
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+  .talk-q {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.75;
+  }
+  .talk-hint {
+    margin-top: 6px;
+    font-size: 12.5px;
+    color: var(--text-sub);
+    font-style: italic;
+  }
+
+  /* CHALLENGE */
+  .challenge-box {
+    background: linear-gradient(135deg, #fff3e0, #ffe8cc);
+    border: 2px solid var(--accent);
+    border-radius: 14px;
+    padding: 20px 22px;
+    margin-bottom: 16px;
+  }
+  .challenge-mission {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-bottom: 16px;
+    line-height: 1.7;
+    padding: 12px 16px;
+    background: #fff;
+    border-radius: 10px;
+    border-left: 4px solid var(--primary);
+  }
+  .pledge-box {
+    background: #fff;
+    border-radius: 10px;
+    padding: 14px 18px;
+    border: 1.5px dashed var(--accent);
+  }
+  .pledge-label {
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+  }
+  .pledge-line {
+    font-size: 14.5px;
+    font-weight: 500;
+    color: var(--text);
+    border-bottom: 1.5px solid var(--accent);
+    padding-bottom: 8px;
+    line-height: 2;
+  }
+
+  /* PRAYER */
+  .prayer-card {
+    background: linear-gradient(135deg, #fff8f0, #fffaf5);
+    border-radius: 12px;
+    padding: 16px 20px;
+    border: 1.5px solid var(--border);
+  }
+  .prayer-guide {
+    font-size: 13.5px;
+    color: var(--text-sub);
+    line-height: 1.8;
+    margin-bottom: 12px;
+  }
+  .prayer-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+  }
+  .prayer-table th {
+    background: var(--primary);
+    color: #fff;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+  }
+  .prayer-table td {
+    border: 1px solid var(--border);
+    padding: 10px 12px;
+    height: 34px;
+    color: var(--text-sub);
+    font-size: 12px;
+  }
+  .prayer-table tr:nth-child(even) td { background: #fffaf5; }
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 12px;
+    color: var(--text-sub);
+  }
+  .footer strong { color: var(--primary-dark); }
+
+  /* PRINT */
+  @media print {
+    body { background: #fff; font-size: 13px; }
+    .page-wrap { padding: 10px; }
+    .header { border-radius: 10px; }
+    .card { box-shadow: none; break-inside: avoid; }
+    a { text-decoration: none; color: inherit; }
+  }
+  @media (max-width: 600px) {
+    .header { padding: 22px 18px 20px; }
+    .header h1 { font-size: 22px; }
+    .card { padding: 18px 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="fire">🔥</div>
+    <div class="tag">청소년 소그룹 &nbsp;·&nbsp; 모세 시리즈 22</div>
+    <h1>나 없어도 굴러가야 해</h1>
+    <div class="sub-title">2026년 9월 27일 &nbsp;|&nbsp; 민수기 27:15–23</div>
+    <div class="verse-box">
+      "여호와의 회중이 목자 없는 양과 같이 되지 않게 하옵소서" — 민 27:17
+    </div>
+  </div>
+
+  <!-- 1. 웜업 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-emoji">⚡</span>
+      <span class="card-title">웜업</span>
+      <span class="card-time">10분</span>
+    </div>
+    <div class="warmup-q">
+      학교 조별과제에서 조장이었던 적 있어? 또는 팀장한테 다 떠넘겨진 적?<br>
+      그때 어떤 마음이었는지 솔직하게 말해봐! 😅
+    </div>
+    <div class="warmup-tip">※ 정답 없음! 경험 나누기입니다 ✌️</div>
+    <div style="margin-top:14px; padding:14px 18px; background:#fff3e0; border-radius:10px; font-size:14px;">
+      오늘 설교 주제 한마디로 표현하면? → 자기 생각으로 말해봐 (정답 아니어도 OK!)
+    </div>
+  </div>
+
+  <!-- 2. 말씀 체크 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-emoji">📖</span>
+      <span class="card-title">오늘의 말씀</span>
+      <span class="card-time">15분</span>
+    </div>
+    <div class="scripture-card">
+      모세는 가나안 땅에 들어가지 못한다는 선고를 받았어. 근데 그 마지막 기도에서 "제발 저 대신해줘요"가 아니라 "이 백성이 목자 없는 양이 되지 않게 다음 지도자를 세워달라"고 했어. 하나님은 여호수아를 뽑으셨어 — 능력 있어서가 아니라, 그 안에 하나님의 영이 있었기 때문에. 그리고 모세는 자기 권한을 여호수아에게 진짜로 넘겨줬어.
+    </div>
+
+    <div class="quiz-box">
+      <div class="quiz-title">✅ 퀴즈 타임!</div>
+      <div class="quiz-item">
+        <div class="quiz-badge">O/X</div>
+        <div>
+          <div class="quiz-q">모세는 마지막 기도에서 자기가 가나안에 들어가게 해달라고 빌었다.</div>
+          <div class="quiz-answer">→ X! 자기 자신이 아니라 백성을 위한 기도를 했어.</div>
+        </div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-badge">O/X</div>
+        <div>
+          <div class="quiz-q">하나님이 여호수아를 선택하신 이유는 그가 모세의 친척이었기 때문이다.</div>
+          <div class="quiz-answer">→ X! 하나님의 영이 그 안에 머물렀기 때문이야.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:14px; padding:12px 16px; background:#f0fff4; border-radius:10px; border-left:4px solid #38a169; font-size:14px; color:#2d6a4f;">
+      🙋 이 중에 공감 가는 사람? → "나는 모든 걸 내가 해야 직성이 풀리는 스타일이야"
+    </div>
+  </div>
+
+  <!-- 3. 토크타임 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-emoji">💬</span>
+      <span class="card-title">토크타임</span>
+      <span class="card-time">30분</span>
+    </div>
+
+    <div class="talk-item">
+      <div class="talk-num">Talk 1</div>
+      <div class="talk-q">학교나 동아리에서 누군가가 "내가 없으면 이 팀 망해"라고 느껴본 적 있어?<br>그 마음이 왜 생기는 것 같아?</div>
+      <div class="talk-hint">→ 모세가 자기 없이도 백성이 잘 되길 바란 것과 비교해보자</div>
+    </div>
+
+    <div class="talk-item">
+      <div class="talk-num">Talk 2</div>
+      <div class="talk-q">설교에서 "책임만 넘기고 권한은 주지 않는 건 위임이 아니다"라고 했어.<br>부모님이나 선생님 중에 이런 경험 해본 적 있어? (너한테 다 맡겨놓고 결정권은 안 주는 경우)</div>
+      <div class="talk-hint">→ 속 시원하게 말해봐! 판단 없이 들을게 👂</div>
+    </div>
+
+    <div class="talk-item">
+      <div class="talk-num">Talk 3 — 도전!</div>
+      <div class="talk-q">신앙적으로 "하나님의 뜻을 먼저 묻는 사람"이 된다는 게 현실에서 어떤 모습일까?<br>SNS에서, 진로 선택에서, 친구 관계에서?</div>
+      <div class="talk-hint">→ 여호수아가 우림으로 하나님께 물어야 했던 것처럼</div>
+    </div>
+
+    <div class="talk-item highlight">
+      <div class="talk-num">솔직히 말하면... 🤫</div>
+      <div class="talk-q">내가 지금 "나만 믿어, 나만 잘하면 돼"라고 생각하며 혼자 짊어지고 있는 게 있어?<br>아니면 반대로 너무 많이 남한테 미루고 있는 게 있어?</div>
+      <div class="talk-hint">→ 자기 자신에게 가장 솔직한 순간이야 😌</div>
+    </div>
+  </div>
+
+  <!-- 4. 챌린지 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-emoji">🎯</span>
+      <span class="card-title">이번 주 챌린지</span>
+      <span class="card-time">10분</span>
+    </div>
+    <div class="challenge-box">
+      <div class="challenge-mission">
+        이번 주 미션 🚀<br>
+        팀 프로젝트, 집안일, 소그룹 중 하나에서<br>
+        <strong>내가 꽉 쥐고 있던 역할 하나를 친구나 가족에게 맡겨보기</strong><br>
+        (그리고 잔소리 하지 않기 😅)
+      </div>
+      <div class="pledge-box">
+        <div class="pledge-label">나의 다짐 ✍️</div>
+        <div class="pledge-line">나는 이번 주 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;에게</div>
+        <div class="pledge-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;을 맡길게요.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. 기도 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-emoji">🙏</span>
+      <span class="card-title">함께 기도</span>
+      <span class="card-time">10분</span>
+    </div>
+    <div class="prayer-card">
+      <div class="prayer-guide">
+        기도 제목 단체 카톡방에 올리고, 리더가 대표로 기도할게요.<br>
+        또는 돌아가며 한 줄씩 기도해도 좋아요 🙌
+      </div>
+      <table class="prayer-table">
+        <thead><tr><th style="width:32%">이름</th><th>기도 제목</th></tr></thead>
+        <tbody>
+          <tr><td></td><td></td></tr>
+          <tr><td></td><td></td></tr>
+          <tr><td></td><td></td></tr>
+          <tr><td></td><td></td></tr>
+          <tr><td></td><td></td></tr>
+        </tbody>
+      </table>
+      <div style="margin-top:12px; text-align:center; font-size:13px; color:var(--text-sub);">
+        📱 카톡방 공유 OK — 기도 제목은 우리끼리만!
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <strong>라온동행교회</strong> &nbsp;|&nbsp; 쉬운목사 이광복 &nbsp;|&nbsp; 2026. 9. 27 &nbsp;·&nbsp; 모세 시리즈 22
+  </div>
+</div>
+</body>
+</html>
