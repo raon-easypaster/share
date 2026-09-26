@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>소그룹 나눔지 — 계승 (모세 22)</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #1e3a5f;
+    --accent: #b8963e;
+    --accent-light: #f5edda;
+    --bg: #f7f8fa;
+    --card: #ffffff;
+    --text: #1a1a2e;
+    --text-sub: #4a5568;
+    --border: #dde3ee;
+    --section-bg: #eef2f9;
+    --verse-bg: #eaf0fb;
+    --guide-bg: #f9f6ee;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    font-size: 15px;
+  }
+  .page-wrap {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 32px 20px 60px;
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--primary);
+    color: #fff;
+    border-radius: 14px 14px 0 0;
+    padding: 36px 36px 28px;
+    margin-bottom: 0;
+  }
+  .header .tag {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    padding: 3px 12px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+  .header h1 {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  .header .meta {
+    font-size: 13px;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 18px;
+  }
+  .header .key-verse {
+    background: rgba(255,255,255,0.1);
+    border-left: 4px solid var(--accent);
+    padding: 14px 18px;
+    border-radius: 0 8px 8px 0;
+    font-size: 14px;
+    color: rgba(255,255,255,0.92);
+    font-style: italic;
+    font-family: 'Noto Serif KR', serif;
+    line-height: 1.7;
+  }
+  .header .time-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 14px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+    background: rgba(255,255,255,0.1);
+    padding: 5px 14px;
+    border-radius: 20px;
+  }
+
+  /* SECTIONS */
+  .section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 0;
+    padding: 28px 32px;
+    margin-bottom: 0;
+    border-top: none;
+  }
+  .section:last-of-type {
+    border-radius: 0 0 14px 14px;
+  }
+  .section + .section {
+    border-top: 1px dashed var(--border);
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .section-icon {
+    font-size: 20px;
+    line-height: 1;
+  }
+  .section-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--primary);
+  }
+  .section-time {
+    margin-left: auto;
+    font-size: 11px;
+    color: var(--text-sub);
+    background: var(--section-bg);
+    padding: 2px 10px;
+    border-radius: 12px;
+  }
+
+  /* ICE BREAKER */
+  .icebreaker-box {
+    background: var(--section-bg);
+    border-radius: 10px;
+    padding: 18px 22px;
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.8;
+  }
+  .icebreaker-box .tip {
+    margin-top: 10px;
+    font-size: 12.5px;
+    color: var(--text-sub);
+    font-style: italic;
+  }
+
+  /* SCRIPTURE */
+  .scripture-block {
+    background: var(--verse-bg);
+    border-left: 4px solid var(--primary);
+    border-radius: 0 10px 10px 0;
+    padding: 18px 22px;
+    margin-bottom: 22px;
+    font-family: 'Noto Serif KR', serif;
+    font-size: 14px;
+    color: var(--text);
+    line-height: 2;
+  }
+  .scripture-block .verse-num {
+    color: var(--primary);
+    font-weight: 700;
+  }
+
+  /* QUESTIONS */
+  .q-group {
+    margin-bottom: 22px;
+  }
+  .q-group-title {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--accent-light);
+  }
+  .question-item {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 16px;
+    align-items: flex-start;
+  }
+  .q-num {
+    min-width: 28px;
+    height: 28px;
+    background: var(--primary);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .q-text {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--text);
+  }
+  .q-sub {
+    font-size: 12.5px;
+    color: var(--text-sub);
+    margin-top: 4px;
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  /* APPLICATION */
+  .apply-box {
+    background: linear-gradient(135deg, #fffdf5 0%, var(--accent-light) 100%);
+    border: 2px solid var(--accent);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-top: 16px;
+  }
+  .apply-box label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+  }
+  .apply-box .fill-line {
+    font-size: 15px;
+    color: var(--text);
+    font-family: 'Noto Serif KR', serif;
+    line-height: 2;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 6px;
+    margin-bottom: 16px;
+  }
+
+  /* PRAYER TABLE */
+  .prayer-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 14px;
+    font-size: 14px;
+  }
+  .prayer-table th {
+    background: var(--primary);
+    color: #fff;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 13px;
+  }
+  .prayer-table td {
+    border: 1px solid var(--border);
+    padding: 12px 14px;
+    height: 38px;
+    color: var(--text-sub);
+    font-size: 12.5px;
+  }
+  .prayer-table tr:nth-child(even) td { background: #fafbfd; }
+  .prayer-note {
+    font-size: 12.5px;
+    color: var(--text-sub);
+    margin-top: 10px;
+    font-style: italic;
+  }
+
+  /* GUIDE (collapsible) */
+  .guide-section {
+    background: var(--guide-bg);
+    border: 1px dashed #c9b87a;
+    border-radius: 10px;
+    margin-top: 20px;
+    overflow: hidden;
+  }
+  .guide-section summary {
+    padding: 14px 20px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #7a5c1e;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    user-select: none;
+  }
+  .guide-section summary::-webkit-details-marker { display: none; }
+  .guide-section summary::after {
+    content: '▼';
+    margin-left: auto;
+    font-size: 11px;
+    transition: transform 0.2s;
+  }
+  .guide-section[open] summary::after { transform: rotate(180deg); }
+  .guide-content {
+    padding: 0 20px 18px;
+    font-size: 13.5px;
+    color: #5a4520;
+    line-height: 1.8;
+  }
+  .guide-item {
+    margin-bottom: 14px;
+    padding: 12px 16px;
+    background: #fff;
+    border-radius: 8px;
+    border-left: 3px solid var(--accent);
+  }
+  .guide-item .gi-title {
+    font-weight: 700;
+    color: #7a5c1e;
+    margin-bottom: 4px;
+    font-size: 13px;
+  }
+  .guide-item p { font-size: 13px; color: #5a4520; line-height: 1.7; }
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    margin-top: 28px;
+    font-size: 12px;
+    color: var(--text-sub);
+    letter-spacing: 0.5px;
+  }
+  .footer strong { color: var(--primary); }
+
+  /* DIVIDER */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 6px 0 20px;
+  }
+
+  /* PRINT */
+  @media print {
+    body { background: #fff; font-size: 13px; }
+    .page-wrap { padding: 10px; max-width: 100%; }
+    .header { border-radius: 8px 8px 0 0; padding: 24px 24px 18px; }
+    .section { padding: 20px 24px; }
+    .guide-section[open] .guide-content { display: block; }
+    .guide-section summary::after { display: none; }
+    .footer { margin-top: 16px; }
+    a { text-decoration: none; color: inherit; }
+  }
+
+  @media (max-width: 600px) {
+    .header { padding: 24px 20px 20px; }
+    .header h1 { font-size: 22px; }
+    .section { padding: 22px 18px; }
+    .q-num { min-width: 24px; height: 24px; font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="tag">소그룹 나눔지 &nbsp;·&nbsp; 모세 시리즈 22</div>
+    <h1>계승</h1>
+    <div class="meta">2026년 9월 27일 &nbsp;|&nbsp; 민수기 27:15–23 &nbsp;|&nbsp; 라온동행교회</div>
+    <div class="key-verse">
+      "여호와의 회중이 목자 없는 양과 같이 되지 않게 하옵소서" — 민수기 27:17
+    </div>
+    <div class="time-badge">⏱ 소요 시간: 90분</div>
+  </div>
+
+  <!-- 1. 아이스브레이킹 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🗣</span>
+      <span class="section-title">함께 시작해요</span>
+      <span class="section-time">10분</span>
+    </div>
+    <div class="icebreaker-box">
+      지금까지 살면서 누군가에게 어떤 역할이나 책임을 '넘겨준' 경험이 있으신가요?<br>
+      또는 반대로 누군가로부터 무언가를 '이어받은' 경험은요?<br>
+      그때 어떤 마음이었는지 한 가지만 나눠봐요.
+      <div class="tip">※ 정답이 없는 질문입니다. 가볍게 시작해요 😊</div>
+    </div>
+  </div>
+
+  <!-- 2. 말씀 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">📖</span>
+      <span class="section-title">말씀 함께 읽기</span>
+      <span class="section-time">35분</span>
+    </div>
+    <div class="scripture-block">
+      <span class="verse-num">15</span> 모세가 여호와께 여짜와 이르되 <span class="verse-num">16</span> 여호와, 모든 육체의 생명의 하나님이시여 원하건대 한 사람을 이 회중 위에 세워서 <span class="verse-num">17</span> 그로 그들 앞에 출입하며 그들을 인도하여 출입하게 하사 여호와의 회중이 목자 없는 양과 같이 되지 않게 하옵소서 <span class="verse-num">18</span> 여호와께서 모세에게 이르시되 눈의 아들 여호수아는 그 안에 영이 머무는 자니 너는 데려다가 그에게 안수하고 <span class="verse-num">19</span> 그를 제사장 엘르아살과 온 회중 앞에 세우고 그들의 목전에서 그에게 위탁하여 <span class="verse-num">20</span> 네 존귀를 그에게 돌려 이스라엘 자손의 온 회중을 그에게 복종하게 하라 <span class="verse-num">21</span> 그는 제사장 엘르아살 앞에 설 것이요 엘르아살은 그를 위하여 우림의 판결로써 여호와 앞에 물을 것이며 그와 온 이스라엘 자손 곧 온 회중은 엘르아살의 말을 따라 나가며 들어올 것이니라 <span class="verse-num">22</span> 모세가 여호와께서 자기에게 명령하신 대로 하여 여호수아를 데려다가 제사장 엘르아살과 온 회중 앞에 세우고 <span class="verse-num">23</span> 그에게 안수하여 위탁하되 여호와께서 모세에게 명령하신 대로 하였더라 (개역개정)
+    </div>
+
+    <div class="q-group">
+      <div class="q-group-title">말씀 속으로 — 본문 이해</div>
+      <div class="question-item">
+        <div class="q-num">1</div>
+        <div>
+          <div class="q-text">모세는 자신의 마지막 기도에서 무엇을 구했습니까? 그 기도에 자신을 위한 내용이 있었습니까?</div>
+          <div class="q-sub">→ 15–17절을 다시 읽으며, 모세가 가장 염려한 것이 무엇인지 찾아보세요.</div>
+        </div>
+      </div>
+      <div class="question-item">
+        <div class="q-num">2</div>
+        <div>
+          <div class="q-text">하나님이 여호수아를 선택하신 근거는 무엇이었습니까? 모세가 자신의 취향이나 관계로 후계자를 선택하지 않은 것이 왜 중요한가요?</div>
+          <div class="q-sub">→ 18절의 "그 안에 영이 머무는 자"라는 표현에 주목해 보세요.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="q-group">
+      <div class="q-group-title">말씀 속으로 — 신학적 성찰</div>
+      <div class="question-item">
+        <div class="q-num">3</div>
+        <div>
+          <div class="q-text">하나님은 20절에서 "네 존귀를 그에게 돌려"라고 하셨습니다. '이름'만 넘기는 것과 '실제 권한과 신뢰'를 함께 넘기는 것의 차이는 무엇일까요? 우리 삶과 공동체에서 이 원리는 어떻게 적용될 수 있을까요?</div>
+          <div class="q-sub">→ 목사님의 질문: "책임만 넘기고 권한을 주지 않는 것은 위임이 아닙니다."</div>
+        </div>
+      </div>
+      <div class="question-item">
+        <div class="q-num">4</div>
+        <div>
+          <div class="q-text">설교는 "하나님은 모세를 복제하지 않으셨다"고 말합니다. 시대마다 다른 리더십이 필요하다는 것이 우리 교회와 가정, 직장에 어떤 의미를 줍니까?</div>
+          <div class="q-sub">→ 모세 시대와 여호수아 시대에 각각 필요한 리더십이 달랐던 이유를 생각해 보세요.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="q-group">
+      <div class="q-group-title">내 삶에 가져오기</div>
+      <div class="question-item">
+        <div class="q-num">5</div>
+        <div>
+          <div class="q-text">목사님은 "한 사람이 모든 자물쇠의 열쇠를 가지고 있으면, 다른 사람은 문을 열 수 없다"고 하셨습니다. 내가 지금 너무 꽉 쥐고 있는 '열쇠'가 있다면 무엇입니까? (가정, 직장, 사역 중 어디서든)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. 적용 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">💡</span>
+      <span class="section-title">이번 주 적용</span>
+      <span class="section-time">20분</span>
+    </div>
+    <div class="question-item">
+      <div class="q-num">6</div>
+      <div>
+        <div class="q-text">이번 주, 내가 가진 '열쇠 하나'를 다른 사람에게 나눌 수 있다면 무엇이 될까요? 정보, 결정권, 역할 중에서 구체적으로 생각해보세요.</div>
+        <div class="q-sub">→ 그 사람이 설 수 있도록 돕는다는 것은 어떤 모습일까요?</div>
+      </div>
+    </div>
+    <div class="apply-box">
+      <label>나의 이번 주 한 가지 실천</label>
+      <div class="fill-line">나는 이번 주 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;에게</div>
+      <div class="fill-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;을/를 맡기겠습니다.</div>
+    </div>
+  </div>
+
+  <!-- 4. 중보기도 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🙏</span>
+      <span class="section-title">중보기도</span>
+      <span class="section-time">15분</span>
+    </div>
+    <p style="font-size:14px; color:var(--text-sub); margin-bottom:14px;">한 사람씩 기도 제목을 나눕니다. 돌아가며 한 마디씩 기도하거나, 인도자가 대표로 기도합니다.</p>
+    <table class="prayer-table">
+      <thead><tr><th style="width:30%">이름</th><th>기도 제목</th></tr></thead>
+      <tbody>
+        <tr><td></td><td></td></tr>
+        <tr><td></td><td></td></tr>
+        <tr><td></td><td></td></tr>
+        <tr><td></td><td></td></tr>
+        <tr><td></td><td></td></tr>
+        <tr><td></td><td></td></tr>
+      </tbody>
+    </table>
+    <div class="prayer-note">※ 오늘 나눈 내용과 기도 제목은 소그룹 안에서 머뭅니다.</div>
+
+    <!-- 인도자 가이드 -->
+    <details class="guide-section">
+      <summary>📋 인도자 가이드 (접고 펼치기)</summary>
+      <div class="guide-content">
+        <div class="guide-item">
+          <div class="gi-title">Q1 — 마지막 기도 관찰</div>
+          <p>모세가 기도에서 자신의 억울함이나 유산 보존을 구하지 않은 점에 집중하게 합니다. "지도자의 마지막을 보면 그 사람이 자리를 위해 일했는지 사명을 위해 일했는지 드러난다"는 설교 흐름으로 연결하세요. 예상 답: "자기 자신이 아니라 양 떼(공동체)를 걱정했다"는 방향.</p>
+        </div>
+        <div class="guide-item">
+          <div class="gi-title">Q2 — 하나님의 선택 근거</div>
+          <p>'루아흐(영)'에 대해 간단히 안내해도 좋습니다. 혈연·사적 친분이 아닌 하나님의 부르심이 출발점이라는 점 강조. 한국 교회의 세습 문제와 연결할 수 있으나 단정적 비판보다 "우리 공동체는 어떤가"로 질문을 열어두세요.</p>
+        </div>
+        <div class="guide-item">
+          <div class="gi-title">Q3 — 권한 위임의 원리</div>
+          <p>직장, 가정, 셀 리더십 모두에 연결 가능. "책임은 넘기되 권한은 쥔다"는 패턴이 얼마나 보편적인지 나누도록 유도합니다. 정보 공유(주보 재정 공개), 결정 참여, 역할 분담 등 라온동행교회 실제 사례를 참고로 언급해도 좋습니다.</p>
+        </div>
+        <div class="guide-item">
+          <div class="gi-title">Q4 — 시대별 리더십</div>
+          <p>광야 세대와 가나안 세대의 차이처럼, "부모와 자녀 세대의 리더십이 달라야 한다"는 방향으로 대화를 이끌 수 있습니다. 세대 간 갈등 경험이 나올 수 있으니 판단 없이 경청하는 분위기를 유지하세요.</p>
+        </div>
+        <div class="guide-item">
+          <div class="gi-title">Q5–6 — 적용 (열쇠 나누기)</div>
+          <p>너무 추상적이 되지 않도록 "가정에서", "직장에서", "셀에서" 중 하나를 골라 구체적으로 말하도록 안내합니다. 실천 선언은 서로 읽어주며 마무리하면 더 효과적입니다.</p>
+        </div>
+        <div class="guide-item">
+          <div class="gi-title">전체 흐름 주의사항</div>
+          <p>이 본문은 교회 리더십에 대한 비판적 대화로 흐를 수 있습니다. "우리가 어떻게 세울 것인가"에 초점을 맞추고, 비판보다 건설적 방향으로 유도해 주세요. 목사님 스스로 개척 당시 고민을 나눈 것처럼, 솔직함이 나눔의 깊이를 만듭니다.</p>
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <div class="footer">
+    <strong>라온동행교회</strong> &nbsp;|&nbsp; 담임목사 이광복 &nbsp;|&nbsp; 모세 시리즈 22 &nbsp;·&nbsp; 2026. 9. 27
+  </div>
+</div>
+</body>
+</html>
