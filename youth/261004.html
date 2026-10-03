@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>청소년 소그룹 — 마지막 축복</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --coral: #E84855;
+    --orange: #F97316;
+    --amber: #F59E0B;
+    --dark: #1C1B2E;
+    --bg: #FFF7F0;
+    --card: #FFFFFF;
+    --muted: #6B7280;
+    --border: #FFE0C8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--bg);
+    color: var(--dark);
+    padding: 20px 16px;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  .container { max-width: 800px; margin: 0 auto; }
+
+  /* ─── 헤더 ─── */
+  .header {
+    background: linear-gradient(135deg, #E84855 0%, #F97316 60%, #F59E0B 100%);
+    border-radius: 16px;
+    padding: 28px 28px 22px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 12px;
+  }
+  .header::after {
+    content: '✝';
+    position: absolute;
+    right: 24px; top: 50%;
+    transform: translateY(-50%);
+    font-size: 80px;
+    opacity: 0.12;
+    font-weight: 900;
+  }
+  .header-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.25);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+  }
+  .header-date {
+    font-size: 13px;
+    opacity: 0.85;
+    margin-bottom: 6px;
+  }
+  .header-title {
+    font-size: 30px;
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+  .header-subtitle {
+    font-size: 13px;
+    opacity: 0.85;
+    margin-bottom: 16px;
+  }
+  .key-chip {
+    background: rgba(255,255,255,0.2);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 13px;
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  /* ─── 카드 공통 ─── */
+  .card {
+    background: var(--card);
+    border-radius: 14px;
+    padding: 22px 24px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 10px rgba(232,72,85,0.08);
+  }
+  .card-title {
+    font-size: 16px;
+    font-weight: 900;
+    color: var(--dark);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card-title .emoji { font-size: 20px; }
+
+  /* ─── 웜업 ─── */
+  .warmup-q {
+    background: linear-gradient(135deg, #FFF0F0, #FFF7E0);
+    border-radius: 10px;
+    border-left: 5px solid var(--coral);
+    padding: 16px 18px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--dark);
+    line-height: 1.7;
+  }
+  .warmup-hint {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 10px;
+  }
+
+  /* ─── 본문 ─── */
+  .scripture-box {
+    background: #FFF8F0;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+    font-size: 14px;
+    line-height: 1.9;
+    color: #2A2020;
+    margin-bottom: 14px;
+  }
+  .v-num { font-weight: 700; color: var(--coral); margin-right: 4px; }
+
+  /* ─── OX 퀴즈 ─── */
+  .quiz-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--orange);
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+  }
+  .quiz-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: #FFF9F0;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    border: 1.5px solid var(--border);
+  }
+  .quiz-buttons {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+  .btn-o {
+    background: var(--coral);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 36px; height: 36px;
+    font-size: 18px;
+    font-weight: 900;
+    cursor: pointer;
+  }
+  .btn-x {
+    background: #E5E7EB;
+    color: #6B7280;
+    border: none;
+    border-radius: 50%;
+    width: 36px; height: 36px;
+    font-size: 18px;
+    font-weight: 900;
+    cursor: pointer;
+  }
+  .quiz-text { font-size: 14.5px; line-height: 1.65; padding-top: 6px; }
+  .quiz-answer {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 4px;
+    font-style: italic;
+  }
+
+  /* ─── 토크타임 ─── */
+  .talk-item {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1.5px dashed var(--border);
+  }
+  .talk-item:last-child { border-bottom: none; margin-bottom: 0; }
+  .talk-num {
+    display: inline-block;
+    background: var(--coral);
+    color: white;
+    font-size: 13px;
+    font-weight: 900;
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 26px;
+    margin-right: 8px;
+    flex-shrink: 0;
+  }
+  .talk-label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--orange);
+    background: #FFF0E0;
+    border-radius: 20px;
+    padding: 2px 10px;
+    margin-bottom: 8px;
+    margin-left: 4px;
+  }
+  .talk-q {
+    font-size: 15.5px;
+    font-weight: 500;
+    color: var(--dark);
+    line-height: 1.7;
+    margin-top: 4px;
+  }
+  .talk-sub {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 6px;
+    line-height: 1.6;
+  }
+  .deep-q {
+    background: linear-gradient(135deg, #FFF0F0, #FFF4E0);
+    border-radius: 10px;
+    border: 2px solid var(--amber);
+    padding: 16px 18px;
+  }
+  .deep-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--amber);
+    margin-bottom: 8px;
+  }
+
+  /* ─── 챌린지 ─── */
+  .challenge-box {
+    background: linear-gradient(135deg, #E84855, #F97316);
+    border-radius: 14px;
+    padding: 22px 24px;
+    color: white;
+    margin-bottom: 12px;
+  }
+  .challenge-title {
+    font-size: 18px;
+    font-weight: 900;
+    margin-bottom: 6px;
+  }
+  .challenge-sub {
+    font-size: 13px;
+    opacity: 0.9;
+    margin-bottom: 16px;
+  }
+  .mission-box {
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-bottom: 14px;
+  }
+  .mission-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    opacity: 0.85;
+    margin-bottom: 6px;
+  }
+  .mission-text {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.6;
+  }
+  .pledge-box {
+    background: rgba(255,255,255,0.15);
+    border-radius: 10px;
+    padding: 14px 18px;
+  }
+  .pledge-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    opacity: 0.85;
+    margin-bottom: 8px;
+  }
+  .pledge-text {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 2.0;
+    border-bottom: 2px solid rgba(255,255,255,0.5);
+    padding-bottom: 4px;
+  }
+  .pledge-blank {
+    display: inline-block;
+    min-width: 160px;
+    border-bottom: 2px solid rgba(255,255,255,0.6);
+    margin: 0 4px;
+  }
+
+  /* ─── 기도 ─── */
+  .prayer-box {
+    background: #FFF0F0;
+    border-radius: 14px;
+    padding: 20px 24px;
+    border: 2px solid #FFCDD2;
+    margin-bottom: 12px;
+  }
+  .prayer-intro {
+    font-size: 13.5px;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+  .prayer-topic {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin-bottom: 10px;
+  }
+  .prayer-dot {
+    width: 8px; height: 8px;
+    background: var(--coral);
+    border-radius: 50%;
+    margin-top: 8px;
+    flex-shrink: 0;
+  }
+  .prayer-line {
+    flex: 1;
+    border-bottom: 1.5px solid #FFCDD2;
+    min-height: 28px;
+  }
+
+  /* ─── 푸터 ─── */
+  .footer {
+    text-align: center;
+    font-size: 12px;
+    color: var(--muted);
+    padding: 16px;
+  }
+
+  /* ─── 인쇄 ─── */
+  @media print {
+    body { background: white; padding: 0; }
+    .card, .challenge-box, .prayer-box { box-shadow: none; }
+    .header { border-radius: 8px; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  }
+  @media (max-width: 600px) {
+    .header { padding: 20px 18px; }
+    .header-title { font-size: 24px; }
+    .card { padding: 16px 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- 헤더 -->
+  <div class="header">
+    <div class="header-badge">🔥 청소년 소그룹 · 모세 시리즈 23</div>
+    <div class="header-date">2025년 10월 5일</div>
+    <div class="header-title">진짜 축복이란 뭘까?</div>
+    <div class="header-subtitle">신명기 33:1–5, 26–29 — 마지막 축복</div>
+    <div class="key-chip">
+      "영원하신 하나님이 네 처소가 되시니 그의 영원하신 팔이 네 아래에 있도다" — 신명기 33:27
+    </div>
+  </div>
+
+  <!-- 웜업 -->
+  <div class="card">
+    <div class="card-title"><span class="emoji">⚡</span> 웜업 <span style="font-size:13px;color:var(--muted);font-weight:400;">(10분)</span></div>
+    <div class="warmup-q">
+      내가 엄청 원했는데 못 얻었고, 친한 친구가 그걸 얻었을 때 — 그때 솔직히 무슨 생각이 들었어?<br>
+      <span style="font-size:13px;font-weight:400;">(예: 같이 지원한 동아리, 수행평가 점수, 좋아하는 사람...)</span>
+    </div>
+    <div class="warmup-hint">😊 맞고 틀린 답 없어요! 솔직하게 나눠봐요.</div>
+  </div>
+
+  <!-- 말씀 -->
+  <div class="card">
+    <div class="card-title"><span class="emoji">📖</span> 오늘의 말씀 <span style="font-size:13px;color:var(--muted);font-weight:400;">(15분)</span></div>
+    <div class="scripture-box">
+      <div><span class="v-num">1</span> 하나님의 사람 모세가 죽기 전에 이스라엘 자손을 위하여 축복함이 이러하니라</div>
+      <div><span class="v-num">3</span> 여호와께서 백성을 사랑하시나니 모든 성도가 그의 수중에 있으며 주의 발 아래에 앉아서 주의 말씀을 받는도다</div>
+      <div><span class="v-num">27</span> 영원하신 하나님이 네 처소가 되시니 그의 영원하신 팔이 네 아래에 있도다</div>
+      <div><span class="v-num">29</span> 이스라엘이여 너는 행복한 사람이로다 여호와의 구원을 너같이 얻은 백성이 누구냐</div>
+    </div>
+
+    <!-- OX 퀴즈 -->
+    <div class="quiz-title">⭕❌ 말씀 퀴즈 — O인지 X인지 눌러봐요!</div>
+
+    <div class="quiz-item">
+      <div class="quiz-buttons">
+        <button class="btn-o" onclick="this.style.opacity=1;this.nextElementSibling.style.opacity=0.3">O</button>
+        <button class="btn-x" onclick="this.style.opacity=1;this.previousElementSibling.style.opacity=0.3">X</button>
+      </div>
+      <div>
+        <div class="quiz-text">모세는 40년 광야 여정 끝에 가나안 땅에 들어갔다.</div>
+        <div class="quiz-answer">정답: X — 므리바에서의 불순종으로 모세는 가나안에 들어가지 못했어요.</div>
+      </div>
+    </div>
+
+    <div class="quiz-item">
+      <div class="quiz-buttons">
+        <button class="btn-o" onclick="this.style.opacity=1;this.nextElementSibling.style.opacity=0.3">O</button>
+        <button class="btn-x" onclick="this.style.opacity=1;this.previousElementSibling.style.opacity=0.3">X</button>
+      </div>
+      <div>
+        <div class="quiz-text">모세의 마지막 공적 행위는 이스라엘 백성을 향한 축복이었다.</div>
+        <div class="quiz-answer">정답: O — 성경은 모세의 마지막을 "축복"으로 기록해요. (신 33:1)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 토크타임 -->
+  <div class="card">
+    <div class="card-title"><span class="emoji">💬</span> 토크타임 <span style="font-size:13px;color:var(--muted);font-weight:400;">(30분)</span></div>
+
+    <div class="talk-item">
+      <div><span class="talk-num">1</span><span class="talk-label">공감 질문</span></div>
+      <div class="talk-q">
+        일본 뇌과학 연구에 따르면, 가까운 사람이 잘됐을 때 뇌의 고통 부위가 실제로 반응한대. 너는 이 연구 결과를 어떻게 생각해?
+      </div>
+      <div class="talk-sub">💡 "사촌이 땅을 사면 배가 아프다" — 이게 뇌과학으로도 증명됐다면?</div>
+    </div>
+
+    <div class="talk-item">
+      <div><span class="talk-num">2</span><span class="talk-label">솔직한 질문</span></div>
+      <div class="talk-q">
+        모세는 자기가 못 들어갈 가나안으로 들어가는 백성에게 진심으로 축복했어. 내가 모세였다면 어떻게 했을 것 같아?
+      </div>
+      <div class="talk-sub">💡 원망했을 것 같아? 아니면 축복할 수 있었을 것 같아?</div>
+    </div>
+
+    <div class="talk-item">
+      <div><span class="talk-num">3</span><span class="talk-label">도전 질문</span></div>
+      <div class="talk-q">
+        설교에서 "우리는 다른 사람을 믿지 못해서가 아니라, 하나님을 믿지 못해서 붙들고 있는지 모른다"고 했어.<br>
+        너는 지금 누군가를 또는 뭔가를 손에서 못 놓고 있는 게 있어?
+      </div>
+    </div>
+
+    <div class="talk-item" style="border-bottom:none;margin-bottom:0;padding-bottom:0;">
+      <div><span class="talk-num">4</span><span class="talk-label">깊은 질문</span></div>
+      <div class="deep-q">
+        <div class="deep-label">🔥 솔직히 말하면...</div>
+        <div class="talk-q">
+          지금 내 삶에서 진심으로 축복하기 가장 어려운 사람이 있다면 누구야?<br>
+          그 이유가 뭔지, 하나님 앞에서 솔직하게 생각해볼 수 있어?
+        </div>
+        <div class="talk-sub" style="margin-top:8px;">💡 이름을 말하지 않아도 괜찮아요. 느낌만 나눠도 충분해요.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 챌린지 -->
+  <div class="challenge-box">
+    <div class="challenge-title">🎯 이번 주 챌린지</div>
+    <div class="challenge-sub">작고 구체적인 미션이에요. 한 가지만 해봐요!</div>
+
+    <div class="mission-box">
+      <div class="mission-label">📌 미션</div>
+      <div class="mission-text">
+        내가 진심으로 축하하기 어려웠던 그 사람을 위해,<br>
+        이번 주 딱 한 번 속으로 기도해줘.<br>
+        <span style="font-size:13px;font-weight:400;opacity:0.9;">"하나님, 그 사람도 영원하신 팔 안에 있게 해주세요."</span>
+      </div>
+    </div>
+
+    <div class="pledge-box">
+      <div class="pledge-label">✍ 나의 다짐</div>
+      <div class="pledge-text">
+        나는 이번 주 <span class="pledge-blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 을/를 실천할게요.
+      </div>
+    </div>
+  </div>
+
+  <!-- 기도 -->
+  <div class="prayer-box">
+    <div class="card-title"><span class="emoji">🙏</span> 함께 기도해요 <span style="font-size:13px;color:var(--muted);font-weight:400;">(10분)</span></div>
+    <div class="prayer-intro">서로의 기도 제목을 나누고, 짝을 지어 기도해드려요!</div>
+    <div class="prayer-topic"><div class="prayer-dot"></div><div class="prayer-line"></div></div>
+    <div class="prayer-topic"><div class="prayer-dot"></div><div class="prayer-line"></div></div>
+    <div class="prayer-topic"><div class="prayer-dot"></div><div class="prayer-line"></div></div>
+    <div class="prayer-topic"><div class="prayer-dot"></div><div class="prayer-line"></div></div>
+    <div class="prayer-topic"><div class="prayer-dot"></div><div class="prayer-line"></div></div>
+
+    <div style="margin-top:16px;background:#FFF8F8;border-radius:8px;padding:14px;font-size:14px;line-height:1.8;color:#5A2828;font-style:italic;">
+      "하나님, 우리 아래에 영원하신 팔이 있음을 믿어요.<br>
+      그래서 우리도 다른 사람을 진심으로 축복할 수 있게 해주세요.<br>
+      마지막 말이 원망이 아니라 축복이 되는 사람들로 살게 해주세요. 아멘."
+    </div>
+  </div>
+
+  <div class="footer">
+    라온동행교회 &nbsp;|&nbsp; 쉬운목사 이광복 &nbsp;|&nbsp; 모세 시리즈 23 &nbsp;|&nbsp; 2025. 10. 5.
+  </div>
+
+</div>
+</body>
+</html>
