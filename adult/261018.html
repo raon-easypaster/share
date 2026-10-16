@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>소그룹 나눔지 — 아름다운 퇴장</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #1A2B4C;
+    --accent: #065A82;
+    --gold: #C9A84C;
+    --light: #F0F9FF;
+    --light2: #BAE6FD;
+    --text: #1e293b;
+    --muted: #64748b;
+    --card-bg: #ffffff;
+    --border: #CBD5E1;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: #f1f5f9;
+    color: var(--text);
+    line-height: 1.7;
+  }
+  .wrapper { max-width: 800px; margin: 0 auto; padding: 32px 20px; }
+
+  /* 헤더 */
+  .header {
+    background: var(--primary);
+    color: white;
+    border-radius: 16px 16px 0 0;
+    padding: 28px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 6px; height: 100%;
+    background: var(--gold);
+  }
+  .header-label {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: var(--light2);
+    margin-bottom: 8px;
+    padding-left: 14px;
+  }
+  .header-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 26px;
+    font-weight: 700;
+    padding-left: 14px;
+    margin-bottom: 6px;
+  }
+  .header-sub {
+    font-size: 13px;
+    color: var(--light2);
+    padding-left: 14px;
+  }
+  .header-meta {
+    display: flex;
+    gap: 20px;
+    margin-top: 16px;
+    padding-left: 14px;
+    flex-wrap: wrap;
+  }
+  .header-meta span {
+    background: rgba(255,255,255,0.12);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+  }
+
+  /* 핵심 구절 */
+  .verse-box {
+    background: var(--accent);
+    color: white;
+    padding: 20px 28px;
+    border-left: 5px solid var(--gold);
+    margin-bottom: 0;
+  }
+  .verse-box .verse-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--light2);
+    margin-bottom: 8px;
+  }
+  .verse-box .verse-text {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 17px;
+    line-height: 1.8;
+    color: white;
+  }
+  .verse-box .verse-ref {
+    font-size: 12px;
+    color: var(--light2);
+    margin-top: 8px;
+    text-align: right;
+  }
+
+  /* 카드 */
+  .card {
+    background: var(--card-bg);
+    border-radius: 0;
+    padding: 28px 32px;
+    border-top: 1px solid var(--border);
+  }
+  .card:last-child { border-radius: 0 0 16px 16px; }
+  
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--light);
+  }
+  .section-title .icon {
+    width: 32px; height: 32px;
+    background: var(--light);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+  }
+  .section-time {
+    margin-left: auto;
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--muted);
+    background: #f1f5f9;
+    padding: 2px 8px;
+    border-radius: 10px;
+  }
+
+  /* 질문 */
+  .q-item {
+    margin-bottom: 22px;
+  }
+  .q-num {
+    display: inline-block;
+    width: 26px; height: 26px;
+    background: var(--primary);
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 26px;
+    margin-right: 8px;
+    flex-shrink: 0;
+  }
+  .q-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    margin-bottom: 8px;
+  }
+  .q-text {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.7;
+    flex: 1;
+  }
+  .q-hint {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 4px;
+    margin-left: 34px;
+    font-style: italic;
+  }
+  .answer-box {
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    min-height: 60px;
+    margin-left: 34px;
+    margin-top: 4px;
+    font-size: 13px;
+    color: #94a3b8;
+    font-style: italic;
+  }
+
+  /* 성경 본문 */
+  .scripture {
+    background: #f8fafc;
+    border-left: 4px solid var(--accent);
+    padding: 16px 20px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 18px;
+    font-size: 14px;
+    line-height: 1.9;
+    color: var(--primary);
+    font-family: 'Noto Serif KR', serif;
+  }
+  .scripture .verse-num {
+    color: var(--accent);
+    font-weight: 700;
+    font-style: normal;
+    margin-right: 2px;
+  }
+  .scripture-ref {
+    font-size: 11px;
+    color: var(--muted);
+    text-align: right;
+    margin-top: 8px;
+    font-style: normal;
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+
+  /* 실천 */
+  .practice-box {
+    background: linear-gradient(135deg, var(--light), #e0f2fe);
+    border: 1px solid var(--light2);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-top: 8px;
+  }
+  .practice-fill {
+    font-size: 15px;
+    color: var(--primary);
+    font-weight: 500;
+    margin-top: 12px;
+    padding: 12px 16px;
+    background: white;
+    border-radius: 8px;
+    border: 1px dashed var(--accent);
+    min-height: 48px;
+  }
+
+  /* 기도 */
+  .prayer-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+  }
+  .prayer-table th {
+    background: var(--primary);
+    color: white;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 10px 14px;
+    text-align: left;
+  }
+  .prayer-table th:first-child { border-radius: 8px 0 0 0; width: 35%; }
+  .prayer-table th:last-child { border-radius: 0 8px 0 0; }
+  .prayer-table td {
+    border: 1px solid #e2e8f0;
+    padding: 12px 14px;
+    font-size: 13px;
+    vertical-align: top;
+    min-height: 36px;
+  }
+  .prayer-table tr:nth-child(even) td { background: #f8fafc; }
+  .prayer-table tr:last-child td:first-child { border-radius: 0 0 0 8px; }
+  .prayer-table tr:last-child td:last-child { border-radius: 0 0 8px 0; }
+
+  /* 인도자 가이드 */
+  details { margin-top: 24px; }
+  summary {
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent);
+    padding: 10px 14px;
+    background: #f0f9ff;
+    border: 1px solid var(--light2);
+    border-radius: 8px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  summary::before { content: '▶'; font-size: 10px; }
+  details[open] summary::before { content: '▼'; }
+  .guide-content {
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    padding: 16px 20px;
+  }
+  .guide-content .guide-item {
+    margin-bottom: 14px;
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.7;
+  }
+  .guide-content .guide-item strong {
+    color: var(--primary);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  /* 푸터 */
+  .footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* 인쇄 */
+  @media print {
+    body { background: white; }
+    .wrapper { padding: 0; max-width: 100%; }
+    .header { border-radius: 0; }
+    .card:last-child { border-radius: 0; }
+    details { display: none; }
+  }
+
+  /* 모바일 */
+  @media (max-width: 600px) {
+    .wrapper { padding: 16px 12px; }
+    .header, .card { padding: 20px 18px; }
+    .header-title { font-size: 21px; }
+    .prayer-table th, .prayer-table td { padding: 8px 10px; font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <div class="header">
+    <div class="header-label">소그룹 나눔지  |  모세 시리즈 24</div>
+    <div class="header-title">아름다운 퇴장</div>
+    <div class="header-sub">신명기 34:1–12</div>
+    <div class="header-meta">
+      <span>📅 2025년 10월 18일</span>
+      <span>⏱ 약 90분</span>
+      <span>✍️ 라온동행교회 장년 소그룹</span>
+    </div>
+  </div>
+
+  <div class="verse-box">
+    <div class="verse-label">핵심 말씀</div>
+    <div class="verse-text">"그 후에는 이스라엘에 모세와 같은 선지자가 일어나지 못하였나니<br>모세는 여호와께서 대면하여 아시던 자요"</div>
+    <div class="verse-ref">신명기 34:10</div>
+  </div>
+
+  <!-- 1. 아이스브레이킹 -->
+  <div class="card">
+    <div class="section-title">
+      <div class="icon">🗣️</div>
+      함께 시작해요
+      <span class="section-time">10분</span>
+    </div>
+    <div class="q-item">
+      <div class="q-label">
+        <span class="q-num">Q</span>
+        <div class="q-text">내 인생에서 "다시는 없을 것 같다"고 느꼈던 소중한 순간이 있다면 나눠주세요. (장소, 사람, 경험 등 자유롭게)</div>
+      </div>
+      <div class="q-hint">⟶ 오늘의 주제와 자연스럽게 연결될 수 있도록 편안하게 나눔을 시작하세요.</div>
+    </div>
+  </div>
+
+  <!-- 2. 말씀 읽기 -->
+  <div class="card">
+    <div class="section-title">
+      <div class="icon">📖</div>
+      말씀 함께 읽기
+    </div>
+    <div class="scripture">
+      <span class="verse-num">1</span>모세가 모압 평지에서 느보 산에 올라가 여리고 맞은편 비스가 산꼭대기에 이르매 여호와께서 길르앗 온 땅을 단까지 보이시고<br>
+      <span class="verse-num">4</span>여호와께서 그에게 이르시되 이는 내가 아브라함과 이삭과 야곱에게 맹세하여 그의 후손에게 주리라 한 땅이라 내가 네 눈으로 보게 하였거니와 너는 그리로 건너가지 못하리라 하시매<br>
+      <span class="verse-num">5</span>이에 여호와의 종 모세가 여호와의 말씀대로 모압 땅에서 죽어<br>
+      <span class="verse-num">9</span>모세가 눈의 아들 여호수아에게 안수하였으므로 그에게 지혜의 영이 충만하니 이스라엘 자손이 여호수아의 말을 순종하였더라<br>
+      <span class="verse-num">10</span>그 후에는 이스라엘에 모세와 같은 선지자가 일어나지 못하였나니 모세는 여호와께서 대면하여 아시던 자요
+      <div class="scripture-ref">신명기 34:1, 4–5, 9–10 (개역개정)</div>
+    </div>
+  </div>
+
+  <!-- 3. 말씀 속으로 -->
+  <div class="card">
+    <div class="section-title">
+      <div class="icon">🔍</div>
+      말씀 속으로
+      <span class="section-time">25분</span>
+    </div>
+
+    <div class="q-item">
+      <div class="q-label">
+        <span class="q-num">1</span>
+        <div class="q-text">모세는 40년 광야 사역 끝에 가나안에 들어가지 못했습니다. "원하는 결말을 얻지 못한" 모세의 마지막을 '아름다운 퇴장'이라고 부를 수 있는 이유는 무엇이라고 생각하십니까?</div>
+      </div>
+      <div class="q-hint">⟶ 결과보다 과정과 태도에 초점을 맞춰 이야기해보세요.</div>
+      <div class="answer-box">나눔 내용을 여기에 메모하세요…</div>
+    </div>
+
+    <div class="q-item">
+      <div class="q-label">
+        <span class="q-num">2</span>
+        <div class="q-text">"모세는 여호와께서 대면하여 아시던 자요"(10절)라는 표현에서, 하나님이 모세를 '아신다'는 것은 어떤 의미라고 생각하십니까? 그것이 우리 삶에서는 어떻게 나타날 수 있을까요?</div>
+      </div>
+      <div class="q-hint">⟶ 능력이나 업적이 아닌 '관계'의 차원에서 생각해보세요.</div>
+      <div class="answer-box">나눔 내용을 여기에 메모하세요…</div>
+    </div>
+  </div>
+
+  <!-- 4. 내 삶에 -->
+  <div class="card">
+    <div class="section-title">
+      <div class="icon">💬</div>
+      내 삶에 가져오기
+      <span class="section-time">25분</span>
+    </div>
+
+    <div class="q-item">
+      <div class="q-label">
+        <span class="q-num">3</span>
+        <div class="q-text">설교에서 목사님은 "맡기는 것도 믿음"이라고 하셨습니다. 내가 지금 너무 꼭 쥐고 있어서, 다음 사람 혹은 하나님께 맡기지 못하고 있는 것이 있다면 무엇입니까?</div>
+      </div>
+      <div class="answer-box">나눔 내용을 여기에 메모하세요…</div>
+    </div>
+
+    <div class="q-item">
+      <div class="q-label">
+        <span class="q-num">4</span>
+        <div class="q-text">내 삶에서 "그리스도의 향기"를 남긴 사람이 있습니까? 그 사람을 통해 어떤 예수님의 사랑을 느꼈는지 나눠주세요.</div>
+      </div>
+      <div class="answer-box">나눔 내용을 여기에 메모하세요…</div>
+    </div>
+  </div>
+
+  <!-- 5. 적용 -->
+  <div class="card">
+    <div class="section-title">
+      <div class="icon">💡</div>
+      이번 주 적용
+      <span class="section-time">10분</span>
+    </div>
+
+    <div class="q-item">
+      <div class="q-label">
+        <span class="q-num">5</span>
+        <div class="q-text">설교는 세 가지 적용을 제시했습니다. 이 중 이번 주 나에게 가장 필요한 한 가지를 선택하고, 어떻게 실천할지 구체적으로 나눠주세요.</div>
+      </div>
+      <ul style="margin: 8px 0 12px 34px; font-size: 14px; color: var(--text); line-height: 2;">
+        <li>오늘 나에게 주어진 시간을 소중히 여기며 사랑으로 살기</li>
+        <li>내가 없어도 걸어갈 수 있도록 다음 사람 세우기</li>
+        <li>회개할 것은 회개하고, 맡길 것은 믿음으로 맡기기</li>
+      </ul>
+    </div>
+
+    <div class="practice-box">
+      <div style="font-size: 14px; font-weight: 700; color: var(--primary);">✍️ 나의 한 가지</div>
+      <div class="practice-fill">나는 이번 주 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 을/를 실천하겠습니다.</div>
+    </div>
+  </div>
+
+  <!-- 6. 중보기도 -->
+  <div class="card">
+    <div class="section-title">
+      <div class="icon">🙏</div>
+      중보기도
+      <span class="section-time">20분</span>
+    </div>
+    <p style="font-size: 14px; color: var(--muted); margin-bottom: 12px;">서로의 기도 제목을 나누고 함께 기도합니다.</p>
+    <table class="prayer-table">
+      <thead>
+        <tr>
+          <th>이름</th>
+          <th>기도 제목</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td></td><td></td></tr>
+        <tr><td></td><td></td></tr>
+        <tr><td></td><td></td></tr>
+        <tr><td></td><td></td></tr>
+        <tr><td></td><td></td></tr>
+      </tbody>
+    </table>
+
+    <details>
+      <summary>📋 인도자 가이드 (클릭하여 열기)</summary>
+      <div class="guide-content">
+        <div class="guide-item">
+          <strong>Q1 — 아름다운 퇴장의 이유</strong>
+          결과가 아닌 과정과 태도의 아름다움에 집중하도록 유도. 가나안에 들어가지 못했어도 백성을 축복했고, 여호수아에게 안수했으며, 하나님 말씀대로 순종했다는 점을 상기시키세요. "우리가 기대하는 결말이 무엇인지, 하나님이 보시는 아름다움은 무엇인지"를 생각하게 하면 좋습니다.
+        </div>
+        <div class="guide-item">
+          <strong>Q2 — 대면하여 아시던 자</strong>
+          히브리어 '야다(יָדַע)'는 단순한 지식이 아니라 친밀한 관계적 앎을 의미합니다. 아브라함을 "내 벗"이라 부르신 것처럼, 하나님이 우리를 아신다는 것은 우리 전체 — 실패와 성공, 눈물과 기쁨 모두 — 를 아신다는 것입니다.
+        </div>
+        <div class="guide-item">
+          <strong>Q3 — 맡기지 못하는 것</strong>
+          개인적인 나눔이 될 수 있으므로 강요하지 않도록 주의. 인도자가 먼저 솔직하게 나누면 분위기가 열립니다. 자녀, 사역, 관계, 미래 등 다양한 영역에서 나올 수 있습니다.
+        </div>
+        <div class="guide-item">
+          <strong>Q4 — 그리스도의 향기</strong>
+          특정 인물을 강요하지 말고 자유롭게. 설교에 나온 이태석 신부·전태일·손양원 목사 외에도, 우리 주변의 평범한 성도를 기억하도록 유도하세요. "유명하지 않아도 하나님이 기억하신다"는 점을 강조하면 좋습니다.
+        </div>
+        <div class="guide-item">
+          <strong>시간 조율 팁</strong>
+          말씀 읽기(10분) → 1-2번 질문(25분) → 3-4번 질문(25분) → 적용(10분) → 기도(20분). 나눔이 길어지면 Q3, Q4를 합쳐 진행하세요.
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <div class="footer">
+    라온동행교회 | 쉬운목사 이광복 | 2025년 10월 18일
+  </div>
+</div>
+</body>
+</html>
