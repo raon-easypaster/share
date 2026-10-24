@@ -1,0 +1,339 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>귀히 쓰는 그릇 — 청소년 소그룹 나눔지</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Noto+Serif+KR:wght@400;600&display=swap">
+<style>
+  :root {
+    --bg: #0F0A04;
+    --card: #1C1208;
+    --card-elevated: #241810;
+    --fg: #F5F0EB;
+    --muted: #C8A97A;
+    --amber: #F59E0B;
+    --amber-dark: #D97706;
+    --amber-glow: rgba(245,158,11,0.15);
+    --cream: #FEF3C7;
+    --sand: #FDF8F0;
+    --border: #3D2B1F;
+    --card-dark-fg: #F5F0EB;
+    --yellow-card: #1C1A08;
+    --yellow-border: #D97706;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--fg); font-family: 'Noto Sans KR', sans-serif; line-height: 1.7; }
+
+  .wrapper { max-width: 800px; margin: 0 auto; padding: 40px 20px 60px; }
+
+  /* ── HEADER ── */
+  .header { text-align: center; margin-bottom: 40px; padding: 40px 24px; background: linear-gradient(160deg, #1C1208 0%, #3D2B1F 100%); border-radius: 24px; border: 1px solid var(--border); position: relative; overflow: hidden; }
+  .header::before { content: '✝'; position: absolute; right: 24px; top: 20px; font-size: 48px; color: var(--amber); opacity: 0.15; }
+  .badge { display: inline-flex; align-items: center; gap: 6px; background: var(--amber); color: #0F0A04; font-size: 12px; font-weight: 700; padding: 6px 14px; border-radius: 20px; margin-bottom: 18px; letter-spacing: 0.5px; }
+  .header-title { font-size: clamp(28px, 6vw, 40px); font-weight: 900; color: var(--fg); margin-bottom: 10px; text-wrap: balance; }
+  .header-title .accent { color: var(--amber); }
+  .header-sub { font-size: 14px; color: var(--muted); margin-bottom: 20px; }
+  .header-pills { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+  .pill { background: rgba(245,158,11,0.12); color: var(--amber); font-size: 12px; font-weight: 600; padding: 5px 14px; border-radius: 20px; border: 1px solid rgba(245,158,11,0.3); }
+
+  /* ── CARD ── */
+  .card { border-radius: 20px; padding: 28px; margin-bottom: 16px; border: 1px solid var(--border); }
+  .card { background: var(--card-elevated); }
+  .card.card-dark { background: #1C1208; border-color: var(--border); }
+  .card.card-accent { background: var(--amber-glow); border: 1.5px solid var(--amber-dark); }
+  .card.card-yellow { background: var(--yellow-card); border: 1.5px solid var(--yellow-border); }
+
+  /* ── SECTION TITLE ── */
+  .sec-title { font-size: 13px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 18px; display: flex; align-items: center; gap: 10px; }
+  .sec-title.light { color: var(--amber); }
+  .sec-title.dark { color: var(--amber-dark); }
+  .sec-title.gold { color: #D97706; }
+  .sec-title .sec-time { font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 10px; margin-left: auto; letter-spacing: 0; text-transform: none; }
+  .sec-title.light .sec-time { background: rgba(245,158,11,0.15); color: var(--amber); }
+  .sec-title.dark .sec-time { background: rgba(245,158,11,0.12); color: var(--amber-dark); }
+  .sec-title.gold .sec-time { background: rgba(217,119,6,0.15); color: #D97706; }
+
+  /* ── WARMUP ── */
+  .warm-q { font-size: 17px; font-weight: 700; color: var(--fg); line-height: 1.6; margin-bottom: 12px; }
+  .warm-sub { font-size: 13px; color: var(--muted); font-style: italic; }
+  .warm-method { display: inline-flex; align-items: center; gap: 6px; margin-top: 14px; background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.25); border-radius: 10px; padding: 8px 14px; font-size: 13px; color: var(--amber); font-weight: 600; }
+
+  /* ── SCRIPTURE ── */
+  .scripture { font-family: 'Noto Serif KR', serif; font-size: 15px; line-height: 1.9; color: var(--cream); background: rgba(0,0,0,0.2); border-radius: 12px; padding: 16px 20px; margin-bottom: 16px; }
+  .verse-num { color: var(--amber); font-weight: 700; margin-right: 4px; font-size: 13px; }
+
+  /* ── QUIZ ── */
+  .quiz-box { margin-bottom: 16px; }
+  .quiz-q { font-size: 15px; font-weight: 600; color: var(--fg); margin-bottom: 10px; line-height: 1.6; }
+  .quiz-ans { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .quiz-btn { padding: 8px 20px; border-radius: 24px; font-size: 14px; font-weight: 700; border: 2px solid; cursor: default; }
+  .quiz-btn.o-btn { border-color: var(--amber); color: var(--amber); }
+  .quiz-btn.o-btn.correct { background: var(--amber); color: #0F0A04; }
+  .quiz-btn.x-btn { border-color: var(--border); color: var(--muted); }
+  .quiz-btn.x-btn.correct { background: #4A3525; border-color: #6B5A42; color: var(--muted); }
+  .quiz-explain { font-size: 13px; color: var(--muted); margin-top: 10px; padding: 10px 14px; background: rgba(0,0,0,0.2); border-radius: 8px; line-height: 1.6; }
+  .quiz-explain strong { color: var(--amber); }
+  .quiz-divider { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
+
+  /* ── TALK ── */
+  .talk-q { margin-bottom: 22px; padding-bottom: 22px; border-bottom: 1px solid var(--border); }
+  .talk-q:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .talk-q-head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .talk-num { width: 28px; height: 28px; border-radius: 50%; background: var(--amber); color: #0F0A04; font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .talk-tag { font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 10px; letter-spacing: 0.5px; }
+  .tag-empathy { background: rgba(16,185,129,0.15); color: #6EE7B7; border: 1px solid rgba(16,185,129,0.3); }
+  .tag-honest { background: rgba(239,68,68,0.12); color: #FCA5A5; border: 1px solid rgba(239,68,68,0.25); }
+  .tag-challenge { background: rgba(245,158,11,0.15); color: var(--amber); border: 1px solid rgba(245,158,11,0.3); }
+  .tag-deep { background: rgba(139,92,246,0.12); color: #C4B5FD; border: 1px solid rgba(139,92,246,0.25); }
+  .talk-text { font-size: 15px; font-weight: 700; color: var(--fg); line-height: 1.6; margin-bottom: 6px; }
+  .talk-sub { font-size: 13px; color: var(--muted); font-style: italic; margin-bottom: 12px; line-height: 1.6; }
+  .ans-line { border: none; border-bottom: 1px solid var(--border); display: block; width: 100%; height: 32px; margin-bottom: 6px; background: transparent; }
+
+  /* ── CHALLENGE ── */
+  .challenge-box { }
+  .challenge-title { font-size: 22px; font-weight: 900; color: var(--amber); margin-bottom: 14px; }
+  .mission-text { font-size: 15px; color: var(--cream); line-height: 1.7; margin-bottom: 20px; padding: 16px 20px; background: rgba(245,158,11,0.08); border-radius: 12px; border-left: 4px solid var(--amber); }
+  .commit-fill { margin-top: 4px; }
+  .commit-label { font-size: 12px; font-weight: 700; color: var(--amber-dark); letter-spacing: 1px; margin-bottom: 10px; }
+  .commit-line { border: none; border-bottom: 1.5px solid var(--yellow-border); display: block; width: 100%; height: 36px; background: transparent; }
+
+  /* ── PRAYER CARDS ── */
+  .prayer-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px; }
+  .prayer-card { background: rgba(255,255,255,0.05); border: 1px solid var(--border); border-radius: 12px; padding: 14px; }
+  .prayer-name { font-size: 12px; font-weight: 700; color: var(--amber); letter-spacing: 0.5px; margin-bottom: 6px; }
+  .prayer-line { border: none; border-bottom: 1px solid var(--border); display: block; width: 100%; height: 28px; background: transparent; }
+  .close-prayer { font-family: 'Noto Serif KR', serif; font-size: 15px; font-style: italic; color: rgba(245,240,235,0.75); line-height: 1.9; padding: 16px 20px; background: rgba(0,0,0,0.2); border-radius: 12px; border-left: 3px solid var(--amber-dark); }
+
+  /* ── FOOTER ── */
+  .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border); font-size: 13px; color: var(--muted); }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: #fff; color: #000; }
+    .header { background: #f59e0b; color: #000; }
+    .header-title, .warm-q, .talk-text { color: #000; }
+    .card { background: #fff; border: 1px solid #ccc; }
+    .card.card-dark, .card.card-accent, .card.card-yellow { background: #f9f9f9; }
+    .muted, .warm-sub, .talk-sub, .quiz-explain { color: #555; }
+    .ans-line, .prayer-line, .commit-line { border-bottom: 1px solid #ccc; }
+  }
+
+  @media (max-width: 600px) {
+    .prayer-cards { grid-template-columns: 1fr; }
+    .header-title { font-size: 26px; }
+    .card { padding: 20px; }
+    .talk-q-head { flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="badge">🔥 청소년 소그룹</div>
+    <div class="header-title">
+      귀히 쓰는 <span class="accent">그릇</span>
+    </div>
+    <div class="header-sub">디모데후서 2:20-21 | 라온동행교회 청소년부</div>
+    <div class="header-pills">
+      <span class="pill">📅 2026.10.25</span>
+      <span class="pill">⏱ 75분</span>
+      <span class="pill">🏠 라온동행교회</span>
+    </div>
+  </div>
+
+  <!-- 웜업 -->
+  <div class="card card-dark">
+    <div class="sec-title light">
+      <span>🎯</span> 웜업
+      <span class="sec-time">10분</span>
+    </div>
+    <div class="warm-q">
+      만약 네가 "어떤 사람"으로 기억되고 싶다면, 딱 한 단어로 말해봐. (멋있어? 따뜻해? 재밌어? 믿음직해?)
+    </div>
+    <div class="warm-sub">
+      → 오늘 우리는 "어떤 그릇"으로 쓰이고 싶은지 이야기해볼 거야.<br>
+      재질(금/나무)이 아니라, 어떤 사람이 되느냐가 핵심이야!
+    </div>
+    <div class="warm-method">👉 돌아가며 한 단어씩 말해보기 (패스 가능)</div>
+  </div>
+
+  <!-- 오늘의 말씀 -->
+  <div class="card card-accent">
+    <div class="sec-title dark">
+      <span>📖</span> 오늘의 말씀
+      <span class="sec-time">15분</span>
+    </div>
+    <div class="scripture">
+      <span class="verse-num">20</span>큰 집에는 금 그릇과 은 그릇뿐 아니라 나무 그릇과 질그릇도 있어 귀하게 쓰는 것도 있고 천하게 쓰는 것도 있나니<br><br>
+      <span class="verse-num">21</span>그러므로 누구든지 이런 것에서 자기를 깨끗하게 하면 귀히 쓰는 그릇이 되어 거룩하고 주인의 쓰심에 합당하며 모든 선한 일에 준비함이 되리라
+    </div>
+
+    <!-- OX 퀴즈 1 -->
+    <div class="quiz-box">
+      <div class="quiz-q">Q1. 바울은 "금 그릇이 항상 귀하게 쓰인다"고 말했다. ⭕❌ ?</div>
+      <div class="quiz-ans">
+        <button class="quiz-btn x-btn correct">❌ X</button>
+        <button class="quiz-btn o-btn">⭕ O</button>
+      </div>
+      <div class="quiz-explain">
+        <strong>정답: X!</strong><br>
+        바울은 "재질(금/나무)"이 아니라 <strong>정결함</strong>이 기준이라고 했어. 금 그릇도 더러우면 식탁에 안 올라가고, 나무 그릇도 깨끗하면 귀하게 쓰여!
+      </div>
+    </div>
+    <hr class="quiz-divider">
+
+    <!-- OX 퀴즈 2 -->
+    <div class="quiz-box">
+      <div class="quiz-q">Q2. "자기를 깨끗하게 한다"는 것은 혼자 조용히 숨어있는 것이다. ⭕❌ ?</div>
+      <div class="quiz-ans">
+        <button class="quiz-btn x-btn correct">❌ X</button>
+        <button class="quiz-btn o-btn">⭕ O</button>
+      </div>
+      <div class="quiz-explain">
+        <strong>정답: X!</strong><br>
+        본문은 정결함 뒤에 "모든 <strong>선한 일에 준비함</strong>"이 온다고 해. 정결해진다는 것은 움츠러드는 게 아니라 사람을 섬기러 나가는 거야!
+      </div>
+    </div>
+  </div>
+
+  <!-- 토크타임 -->
+  <div class="card">
+    <div class="sec-title dark">
+      <span>💬</span> 토크타임
+      <span class="sec-time">30분</span>
+    </div>
+
+    <!-- Q1 공감 -->
+    <div class="talk-q">
+      <div class="talk-q-head">
+        <div class="talk-num">1</div>
+        <span class="talk-tag tag-empathy">공감</span>
+      </div>
+      <div class="talk-text">시험 준비할 때, 운동 경기 전날, 중요한 발표 앞에서 — 너는 어떤 준비를 하면 가장 잘 할 수 있어? 그 준비가 실제로 도움이 됐어?</div>
+      <div class="talk-sub">→ 오늘 말씀의 "모든 선한 일에 준비함"과 연결해봐. 영적인 준비도 비슷하지 않을까?</div>
+      <hr class="ans-line">
+      <hr class="ans-line">
+    </div>
+
+    <!-- Q2 솔직 -->
+    <div class="talk-q">
+      <div class="talk-q-head">
+        <div class="talk-num">2</div>
+        <span class="talk-tag tag-honest">솔직</span>
+      </div>
+      <div class="talk-text">지금 내 마음속에 "이건 아무도 몰랐으면 해…"라는 부분이 있어? 말다툼, 뒷담화, 습관적인 거짓말… 솔직하게 인정하기 어려운 것 하나만 생각해봐. (말 안 해도 돼, 마음에만 생각해봐.)</div>
+      <div class="talk-sub">→ 오늘 설교는 그것을 "불의"라고 불러. 부끄러운 게 아니야. 우리 모두 그런 게 있어. 중요한 건 거기서 나오는 것!
+</div>
+      <hr class="ans-line">
+      <hr class="ans-line">
+    </div>
+
+    <!-- Q3 도전 -->
+    <div class="talk-q">
+      <div class="talk-q-head">
+        <div class="talk-num">3</div>
+        <span class="talk-tag tag-challenge">도전</span>
+      </div>
+      <div class="talk-text">목사님이 "죄를 짓지 않으려면, 죄를 지을 수 없는 환경을 만들라"고 했어. 내 나이에 실제로 할 수 있는 그런 선택이 있을까? 예를 들어, 어떤 앱 삭제, 어떤 자리 피하기, 어떤 친구 관계 바꾸기 같은 거?</div>
+      <div class="talk-sub">→ 거창하게 생각하지 말고, 딱 하나, 이번 주에 당장 바꿀 수 있는 거 하나만 떠올려봐.</div>
+      <hr class="ans-line">
+      <hr class="ans-line">
+    </div>
+
+    <!-- Q4 깊이 -->
+    <div class="talk-q">
+      <div class="talk-q-head">
+        <div class="talk-num">4</div>
+        <span class="talk-tag tag-deep">깊이</span>
+      </div>
+      <div class="talk-text">오늘 설교는 "은혜가 먼저"라고 했어. 하나님이 깨끗해진 다음에 받아주시는 게 아니라, 이미 나를 부르셨대. 지금 이 순간, "하나님이 나를 귀히 쓰시길 원하신다"는 말이 실제로 위로가 돼? 아니면 솔직히 잘 모르겠어?</div>
+      <div class="talk-sub">→ 어떤 대답도 괜찮아. "잘 모르겠어"도 훌륭한 시작이야.</div>
+      <hr class="ans-line">
+      <hr class="ans-line">
+      <hr class="ans-line">
+    </div>
+  </div>
+
+  <!-- 이번 주 챌린지 -->
+  <div class="card card-yellow">
+    <div class="sec-title gold">
+      <span>⚡</span> 이번 주 챌린지
+      <span class="sec-time">5분</span>
+    </div>
+    <div class="challenge-box">
+      <div class="challenge-title">🏺 그릇 씻기 챌린지</div>
+      <div class="mission-text">
+        이번 주에 누군가에게 하고 싶었던 말 — 사과, 감사, 진심 어린 한마디 — 을 실제로 전달해봐.<br>
+        문자든, 직접이든, 쪽지든 상관없어. 딱 한 사람에게, 딱 한 문장.<br>
+        <strong style="color: var(--amber);">⏰ 이번 주 금요일까지!</strong>
+      </div>
+      <div class="commit-fill">
+        <div class="commit-label">✍ 나의 다짐</div>
+        <span style="font-size:14px; color: var(--muted);">나는 이번 주에 </span>
+        <hr class="commit-line">
+        <span style="font-size:14px; color: var(--muted);">에게/에 대해 이렇게 할게:</span>
+        <hr class="commit-line">
+      </div>
+    </div>
+  </div>
+
+  <!-- 함께 기도 -->
+  <div class="card card-dark">
+    <div class="sec-title light">
+      <span>🙏</span> 함께 기도
+      <span class="sec-time">15분</span>
+    </div>
+    <div class="prayer-cards">
+      <div class="prayer-card">
+        <div class="prayer-name">이름</div>
+        <hr class="prayer-line">
+        <div class="prayer-name" style="margin-top:10px;">기도 제목</div>
+        <hr class="prayer-line">
+        <hr class="prayer-line">
+      </div>
+      <div class="prayer-card">
+        <div class="prayer-name">이름</div>
+        <hr class="prayer-line">
+        <div class="prayer-name" style="margin-top:10px;">기도 제목</div>
+        <hr class="prayer-line">
+        <hr class="prayer-line">
+      </div>
+      <div class="prayer-card">
+        <div class="prayer-name">이름</div>
+        <hr class="prayer-line">
+        <div class="prayer-name" style="margin-top:10px;">기도 제목</div>
+        <hr class="prayer-line">
+        <hr class="prayer-line">
+      </div>
+      <div class="prayer-card">
+        <div class="prayer-name">이름</div>
+        <hr class="prayer-line">
+        <div class="prayer-name" style="margin-top:10px;">기도 제목</div>
+        <hr class="prayer-line">
+        <hr class="prayer-line">
+      </div>
+    </div>
+    <div class="close-prayer">
+      주님, 저희가 어떤 재질로 만들어졌든 상관없이<br>
+      당신의 손에 쓰이기에 합당한 깨끗한 그릇이 되게 하소서.<br>
+      은혜가 먼저임을 기억하고, 그 은혜에 응답하며 살게 하소서. 아멘.
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    라온동행교회 청소년부 | 쉬운목사 이광복 | 2026년 10월 25일<br>
+    <small style="opacity:0.6">이 나눔지는 설교 원고를 기반으로 제작된 소그룹 학습 자료입니다.</small>
+  </div>
+
+</div>
+</body>
+</html>
+
+</body></html>
